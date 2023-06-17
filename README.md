@@ -32,4 +32,7 @@ Takım Flutter-10
 - Barınaklar
 - Otel sahipleri
 
+## JÜRİYE NOT
+
+
 
