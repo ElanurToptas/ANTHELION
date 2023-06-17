@@ -7,7 +7,7 @@ Takım Flutter-10
 - Elanur Toptaş: Scrum Master / Developer
 - Fatma Eser Kırmacı: UI Designer / Developer
 - Mehmet Demirtürk: Developer
-- 
+  
 ## ÜRÜN İSMİ
 --UYGULAMA ADI--
 
