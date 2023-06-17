@@ -20,10 +20,6 @@ Takım Flutter-10
 - **Uygulama Fonksiyonu:** Hayvan sahipleri ihtiyaçlarına göre otel, petshop, veteriner ve barınak konumlarına erişebilir. Ayrıca veterinerlerle uygulama üzerinden iletişime geçip hayvanının durumunu anlık bildirebilir ve randevu alabilir.
 
 ## ÜRÜN ÖZELLİKLERİ
-- Kullanıcıya farklı veteriner seçenekleri sunulması ve seçilen veteriner ile kullanıcının iletişime geçmesinin kolaylaştırılması.
-- Hayvana özel bilgilerin bir arada tutulması.
-- Hayvan sahibinin hayvanlar hakkında bilgiye erişebilmesi.
-- Petshop,oteller ve barınaklar gibi hayvanlara özel yerlerin bilgilerine ve konumuna kolay erişim sağlanması.
 
 ## HEDEF KİTLE
 - Hayvan sahipleri
