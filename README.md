@@ -43,7 +43,22 @@ Takım Flutter-10
 - **Sprint board update:** Sprint board screenshotları:
 ![image](https://github.com/ElanurToptas/ANTHELION/assets/129093031/7ddaeaa2-3618-4cc7-84f1-44b5683fd160)
 
-- **Ürün Durumu:** Ekran görüntüleri: 
+- **Ürün Durumu:** Ekran görüntüleri:
+- ![image](https://github.com/ElanurToptas/ANTHELION/assets/129093031/81deb120-9ecc-40ec-a050-294c6f2672ff)
+- ![image](https://github.com/ElanurToptas/ANTHELION/assets/129093031/82bcf7f4-bca7-4efa-b3b5-27be2403e748)
+
+- **Sprint Review:** Kullanıcı arayüzleri oluşturulmuş, bazıları kodlanmış, firebase'e bağlanması sağlanmıştır. Uygulama için veritabanı olarak firebase servisleri aktif edilmiş ve eksiklikler değerlendirilmiştir.
+Sprint Review katılımcıları: Elanur Toptaş ve Hüseyin Arınç Şentürk
+
+- **Sprint Retrospective:** 
+  * Takım içinde görev dağılımının detaylandırılması kararı alınmıştır.
+
+## PRODUCT BACKLOG URL
+[Flutter Team 10 Miro Backlog Board](https://miro.com/app/board/uXjVM9rmae8=/)
+
+
+
+
 
 
   
