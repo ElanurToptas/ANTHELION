@@ -45,6 +45,7 @@ Takım Flutter-10
 
 - **Ürün Durumu:** Ekran görüntüleri:
 - ![image](https://github.com/ElanurToptas/ANTHELION/assets/129093031/81deb120-9ecc-40ec-a050-294c6f2672ff)
+
 - ![image](https://github.com/ElanurToptas/ANTHELION/assets/129093031/82bcf7f4-bca7-4efa-b3b5-27be2403e748)
 
 - **Sprint Review:** Kullanıcı arayüzleri oluşturulmuş, bazıları kodlanmış, firebase'e bağlanması sağlanmıştır. Uygulama için veritabanı olarak firebase servisleri aktif edilmiş ve eksiklikler değerlendirilmiştir.
