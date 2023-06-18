@@ -43,8 +43,7 @@ Takım Flutter-10
 - **Sprint board update:** Sprint board screenshotları:
 ![image](https://github.com/ElanurToptas/ANTHELION/assets/129093031/7ddaeaa2-3618-4cc7-84f1-44b5683fd160)
 
-- **Ürün Durumu:** Ekran görüntüleri:
-- 
+- **Ürün Durumu:** Ekran görüntüleri: 
 
 
   
