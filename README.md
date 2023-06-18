@@ -9,13 +9,13 @@ Takım Flutter-10
 - Mehmet Demirtürk: Developer
   
 ## ÜRÜN İSMİ
---UYGULAMA ADI--
+--PetCare App--
 
 ## PRODUCT BACKLOG URL
 [Flutter Team 10 Miro Backlog Board](https://miro.com/app/board/uXjVM9rmae8=/)
 
 ## ÜRÜN AÇIKLAMASI
-Ürün, hayvan sahiplerinin bulundukları konuma en yakın petshoplara, otellere, veterinerlere, barınaklara ve hayvanlarla ilgili bilgilere erişimi kolaylaştırır. Ayrıca hayvan sahipleri ücretli olarak evcil hayvan karnesine, aşı takvimine, tahlillere ve geçmiş randevulara  kolayca erişebilir. Hayvan sahipleri ile veterinerlerin iletişime geçmesini sağlayan uygulama veterinerler için gelir kaynağıdır. Ürün, hayvan sahiplerinin hayvanları ile ilgilenirken ihtiyaçları olan bir çok bilgiyi bir arada tutarak karşılaşılabilecek sorunlara çözüm niteliğindedir. Ürün, hayvanların bakımlarının doğru yapılması , ihtiyaçlarına rahat erişilmesi ve özellikle veterinerlere kolay erişim sağlanması halinde hayvanlara ve sahiplerine sürekli fayda sağlayacağını savunur.
+PetCare App, hayvan sahiplerinin bulundukları konuma en yakın petshoplara, otellere, veterinerlere, barınaklara ve hayvanlarla ilgili bilgilere erişimi kolaylaştırır. Ayrıca hayvan sahipleri ücretli olarak evcil hayvan karnesine, aşı takvimine, tahlillere ve geçmiş randevulara  kolayca erişebilir. Hayvan sahipleri ile veterinerlerin iletişime geçmesini sağlayan uygulama veterinerler için gelir kaynağıdır. PetCare App, hayvan sahiplerinin hayvanları ile ilgilenirken ihtiyaçları olan bir çok bilgiyi bir arada tutarak karşılaşılabilecek sorunlara çözüm niteliğindedir. PetCare App hayvanların bakımlarının doğru yapılması , ihtiyaçlarına rahat erişilmesi ve özellikle veterinerlere kolay erişim sağlanması halinde hayvanlara ve sahiplerine sürekli fayda sağlayacağını savunur.
 
 - **Uygulama Fonksiyonu:** Hayvan sahipleri ihtiyaçlarına göre otel, petshop, veteriner ve barınak konumlarına erişebilir. Ayrıca veterinerlerle uygulama üzerinden iletişime geçip hayvanının durumunu anlık bildirebilir ve randevu alabilir.
 
