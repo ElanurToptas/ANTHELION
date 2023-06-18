@@ -23,7 +23,7 @@ Takım Flutter-10
 - Kullanıcının ücretsiz olarak petshopları, otelleri, barınakları ve veteriner profillerini görüntüleyebilmesi.
 - Veterinerlerden randevu alınabilmesi.
 - Hayvanın özel bilgilerinin ücretli bir şekilde uygulamada kayıt altında tutulması.
-- Kullanıcı, veteriner ve uygulama şirketi için geliştirilmiş kullanıcı rolleri, özellikleri,  ve ekranları.f
+- Kullanıcı, veteriner ve uygulama şirketi için geliştirilmiş kullanıcı rolleri, özellikleri,  ve ekranları.
 
 ## HEDEF KİTLE
 - Hayvan sahipleri
