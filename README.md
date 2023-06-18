@@ -38,7 +38,8 @@ PetCare App, hayvan sahiplerinin bulundukları konuma en yakın petshoplara, ote
 
 - **Puan tamamlama mantığı:** Toplamda proje boyunca tamamlanması gereken 350 puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde ilk sprint'in en azından 100 ile başlaması gerektiğine karar verildi.
 
-- **Daily Scrum:** Daily Scrum toplantılarının Discord üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint-1 Daily Scrum Chats ]()
+- **Daily Scrum:** Daily Scrum toplantılarının Discord üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint-1 Daily Scrum Chats ](![WhatsApp Görsel 2023-06-18 saat 20 32 39](https://github.com/ElanurToptas/ANTHELION/assets/129093031/ed0373e6-8522-45e0-9d44-ea9d26ba6163)
+)
 
 - **Sprint board update:** Sprint board screenshotları:
 ![image](https://github.com/ElanurToptas/ANTHELION/assets/129093031/7ddaeaa2-3618-4cc7-84f1-44b5683fd160)
