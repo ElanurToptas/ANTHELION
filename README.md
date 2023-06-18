@@ -32,7 +32,6 @@ Takım Flutter-10
 - Barınaklar
 - Otel sahipleri
 
-## JÜRİYE NOT
 
 # SPRINT 1
 - **Sprint içinde tamamlanması tahmin edilen puan:** 100 Puan
