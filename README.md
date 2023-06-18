@@ -36,12 +36,12 @@ Takım Flutter-10
 # SPRINT 1
 - **Sprint içinde tamamlanması tahmin edilen puan:** 100 Puan
 
-- **Puan tamamlama mantığı:** Toplamda proje boyunca tamamlanması gereken ... puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde ilk sprint'in en azından 100 ile başlaması gerektiğine karar verildi.
+- **Puan tamamlama mantığı:** Toplamda proje boyunca tamamlanması gereken 350 puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde ilk sprint'in en azından 100 ile başlaması gerektiğine karar verildi.
 
 - **Daily Scrum:** Daily Srcum toplantılarının Discord üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: Link Eklenecek
 
 - **Sprint board update:** Sprint board screenshotları:
--![image](https://github.com/ElanurToptas/ANTHELION/assets/129093031/7ddaeaa2-3618-4cc7-84f1-44b5683fd160)
+![image](https://github.com/ElanurToptas/ANTHELION/assets/129093031/7ddaeaa2-3618-4cc7-84f1-44b5683fd160)
 
 - **Ürün Durumu:** Ekran görüntüleri:
 - 
