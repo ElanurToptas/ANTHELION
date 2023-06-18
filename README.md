@@ -53,6 +53,7 @@ Sprint Review katılımcıları: Elanur Toptaş ve Hüseyin Arınç Şentürk
 
 - **Sprint Retrospective:** 
   * Takım içinde görev dağılımının detaylandırılması kararı alınmıştır.
+  * Takım üyelerinin gelecek sprintlerde daha aktif olması gerektiğine vurgu yapılmıştır.
 
 ## PRODUCT BACKLOG URL
 [Flutter Team 10 Miro Backlog Board](https://miro.com/app/board/uXjVM9rmae8=/)
