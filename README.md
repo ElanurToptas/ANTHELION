@@ -41,7 +41,7 @@ PetCare App, hayvan sahiplerinin bulundukları konuma en yakın petshoplara, ote
 - **Daily Scrum:** Daily Scrum toplantılarının Discord üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint-1 Daily Scrum Chats](https://github.com/ElanurToptas/ANTHELION/assets/129093031/e9342db8-4f0d-4bcf-b3ba-50e765b2304f)
 
 - **Sprint board update:** Sprint board screenshotları:
-![image](https://github.com/ElanurToptas/ANTHELION/assets/129093031/7ddaeaa2-3618-4cc7-84f1-44b5683fd160)
+![image](https://github.com/ElanurToptas/ANTHELION/assets/129093031/df619679-2d22-4351-ad4f-3e442410c9d1)
 
 - **Ürün Durumu:** Ekran görüntüleri:
 - ![image](https://github.com/ElanurToptas/ANTHELION/assets/129093031/81deb120-9ecc-40ec-a050-294c6f2672ff)
