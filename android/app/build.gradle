@@ -52,6 +52,8 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        minSdkVersion 19
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -70,5 +72,8 @@ flutter {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     apply plugin: 'com.google.gms.google-services'
-
+    implementation platform('com.google.firebase:firebase-bom:32.1.1')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation "androidx.multidex:multidex:2.0.1"
 }
+
