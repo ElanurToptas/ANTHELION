@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
 import 'main.dart';
 
 
@@ -12,7 +12,7 @@ class VetPage extends StatefulWidget {
 }
 
 class _VetPageState extends State<VetPage> {
-  var collection = FirebaseFirestore.instance.collection("Vet");
+  var collection = FirebaseFirestore.instance.collection("Veterinarians");
   late List<Map<String, dynamic>> items = [];
   bool isLoaded = false;
 
@@ -103,5 +103,10 @@ class _VetPageState extends State<VetPage> {
         // Diğer Scaffold içeriği
       ),
     );
+  }
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<CollectionReference<Map<String, dynamic>>>('collection', collection));
   }
 }

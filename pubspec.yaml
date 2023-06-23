@@ -42,6 +42,7 @@ dependencies:
   firebase_storage_web: ^3.6.3
   google_fonts: ^4.0.4
   http: ^0.13.0
+
   
 
 dev_dependencies:

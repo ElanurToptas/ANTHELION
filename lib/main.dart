@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:petcare/vet_list.dart';
-import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,7 +38,7 @@ class MyHomePage extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => VetPage()),
               );
             },
-            child: Text('Go to Vet Page'),
+            child: Text('Vet Page'),
           ),
         ],
       ),
