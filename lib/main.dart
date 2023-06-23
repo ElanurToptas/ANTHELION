@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:petcare/vet_list.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -28,8 +29,18 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Home Page'),
       ),
-      body: Center(
-        child: Text('Hello, World!'),
+      body: Column(
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => VetPage()),
+              );
+            },
+            child: Text('Go to Vet Page'),
+          ),
+        ],
       ),
     );
   }
