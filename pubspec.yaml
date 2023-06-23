@@ -40,9 +40,9 @@ dependencies:
   firebase_auth: ^4.6.3
   firebase_storage: ^11.2.3
   firebase_storage_web: ^3.6.3
-  google_fonts: ^5.0.1
-  http: ^1.0.0
-
+  google_fonts: ^4.0.4
+  http: ^0.13.0
+  
 
 dev_dependencies:
   flutter_test:
