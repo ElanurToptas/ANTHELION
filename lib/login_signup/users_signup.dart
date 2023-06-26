@@ -251,7 +251,7 @@ class _RegisterPageState extends State<RegisterPage> {
       await userDocRef.set({
         'name' : _namesurnameController.text,
         'email': userCredential.user!.email,
-        'isUser': true,
+        'isUser': "true",
         'pets': pets,
       });
     } catch (e) {
