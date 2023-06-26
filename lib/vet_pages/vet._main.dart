@@ -17,16 +17,12 @@ class ProfilePage extends StatelessWidget {
               ElevatedButton(
                 child: Text('Hayvan Çip No'),
                 onPressed: () {
-                  // Hayvan çip no butonuna tıklanınca yapılacak işlemler
                   // Buraya istediğiniz kodları ekleyebilirsiniz
                 },
               ),
               ElevatedButton(
                 child: Text('Profili Düzenle'),
-                onPressed: () {
-                  // Profili düzenle butonuna tıklanınca yapılacak işlemler
-                  // Buraya istediğiniz kodları ekleyebilirsiniz
-                },
+                onPressed: () {},
               ),
             ],
           ),

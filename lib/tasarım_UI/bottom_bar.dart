@@ -4,7 +4,6 @@ import 'package:petcare/tasarım_UI/home_page.dart';
 import 'package:petcare/tasarım_UI/veterinarians_page.dart';
 import 'package:petcare/tasarım_UI/services_page.dart';
 import 'package:petcare/vet_pages/vet._main.dart';
-import 'package:petcare/login_signup/signup_page.dart';
 import 'package:petcare/login_signup/login_screen.dart';
 
 void main() {
