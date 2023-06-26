@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:petcare/tasarım_UI/home_page.dart';
-import 'package:petcare/tasarım_UI/veterinarians_page.dart';
-import 'package:petcare/tasarım_UI/services_page.dart';
+import 'package:petcare/tasarim_UI/home_page.dart';
+import 'package:petcare/tasarim_UI/veterinarians_page.dart';
+import 'package:petcare/tasarim_UI/services_page.dart';
 import 'package:petcare/vet_pages/vet._main.dart';
 import 'package:petcare/login_signup/login_screen.dart';
 
@@ -44,6 +44,7 @@ class _BottomBarUIState extends State<BottomBarUI> {
             color: Colors.indigo,
             activeColor: Colors.white,
             tabBackgroundColor: Colors.indigoAccent,
+          
             selectedIndex: _selectedIndex,
             onTabChange: _onTabChanged,
             padding: EdgeInsets.all(20),

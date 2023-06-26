@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:petcare/tasar%C4%B1m_UI/bottom_bar.dart';
+import 'package:petcare/tasarim_UI/bottom_bar.dart';
+import 'package:petcare/tasarim_UI/tema.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:petcare/vet_list.dart';
@@ -28,8 +29,8 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BottomBarUI()
-      );
+        home: BottomBarUI());
+    
       
     
   }
