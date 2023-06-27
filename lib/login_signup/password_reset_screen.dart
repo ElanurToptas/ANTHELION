@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:petcare/login_signup/login_screen.dart';
 
 class PasswordResetPage extends StatefulWidget {
   @override
@@ -15,36 +16,25 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
       // Şifre sıfırlama e-postası gönderildiğinde yapılacak işlemler
-      showDialog(
-        context: context,
-        builder: (_) => AlertDialog(
-          title: Text('Şifre Sıfırlama'),
-          content: Text('Şifre sıfırlama bağlantısı e-posta adresinize gönderildi.'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: Text('Tamam'),
-            ),
-          ],
-        ),
-      );
+      _navigateToAnotherPage();
     } catch (error) {
       // Hata durumunda yapılacak işlemler
-      showDialog(
-        context: context,
-        builder: (_) => AlertDialog(
-          title: Text('Hata'),
-          content: Text('Şifre sıfırlama sırasında bir hata oluştu.'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: Text('Tamam'),
-            ),
-          ],
-        ),
-      );
+     var snackBar = SnackBar(content: Text('İşlem Gerçekleştirilemedi !'));
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
+  void _navigateToAnotherPage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => LoginScreen()),
+    );
+  }
+  @override
+  void dispose() {
+    _emailController.dispose();
+    super.dispose();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +55,10 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
               ),
               SizedBox(height: 16.0),
               ElevatedButton(
-                onPressed: _resetPassword,
+                onPressed: () {
+                  _resetPassword();
+                  
+                },
                 child: Text('Şifreyi Sıfırla'),
               ),
             ],

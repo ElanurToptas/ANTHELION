@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:petcare/login_signup/password_reset_screen.dart';
 import 'package:petcare/login_signup/signup_page.dart';
+import 'package:petcare/user_profile_pages/user_profile.dart';
+
+import '../vet_pages/vet._main.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -32,11 +35,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
       if (userSnapshot.exists && userSnapshot.get('isUser') == 'true') {
         print('Giriş yapıldı, User için izin verildi.');
-        Navigator.pushReplacementNamed(context, '/userpage'); // User PROFİL SAYFASINA VERİLİCEK BURAYADA!!
+        Navigator.push(context, MaterialPageRoute(builder: ((context) {
+                return UserProfile();
+              }))); // User PROFİL SAYFASINA VERİLİCEK BURAYADA!!
       } else if (vetSnapshot.exists && vetSnapshot.get('isVet') == 'true') {
         print('Giriş yapıldı, Vet için izin verildi.');
        Navigator.push(context, MaterialPageRoute(builder: ((context) {
-                return SignUpScreen();// VETERİNER PROFİL SAYFASI VERİLİCEK BURAYA YOL OLARAK!!
+                return ProfilePage();// VETERİNER PROFİL SAYFASI VERİLİCEK BURAYA YOL OLARAK!!
               }))); // Vet sayfasına yönlendir
       } else {
         print('Giriş reddedildi, izin verilmedi.');
