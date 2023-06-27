@@ -66,7 +66,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       onPressed: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: ((context) {
-                          return EditVetProfile();
+                          return EditVetProfile(
+                            selectedIndex: 3,
+                          );
                         })));
                       },
                       child: Text('Profili Düzenle'),
