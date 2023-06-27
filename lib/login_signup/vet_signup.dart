@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:image_picker/image_picker.dart';
 
+import 'login_screen.dart';
+
 
 class VetRegisterPage extends StatefulWidget {
   @override
@@ -41,6 +43,11 @@ class _VetRegisterPageState extends State<VetRegisterPage> {
         _secondSelectedImage = File(pickedImage.path);
       });
     }
+  }void _navigateToAnotherPage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => LoginScreen()),
+    );
   }
 
 
@@ -206,6 +213,7 @@ class _VetRegisterPageState extends State<VetRegisterPage> {
                         onPressed: () {
                           if (_formKey.currentState!.validate()&& _passwordController.text ==_confirmPasswordController.text) {
                             _register();
+                            _navigateToAnotherPage();
                           } else {var snackBar = SnackBar(content: Text('E-mail veya Parola Hatalı !'));
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);}
                         },
