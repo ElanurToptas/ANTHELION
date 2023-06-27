@@ -38,7 +38,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Bottom Bar Örneği',
+      title: 'Bottom Bar',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
