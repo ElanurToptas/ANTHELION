@@ -44,7 +44,7 @@ dependencies:
   http: ^0.13.0
   image_picker: ^0.8.9
   google_nav_bar: ^5.0.6
-  
+  image_cropper: ^4.0.1
 
 dev_dependencies:
   flutter_test:

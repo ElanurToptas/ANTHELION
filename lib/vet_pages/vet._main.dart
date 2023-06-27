@@ -1,6 +1,7 @@
 ﻿import 'package:flutter/material.dart';
 import 'package:petcare/vet_pages/vet_profile/edit_profile.dart';
 import 'package:petcare/main.dart';
+import 'package:petcare/tasarim_UI/bottom_bar.dart';
 
 class ButtonStyles {
   static final elevatedButtonStyle = ElevatedButton.styleFrom(
@@ -15,13 +16,22 @@ class ButtonStyles {
 }
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+  const ProfilePage({Key? key}) : super(key: key);
 
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  int _selectedIndex =
+      3; // Başlangıçta Profilim sayfasını seçili olarak ayarlayın
+
+  void _onTabSelected(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,12 +74,11 @@ class _ProfilePageState extends State<ProfilePage> {
                     ElevatedButton(
                       style: ButtonStyles.elevatedButtonStyle,
                       onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: ((context) {
-                          return EditVetProfile(
-                            selectedIndex: 3,
-                          );
-                        })));
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EditVetProfile()),
+                        );
                       },
                       child: Text('Profili Düzenle'),
                     ),
@@ -79,6 +88,10 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomBar(
+        selectedIndex: _selectedIndex,
+        onTabSelected: _onTabSelected,
       ),
     );
   }
