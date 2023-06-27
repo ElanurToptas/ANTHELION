@@ -1,5 +1,6 @@
 ﻿import 'package:flutter/material.dart';
 import 'package:petcare/vet_pages/vet_profile/edit_profile.dart';
+import 'package:petcare/main.dart';
 
 class ButtonStyles {
   static final elevatedButtonStyle = ElevatedButton.styleFrom(
@@ -15,6 +16,7 @@ class ButtonStyles {
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
+
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
