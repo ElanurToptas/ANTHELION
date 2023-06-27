@@ -10,7 +10,10 @@ import 'package:petcare/tasarim_UI/veterinarians_page.dart';
 import 'package:petcare/tasarim_UI/services_page.dart';
 import 'package:petcare/login_signup/login_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(); // Firebase'i başlatın
+
   runApp(MyApp());
 }
 
@@ -26,7 +29,7 @@ class _MyAppState extends State<MyApp> {
     HomePage(),
     VeterinariansPage(),
     ServicesPage(),
-    ProfilePage(),
+    LoginScreen(),
   ];
 
   void _onTabSelected(int index) {
