@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:petcare/user_profile_pages/pages/user_edit_profile.dart';
 // tema buton için
 class ButtonStyles {
   static final elevatedButtonStyle = ElevatedButton.styleFrom(
@@ -89,7 +90,9 @@ class UserProfile extends StatelessWidget{
                       child: ElevatedButton(
                         style: ButtonStyles.elevatedButtonStyle,
                         onPressed: () {
-                          
+                          Navigator.push(context, MaterialPageRoute(builder: ((context) {
+                return EditProfilePage();
+              })));
                         },
                         child: Text('Profili Düzenle'),
                       ),
