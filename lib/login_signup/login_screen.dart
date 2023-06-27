@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:petcare/login_signup/password_reset_screen.dart';
 import 'package:petcare/login_signup/signup_page.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -75,6 +76,15 @@ class _LoginScreenState extends State<LoginScreen> {
             ElevatedButton(
               onPressed: _signInWithEmailAndPassword,
               child: Text('Giriş Yap'),
+            ),
+             Row(mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+              TextButton(onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: ((context) {
+                return PasswordResetPage();
+              })));
+              }, child: Text("Şifremi Unuttum"))
+            ],
             ),
             Row(mainAxisAlignment: MainAxisAlignment.center,
               children: [
