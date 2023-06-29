@@ -2,6 +2,7 @@
 import 'package:petcare/vet_pages/vet_profile/edit_profile.dart';
 import 'package:petcare/main.dart';
 import 'package:petcare/tasarim_UI/bottom_bar.dart';
+import 'package:petcare/vet_pages/animal/vet._animal.dart';
 
 class ButtonStyles {
   static final elevatedButtonStyle = ElevatedButton.styleFrom(
@@ -67,7 +68,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   children: [
                     ElevatedButton(
                       style: ButtonStyles.elevatedButtonStyle,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => VetAnimal()),
+                        );
+                      },
                       child: Text('Hayvan Çip No'),
                     ),
                     SizedBox(width: 16),
