@@ -59,34 +59,36 @@ class _EditVetProfileState extends State<EditVetProfile> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-              child: Column(
-                children: [
-                  ElevatedButton(
-                    style: ButtonStyles.elevatedButtonStyle,
-                    onPressed: () {
-                      _pickImage(ImageSource.gallery);
-                    },
-                    child: Text('Profil Fotoğrafını Değiştir'),
-                  ),
-                  SizedBox(height: 16),
-                  ElevatedButton(
-                    style: ButtonStyles.elevatedButtonStyle,
-                    onPressed: () {},
-                    child: Text('Profili Bilgilerimi Düzenle'),
-                  ),
-                  SizedBox(height: 16),
-                  ElevatedButton(
-                    style: ButtonStyles.elevatedButtonStyle,
-                    onPressed: () {},
-                    child: Text('Biyografimi Düzenle'),
-                  ),
-                  SizedBox(height: 16),
-                  if (_image != null)
-                    CircleAvatar(
-                      radius: 50,
-                      backgroundImage: FileImage(_image!),
+              child: Container(
+                child: Column(
+                  children: [
+                    ElevatedButton(
+                      style: ButtonStyles.elevatedButtonStyle,
+                      onPressed: () {
+                        _pickImage(ImageSource.gallery);
+                      },
+                      child: Text('Profil Fotoğrafını Değiştir'),
                     ),
-                ],
+                    SizedBox(height: 16),
+                    ElevatedButton(
+                      style: ButtonStyles.elevatedButtonStyle,
+                      onPressed: () {},
+                      child: Text('Profili Bilgilerimi Düzenle'),
+                    ),
+                    SizedBox(height: 16),
+                    ElevatedButton(
+                      style: ButtonStyles.elevatedButtonStyle,
+                      onPressed: () {},
+                      child: Text('Biyografimi Düzenle'),
+                    ),
+                    SizedBox(height: 16),
+                    if (_image != null)
+                      CircleAvatar(
+                        radius: 50,
+                        backgroundImage: FileImage(_image!),
+                      ),
+                  ],
+                ),
               ),
             ),
           ],

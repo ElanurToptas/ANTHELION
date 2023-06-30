@@ -34,45 +34,77 @@ class _VetAnimalState extends State<VetAnimal> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-              child: Column(
-                children: [
-                  Container(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      style: ButtonStyles.elevatedButtonStyle,
-                      onPressed: () {},
-                      child: Text('Tahlil Sonuçları'),
+              child: Container(
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 255, 255, 255),
+                  borderRadius: BorderRadius.circular(8),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 1,
+                      blurRadius: 10,
+                      offset: Offset(1, 1),
                     ),
-                  ),
-                  SizedBox(height: 12),
-                  Container(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      style: ButtonStyles.elevatedButtonStyle,
-                      onPressed: () {},
-                      child: Text('Gelecek Aşıları'),
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: 120,
+                            child: ElevatedButton(
+                              style: ButtonStyles.elevatedButtonStyle,
+                              onPressed: () {},
+                              child: Text('Tahlil Sonuçları'),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 16),
+                        Expanded(
+                          child: Container(
+                            height: 120,
+                            child: ElevatedButton(
+                              style: ButtonStyles.elevatedButtonStyle,
+                              onPressed: () {},
+                              child: Text('Gelecek Aşıları'),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  SizedBox(height: 12),
-                  Container(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      style: ButtonStyles.elevatedButtonStyle,
-                      onPressed: () {},
-                      child: Text('Hastalık Detayı'),
+                    SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: 120,
+                            child: ElevatedButton(
+                              style: ButtonStyles.elevatedButtonStyle,
+                              onPressed: () {},
+                              child: Text('Hastalık Detayı'),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 16),
+                        Expanded(
+                          child: Container(
+                            height: 120,
+                            child: ElevatedButton(
+                              style: ButtonStyles.elevatedButtonStyle,
+                              onPressed: () {},
+                              child: Text('Randevu Ekranı'),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  SizedBox(height: 12),
-                  Container(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      style: ButtonStyles.elevatedButtonStyle,
-                      onPressed: () {},
-                      child: Text('Randevu Ekranı'),
-                    ),
-                  ),
-                  SizedBox(height: 12),
-                ],
+                  ],
+                ),
               ),
             ),
           ],
