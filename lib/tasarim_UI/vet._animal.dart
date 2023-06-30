@@ -4,8 +4,8 @@ class ButtonStyles {
   static final elevatedButtonStyle = ElevatedButton.styleFrom(
     backgroundColor: Color.fromARGB(255, 111, 132, 255),
     textStyle: TextStyle(fontSize: 18),
-    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-    minimumSize: Size(10, 10),
+    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 30),
+    minimumSize: Size(80, 80),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(8),
     ),
@@ -44,7 +44,7 @@ class _VetAnimalState extends State<VetAnimal> {
                       child: Text('Tahlil Sonuçları'),
                     ),
                   ),
-                  SizedBox(height: 12),
+                  SizedBox(height: 16),
                   Container(
                     width: double.infinity,
                     child: ElevatedButton(
@@ -53,7 +53,7 @@ class _VetAnimalState extends State<VetAnimal> {
                       child: Text('Gelecek Aşıları'),
                     ),
                   ),
-                  SizedBox(height: 12),
+                  SizedBox(height: 16),
                   Container(
                     width: double.infinity,
                     child: ElevatedButton(
@@ -62,7 +62,7 @@ class _VetAnimalState extends State<VetAnimal> {
                       child: Text('Hastalık Detayı'),
                     ),
                   ),
-                  SizedBox(height: 12),
+                  SizedBox(height: 16),
                   Container(
                     width: double.infinity,
                     child: ElevatedButton(
@@ -71,7 +71,7 @@ class _VetAnimalState extends State<VetAnimal> {
                       child: Text('Randevu Ekranı'),
                     ),
                   ),
-                  SizedBox(height: 12),
+                  SizedBox(height: 16),
                 ],
               ),
             ),
