@@ -3,7 +3,7 @@
 class ButtonStyles {
   static final elevatedButtonStyle = ElevatedButton.styleFrom(
     backgroundColor: Color.fromARGB(255, 111, 132, 255),
-    textStyle: TextStyle(fontSize: 18),
+    textStyle: TextStyle(fontSize: 22),
     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 30),
     minimumSize: Size(80, 80),
     shape: RoundedRectangleBorder(
@@ -14,10 +14,10 @@ class ButtonStyles {
 
 class VetAnimal extends StatefulWidget {
   @override
-  _SingleButtonWidgetState createState() => _SingleButtonWidgetState();
+  _VetAnimalState createState() => _VetAnimalState();
 }
 
-class _SingleButtonWidgetState extends State<VetAnimal> {
+class _VetAnimalState extends State<VetAnimal> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,28 +36,40 @@ class _SingleButtonWidgetState extends State<VetAnimal> {
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
               child: Column(
                 children: [
-                  ElevatedButton(
-                    style: ButtonStyles.elevatedButtonStyle,
-                    onPressed: () {},
-                    child: Text('Tahlil Sonuçları'),
+                  Container(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: ButtonStyles.elevatedButtonStyle,
+                      onPressed: () {},
+                      child: Text('Tahlil Sonuçları'),
+                    ),
                   ),
                   SizedBox(height: 16),
-                  ElevatedButton(
-                    style: ButtonStyles.elevatedButtonStyle,
-                    onPressed: () {},
-                    child: Text('Gelecek Aşıları'),
+                  Container(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: ButtonStyles.elevatedButtonStyle,
+                      onPressed: () {},
+                      child: Text('Gelecek Aşıları'),
+                    ),
                   ),
                   SizedBox(height: 16),
-                  ElevatedButton(
-                    style: ButtonStyles.elevatedButtonStyle,
-                    onPressed: () {},
-                    child: Text('Hastalık Detayı'),
+                  Container(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: ButtonStyles.elevatedButtonStyle,
+                      onPressed: () {},
+                      child: Text('Hastalık Detayı'),
+                    ),
                   ),
                   SizedBox(height: 16),
-                  ElevatedButton(
-                    style: ButtonStyles.elevatedButtonStyle,
-                    onPressed: () {},
-                    child: Text('Randevu Ekranı'),
+                  Container(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: ButtonStyles.elevatedButtonStyle,
+                      onPressed: () {},
+                      child: Text('Randevu Ekranı'),
+                    ),
                   ),
                   SizedBox(height: 16),
                 ],
