@@ -95,10 +95,6 @@ class _ProfilePageState extends State<ProfilePage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomBar(
-        selectedIndex: _selectedIndex,
-        onTabSelected: _onTabSelected,
-      ),
     );
   }
 }
