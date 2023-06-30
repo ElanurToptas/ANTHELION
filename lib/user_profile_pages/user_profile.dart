@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:petcare/user_profile_pages/pages/user_edit_profile.dart';
+import 'package:petcare/user_profile_pages/pages/user_vaccines.dart';
 // tema buton için
 class ButtonStyles {
   static final elevatedButtonStyle = ElevatedButton.styleFrom(
@@ -13,9 +15,11 @@ class ButtonStyles {
   );
 }
 class UserProfile extends StatelessWidget{
+  
+  
   @override
   Widget build(BuildContext context){
-    return Scaffold(backgroundColor: Color.fromARGB(255, 240, 240, 240),
+    return  Scaffold(backgroundColor: Color.fromARGB(255, 240, 240, 240),
       appBar: AppBar(
         backgroundColor: Color.fromARGB(49, 123, 93, 255),
         title: Text('Kullanıcı Profili'),
@@ -26,8 +30,8 @@ class UserProfile extends StatelessWidget{
             //********************************************* Resmin Olduğu Yer *********************************************************
             Image.network(
             'https://www.medivet.co.uk/globalassets/assets/shutterstock-and-istock/shutterstock_708732331.png?width=585',
-            width: 500, // Resmin genişliği
-            height: 350, // Resmin yüksekliği
+            width: 450, // Resmin genişliği
+            height: 230, // Resmin yüksekliği
           ),
           //**************************************************************************************************************************** 
             Expanded(
@@ -67,7 +71,9 @@ class UserProfile extends StatelessWidget{
                           child: ElevatedButton(
                             style: ButtonStyles.elevatedButtonStyle,
                             onPressed: () {
-                              
+                                  Navigator.push(context, MaterialPageRoute(builder: ((context) {
+                return YourPage();
+              })));
                             },
                             child: Text('Gelecek \n Aşıları'),
                           ),
@@ -109,6 +115,7 @@ class UserProfile extends StatelessWidget{
           ],
         ),
       ),
+      
     );
   }
 }

@@ -1,56 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:petcare/user_profile_pages/user_profile.dart';
-import 'package:petcare/vet_pages/vet._main.dart';
 
-class AuthenticationService {
-  static Future<User?> checkLoggedInUser() async {
-    User? user = FirebaseAuth.instance.currentUser;
-    return user;
+class AuthServiceProvider with ChangeNotifier {
+  bool _isSignedIn = false;
+  String _userType = '';
+
+  bool get isSignedIn => _isSignedIn;
+  String get userType => _userType;
+
+  Future<void> signIn() async {
+    // Kullanıcının giriş işlemini gerçekleştirin
+    // Firebase veya başka bir kimlik doğrulama sağlayıcısı kullanabilirsiniz
+    // Giriş başarılı olduğunda _isSignedIn değerini true olarak ayarlayın
+    _isSignedIn = true;
+    _userType = await determineUserType(); // Kullanıcının tipini belirleyin
+    notifyListeners();
   }
 
-  static Future<DocumentSnapshot<Map<String, dynamic>>> getUserProfile(
-      String uid) async {
-    return FirebaseFirestore.instance.collection('Users').doc(uid).get();
-  }
-
-  static Future<DocumentSnapshot<Map<String, dynamic>>> getVeterinarianProfile(
-      String uid) async {
-    return FirebaseFirestore.instance.collection('Veterinarians').doc(uid).get();
-  }
-
-  static Future<void> logout() async {
-    await FirebaseAuth.instance.signOut();
-  }
-}
-
-void handleProfileButton(BuildContext context) async {
-  User? user = await AuthenticationService.checkLoggedInUser();
-
-  if (user != null) {
-    DocumentSnapshot<Map<String, dynamic>> userSnapshot =
-        await AuthenticationService.getUserProfile(user.uid);
-    DocumentSnapshot<Map<String, dynamic>> veterinarianSnapshot =
-        await AuthenticationService.getVeterinarianProfile(user.uid);
+  Future<String> determineUserType() async {
+    // Kullanıcının tipini belirlemek için Firestore sorgusu yapın
+    String uid = ''; // Kullanıcının UID'sini burada alın
+    DocumentSnapshot userSnapshot = await FirebaseFirestore.instance.collection('User').doc(uid).get();
+    DocumentSnapshot vetSnapshot = await FirebaseFirestore.instance.collection('Veterinarians').doc(uid).get();
 
     if (userSnapshot.exists) {
-      // Kullanıcı profil sayfasına yönlendir
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => UserProfile(),
-        ),
-      );
-    } else if (veterinarianSnapshot.exists) {
-      // Veteriner profil sayfasına yönlendir
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) =>
-              ProfilePage(),
-        ),
-      );
+      return 'user';
+    } else if (vetSnapshot.exists) {
+      return 'vet';
+    } else {
+      return '';
     }
   }
+
+  Future<void> signOut() async {
+    // Kullanıcının çıkış işlemini gerçekleştirin
+    // Firebase veya başka bir kimlik doğrulama sağlayıcısı kullanabilirsiniz
+    // Çıkış başarılı olduğunda _isSignedIn değerini false olarak ayarlayın
+    _isSignedIn = false;
+    _userType = '';
+    notifyListeners();
+  }
 }
+

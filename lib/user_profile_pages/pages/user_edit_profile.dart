@@ -94,14 +94,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold( backgroundColor: Color.fromARGB(212, 255, 253, 253),
       appBar: AppBar(
         title: Text('Profil Düzenle'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          
           children: [
             Text(
               'Kullanıcı Adı:',
@@ -119,16 +119,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               controller: _emailController,
             ),
             SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: _changeUserName,
-              child: Text('Kullanıcı Adını Güncelle'),
-            ),
-            SizedBox(height: 8.0),
-            ElevatedButton(
-              onPressed: _changeUserEmail,
-              child: Text('E-posta Adresini Güncelle'),
-            ),
-            SizedBox(height: 16.0),
+            
             Text(
               'Mevcut Kullanıcı Adı: $_currentName',
               style: TextStyle(fontSize: 16.0),
@@ -137,6 +128,41 @@ class _EditProfilePageState extends State<EditProfilePage> {
             Text(
               'Mevcut E-posta Adresi: $_currentEmail',
               style: TextStyle(fontSize: 16.0),
+            ),
+             SizedBox(height: 16.0),
+            SizedBox(width: 250,
+              child: ElevatedButton(style:ElevatedButton.styleFrom(
+                           backgroundColor: Colors.deepPurple,),
+                onPressed: _changeUserName,
+                child: Text('Kullanıcı Adını Güncelle'),
+              ),
+            ),
+            SizedBox(height: 8.0),
+            SizedBox(width: 250,
+              child: ElevatedButton(style:ElevatedButton.styleFrom(
+                           backgroundColor: Colors.deepPurple,),
+                onPressed: _changeUserEmail,
+                child: Text('E-posta Adresini Güncelle'),
+              ),
+            ),
+            SizedBox(height: 8.0),
+          
+             
+            SizedBox(width: 250, 
+              child: ElevatedButton(style:ElevatedButton.styleFrom(
+                           backgroundColor: Colors.deepPurple,),
+                onPressed: () async {
+                try {
+                  await FirebaseAuth.instance.signOut();
+                  // Oturum başarıyla kapatıldıktan sonra yapılacak işlemler
+                  // Örneğin, kullanıcıyı başka bir sayfaya yönlendirebilirsiniz.
+                } catch (e) {
+                  // Oturum kapatma işlemi başarısız oldu
+                  print('Oturum kapatma hatası: $e');
+                }
+              },
+                child: Text('Çıkış Yap'),
+              ),
             ),
           ],
         ),

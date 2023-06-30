@@ -1,14 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:petcare/UserProfile.dart';
 import 'package:petcare/tasarim_UI/bottom_bar.dart';
-import 'package:petcare/tasarim_UI/tema.dart';
-import 'package:petcare/vet_pages/vet._main.dart';
-import 'firebase_options.dart';
+
 import 'package:flutter/material.dart';
-import 'package:petcare/vet_list.dart';
+
 import 'package:petcare/tasarim_UI/home_page.dart';
 import 'package:petcare/tasarim_UI/veterinarians_page.dart';
 import 'package:petcare/tasarim_UI/services_page.dart';
-import 'package:petcare/login_signup/login_screen.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +28,7 @@ class _MyAppState extends State<MyApp> {
     HomePage(),
     VeterinariansPage(),
     ServicesPage(),
-    LoginScreen(),
+    UsersProfile(),
   ];
 
   void _onTabSelected(int index) {
