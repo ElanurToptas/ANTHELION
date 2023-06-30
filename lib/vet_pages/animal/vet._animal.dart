@@ -35,7 +35,7 @@ class _VetAnimalState extends State<VetAnimal> {
             Padding(
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
               child: Container(
-                padding: EdgeInsets.all(16),
+                padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   color: const Color.fromARGB(255, 255, 255, 255),
                   borderRadius: BorderRadius.circular(8),
