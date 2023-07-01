@@ -109,7 +109,7 @@ class HomePage extends StatelessWidget{
                                   Navigator.push(context, MaterialPageRoute(
                                     builder: (context) => DetailScreen(
                                       image: 'asset/pictures/collie.png',
-                                      text: " Collie güçlü, hızlı ve zarif yapının bir araya geldiği aktif ve "
+                                      text: " Colli güçlü, hızlı ve zarif yapının bir araya geldiği aktif ve "
                                           "kıvrak bir köpektir. Collis, Colley, Coally isimleriyle de bilinirler. "
                                           "Nazik, özverili ve yumuşak huylu yapısıyla arkadaş canlısı bir köpektir."
                                           " Yürüyüşleri, gütme köpeklerinde olduğu gibi zahmetsiz ve hızlı yön değiştirme "
