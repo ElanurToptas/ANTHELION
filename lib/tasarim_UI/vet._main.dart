@@ -1,7 +1,5 @@
 ﻿import 'package:flutter/material.dart';
 import 'package:petcare/vet_pages/vet_profile/edit_profile.dart';
-import 'package:petcare/main.dart';
-import 'package:petcare/tasarim_UI/bottom_bar.dart';
 import 'package:petcare/vet_pages/animal/vet._animal.dart';
 
 class ButtonStyles {
