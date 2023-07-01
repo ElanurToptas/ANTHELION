@@ -55,9 +55,34 @@ Sprint Review katılımcıları: Elanur Toptaş ve Hüseyin Arınç Şentürk
 - **Sprint Retrospective:** 
   * Takım içinde görev dağılımının detaylandırılması kararı alınmıştır.
   * Takım üyelerinin gelecek sprintlerde daha aktif olması gerektiğine vurgu yapılmıştır.
-
+***
 ## PRODUCT BACKLOG URL
 [Flutter Team 10 Miro Backlog Board](https://miro.com/app/board/uXjVM9rmae8=/)
+***
+
+
+# SPRINT 2
+- **Sprint Notları:**
+- **Sprint içinde tamamlanması tahmin edilen puan:** 130 Puan
+  
+- **Daily Scrum:** Daily Scrum toplantılarının Discord üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint-2 Daily Scrum Chat](https://github.com/ElanurToptas/ANTHELION/assets/129093031/e89bf75a-772c-4475-a1b6-2697a46857d0)
+
+- **Sprint board update:** Sprint board screenshotları:
+
+- **Ürün Durumu:** Ekran görüntüleri:
+
+- **Sprint Review:**
+
+- **Sprint Retrospective:**
+
+***
+## PRODUCT BACKLOG URL
+[Flutter Team 10 Miro Backlog Board](https://miro.com/app/board/uXjVM9rmae8=/)
+***
+
+
+
+
 
 
 

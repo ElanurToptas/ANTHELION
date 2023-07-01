@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'login_screen.dart';
+
 class RegisterPage extends StatefulWidget {
   @override
   _RegisterPageState createState() => _RegisterPageState();
@@ -22,6 +24,12 @@ class _RegisterPageState extends State<RegisterPage> {
     'Aşı 3',
     // Diğer aşılar...
   ];
+  void _navigateToAnotherPage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => LoginScreen()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -201,6 +209,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         onPressed: () {
                           if (_formKey.currentState!.validate()&& _passwordController.text ==_confirmPasswordController.text) {
                             _register();
+                            _navigateToAnotherPage();
                           } else {var snackBar = SnackBar(content: Text('E-mail veya Parola Hatalı !'));
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);}
                         },
