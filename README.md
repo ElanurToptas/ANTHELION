@@ -69,6 +69,18 @@ Sprint Review katılımcıları: Elanur Toptaş ve Hüseyin Arınç Şentürk
 
 - **Sprint board update:** Sprint board screenshotları:
 
+- **Ürün Durumu:** Ekran görüntüleri:
+
+- **Sprint Review:**
+
+- **Sprint Retrospective:**
+
+***
+## PRODUCT BACKLOG URL
+[Flutter Team 10 Miro Backlog Board](https://miro.com/app/board/uXjVM9rmae8=/)
+***
+
+
 
 
 
