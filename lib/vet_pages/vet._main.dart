@@ -24,8 +24,6 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  // Başlangıçta Profilim sayfasını seçili olarak ayarlayın
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -23,7 +23,7 @@ class _VetAnimalState extends State<VetAnimal> {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 240, 240, 240),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(49, 123, 93, 255),
+        backgroundColor: Color.fromARGB(48, 69, 27, 255),
         title: Text('Hayvan Döküman'),
       ),
       body: Center(
@@ -35,7 +35,7 @@ class _VetAnimalState extends State<VetAnimal> {
             Padding(
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
               child: Container(
-                padding: EdgeInsets.all(16),
+                padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   color: const Color.fromARGB(255, 255, 255, 255),
                   borderRadius: BorderRadius.circular(8),
