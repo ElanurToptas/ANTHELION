@@ -87,6 +87,18 @@ flutter:
    - asset/pictures/MuhabbetK.png
    - asset/pictures/KırmızıAraraunaP.png
    - asset/pictures/SultanP.png
+   - asset/pictures-2/norfolkT.png
+   - asset/pictures-2/collie.png
+   - asset/pictures-2/goldenR.png
+   - asset/pictures-2/chartreux.png
+   - asset/pictures-2/europeanS.png
+   - asset/pictures-2/scottishF.png
+   - asset/pictures-2/avrupaH.png
+   - asset/pictures-2/gonzalesH.png
+   - asset/pictures-2/çinH.png
+   - asset/pictures-2/MuhabbetK.png
+   - asset/pictures-2/KırmızıAraraunaP.png
+   - asset/pictures-2/SultanP.png
   
 
   # An image asset can refer to one or more resolution-specific "variants", see
