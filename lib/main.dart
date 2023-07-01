@@ -4,7 +4,7 @@ import 'package:petcare/tasarim_UI/bottom_bar.dart';
 
 import 'package:flutter/material.dart';
 
-import 'package:petcare/tasarim_UI/home_page.dart';
+import 'package:petcare/animal/animal.dart';
 import 'package:petcare/tasarim_UI/veterinarians_page.dart';
 import 'package:petcare/tasarim_UI/services_page.dart';
 
