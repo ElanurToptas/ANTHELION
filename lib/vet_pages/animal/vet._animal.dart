@@ -23,7 +23,7 @@ class _VetAnimalState extends State<VetAnimal> {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 240, 240, 240),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(49, 123, 93, 255),
+        backgroundColor: Color.fromARGB(48, 69, 27, 255),
         title: Text('Hayvan Döküman'),
       ),
       body: Center(
