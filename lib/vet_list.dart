@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:petcare/tasarim_UI/tema.dart';
 import 'main.dart';
 
 
@@ -38,6 +39,7 @@ class _VetPageState extends State<VetPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: theme(),
       home: Scaffold(
         appBar: AppBar(
           centerTitle: true,

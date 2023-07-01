@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+import '../tasarim_UI/tema.dart';
 
 class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return MaterialApp(
+      theme:theme(),
       home: HomePage(),
     );
   }
@@ -35,7 +36,7 @@ class DetailScreen extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                Padding(
+                /*Padding(
                   padding: EdgeInsets.symmetric(vertical: 2),
                   child: Text(
                     text,
@@ -45,7 +46,7 @@ class DetailScreen extends StatelessWidget {
                       color: Colors.black,
                     ),
                   ),
-                ),
+                ),*/
               ],
             ),
           ),
@@ -78,10 +79,10 @@ class HomePage extends StatelessWidget{
                         children: [
                           Text(
                             'KÖPEKLER',
-                            style: TextStyle(
+                           /* style: TextStyle(
                                 fontFamily: "Roboto",
                                 backgroundColor: Colors.white54,
-                                fontSize: 28),
+                                fontSize: 28),*/
                           ),
 
                           Row(
@@ -152,12 +153,11 @@ class HomePage extends StatelessWidget{
 
                           Text(
                             'KEDİLER',
-                            style: TextStyle(
+                            /*style: TextStyle(
                                 fontFamily: "Roboto",
                                 backgroundColor: Colors.white54,
-                                fontSize: 28),
+                                fontSize: 28),*/
                           ),
-
                           Row(
                             children: [
                               InkWell(
