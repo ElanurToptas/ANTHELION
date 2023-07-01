@@ -71,8 +71,34 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-assets:
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
    - lib/google_fonts/
+   - asset/pictures/norfolkT.png
+   - asset/pictures/collie.png
+   - asset/pictures/goldenR.png
+   - asset/pictures/chartreux.png
+   - asset/pictures/europeanS.png
+   - asset/pictures/scottishF.png
+   - asset/pictures/avrupaH.png
+   - asset/pictures/gonzalesH.png
+   - asset/pictures/çinH.png
+   - asset/pictures/MuhabbetK.png
+   - asset/pictures/KırmızıAraraunaP.png
+   - asset/pictures/SultanP.png
+   - asset/pictures-2/norfolkT.png
+   - asset/pictures-2/collie.png
+   - asset/pictures-2/goldenR.png
+   - asset/pictures-2/chartreux.png
+   - asset/pictures-2/europeanS.png
+   - asset/pictures-2/scottishF.png
+   - asset/pictures-2/avrupaH.png
+   - asset/pictures-2/gonzalesH.png
+   - asset/pictures-2/çinH.png
+   - asset/pictures-2/MuhabbetK.png
+   - asset/pictures-2/KırmızıAraraunaP.png
+   - asset/pictures-2/SultanP.png
   
 
   # An image asset can refer to one or more resolution-specific "variants", see
