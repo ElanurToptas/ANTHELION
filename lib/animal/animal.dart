@@ -90,7 +90,7 @@ class HomePage extends StatelessWidget{
                                 onTap: () {
                                   Navigator.push(context, MaterialPageRoute(
                                     builder: (context) => DetailScreen(
-                                      image: 'asset/pictures-2/norfolkT.png',
+                                      image: 'asset/pictures/norfolkT.png',
                                       text: " Norfolk Terrier, alıngan, cesur, meraklı, oyunbaz, kavgacı, sadık, neşeli, canlı, inatçı"
                                           " ve bağımsız karakter özellikleriyle tam bir teriyerdir. Tarlada “iblis” olarak bilinir"
                                           "ve avlanmayı, kazmayı ve Keşfetmeyi sever. Hareketli, bağımsız yapısından dolayı güvenli "
@@ -107,7 +107,7 @@ class HomePage extends StatelessWidget{
                                 onTap: () {
                                   Navigator.push(context, MaterialPageRoute(
                                     builder: (context) => DetailScreen(
-                                      image: 'asset/pictures-2/collie.png',
+                                      image: 'asset/pictures/collie.png',
                                       text: " Collie güçlü, hızlı ve zarif yapının bir araya geldiği aktif ve "
                                           "kıvrak bir köpektir. Collis, Colley, Coally isimleriyle de bilinirler. "
                                           "Nazik, özverili ve yumuşak huylu yapısıyla arkadaş canlısı bir köpektir."
@@ -129,7 +129,7 @@ class HomePage extends StatelessWidget{
                                 onTap: () {
                                   Navigator.push(context, MaterialPageRoute(
                                     builder: (context) => DetailScreen(
-                                      image: 'asset/pictures-2/goldenR.png',
+                                      image: 'asset/pictures/goldenR.png',
                                       text: " Golden Retriever bulunduğu ortamda sevimliliği, cana yakınlığı ve oyunculuğu ile "
                                           "tüm gözleri üzerine çekmektedir. Orta büyüklüğe sahip bu sevimli ırk, "
                                           "açık kahverengi ve krem tonlarındaki yumuşak ve göz alıcı bedeniyle kalpleri kazanır."
@@ -164,7 +164,7 @@ class HomePage extends StatelessWidget{
                                 onTap: () {
                                   Navigator.push(context, MaterialPageRoute(
                                     builder: (context) => DetailScreen(
-                                      image:'asset/pictures-2/chartreux.png',
+                                      image:'asset/pictures/chartreux.png',
                                       text: "Chartreux cinsi kediler özellikle de son dönemlerde en çok "
                                           "sevilen evcil hayvanlar arasında yer alıyor. Yumuşacık "
                                           "duman rengi tüyleri ile sahiplenmek isteyenleri anında büyülüyor."
@@ -186,7 +186,7 @@ class HomePage extends StatelessWidget{
                                 onTap: () {
                                   Navigator.push(context, MaterialPageRoute(
                                     builder: (context) => DetailScreen(
-                                      image:'asset/pictures-2/europeanS.png',
+                                      image:'asset/pictures/europeanS.png',
                                       text: "Onu ilk gördüğünüzde renk ve desenlerinden dolayı Tekir veya Sarman kedisine benzetebilirsiniz."
                                           " Ancak o kendine has görünümü, mizacı ve davranışlarıyla bir Tekir veya Sarman kedisinden daha fazlasıdır."
                                           " Tüm kedi ırkları arasında en doğalı olan European Shorthair kedisi, binlerce yıl öncesinde "
@@ -203,7 +203,7 @@ class HomePage extends StatelessWidget{
                                 onTap: () {
                                   Navigator.push(context, MaterialPageRoute(
                                     builder: (context) =>DetailScreen (
-                                      image:'asset/pictures-2/scottishF.png',
+                                      image:'asset/pictures/scottishF.png',
                                       text:  "İskoç kırması bu tatlı kediler, İskoçya’daki çiftlik kedilerinin kendiliğinden"
                                           " bir mutasyon sonucu ortaya çıkmış bir cinstir. En belirgin özellikleri "
                                           "kulaklarının katlı olmasıdır. Bu özelliğiyle farklı ve dayanıklı bir görünüme sahip olan"
@@ -232,7 +232,7 @@ class HomePage extends StatelessWidget{
                                 onTap: () {
                                   Navigator.push(context, MaterialPageRoute(
                                     builder: (context) => DetailScreen(
-                                      image:'asset/pictures-2/çinH.png',
+                                      image:'asset/pictures/çinH.png',
                                       text:"Çin çizgili hamster gerçek cüce hamster değildir, "
                                           "ancak diğer küçük hamsterlara benzer boyuttadır."
                                           " Adından da anlaşılacağı gibi, aslında Çin ve Moğolistan'dan."
@@ -249,7 +249,7 @@ class HomePage extends StatelessWidget{
                                 onTap: () {
                                   Navigator.push(context, MaterialPageRoute(
                                     builder: (context) => DetailScreen(
-                                      image:'asset/pictures-2/avrupaH.png',
+                                      image:'asset/pictures/avrupaH.png',
                                       text:"Avrupa Hamsterı, 30 cm.’lik boyuyla Hamster türlerinin en büyüğüdür."
                                           " Renk farklılığı ile de diğer türlerden ayrılır. Karın bölgesi siyah,"
                                           " sırtı kahverengi ve yan bölgeler beyazdır. Doğu Avrupa ve"
@@ -264,7 +264,7 @@ class HomePage extends StatelessWidget{
                                 onTap: () {
                                   Navigator.push(context, MaterialPageRoute(
                                     builder: (context) => DetailScreen(
-                                      image:'asset/pictures-2/gonzalesH.png',
+                                      image:'asset/pictures/gonzalesH.png',
                                       text:"Gonzales hamster doğada yarı kurak bozkırları mesken edinir."
                                           " Burada kazdığı yaklaşık 1 metre uzunluğundaki yuvasında yaşar."
                                           " Yuvasının duvarlarına koyun yünü ve kuru otlarla kaplar. "
@@ -296,7 +296,7 @@ class HomePage extends StatelessWidget{
                                 onTap: () {
                                   Navigator.push(context, MaterialPageRoute(
                                     builder: (context) => DetailScreen(
-                                      image: 'asset/pictures-2/MuhabbetK.png',
+                                      image: 'asset/pictures/MuhabbetK.png',
                                       text: "Doğada büyük sürüler halinde yaşamaya alışkın olan bu canlılar oldukça sosyal varlıklardır. "
                                           "Ancak günümüzde muhabbet kuşlarını yabani ortamdan ziyade evlerde kafeslerde görmekteyiz."
                                           "  Genel olarak evcilleştirilmeye müsait olan bu kuş türleri bir kafes içerisinde beslenildiğinde "
@@ -312,7 +312,7 @@ class HomePage extends StatelessWidget{
                                 onTap: () {
                                   Navigator.push(context, MaterialPageRoute(
                                     builder: (context) =>DetailScreen(
-                                      image:'asset/pictures-2/SultanP.png',
+                                      image:'asset/pictures/SultanP.png',
                                       text: "Sultan papağanı çok popüler ve insan sever bir süs kuşudur ki çok hayranlari"
                                           "dünya üzerinde kendine celb etmiş. çoğu yetiştiriciler bazı yöntemleri ve"
                                           " teknikleri öğrenerek pahalı papağanı Jako gibi yetiştirmeye başlamışlar."
@@ -328,7 +328,7 @@ class HomePage extends StatelessWidget{
                                 onTap: () {
                                   Navigator.push(context, MaterialPageRoute(
                                     builder: (context) => DetailScreen(
-                                      image: 'asset/pictures-2/KırmızıAraraunaP.png',
+                                      image: 'asset/pictures/KırmızıAraraunaP.png',
                                       text:"Papağanlar sınıfının en çok tercih edilen ve en çok beğenilen türleri arasında "
                                           "ara papağanları ilk sırada yer almaktadır. Ara papağanları aynı zamanda "
                                           "macaw papağanı olarakta bilinmektedir. Bu papağanların anavatanı Güney Amerika kıtasıdır."
