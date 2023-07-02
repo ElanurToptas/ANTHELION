@@ -74,7 +74,7 @@ Sprint Review katılımcıları: Elanur Toptaş ve Hüseyin Arınç Şentürk
 
 - **Ürün Durumu:** Ekran görüntüleri:
 
-- **Sprint Review:**
+- **Sprint Review:** Kullanıcı temel sayfaları arayüzleri ve bottonBar kodlanmış, tema tasarımı yapılmıştır. Kullanıcı sayfalarının bir kısmı, üye giriş sayfaları, ana sayfa kodlanmış, firebase servislerine bağlantıları yapılmış, eksiklikler değerlendirilmiştir ve 1.Sprintteki eksiklikler giderilmiştir.
 
 - **Sprint Retrospective:**
   * Sprint planlama toplantılarının detaylandırılması kararı alınmıştır. 
