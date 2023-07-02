@@ -69,7 +69,7 @@ class HomePage extends StatelessWidget{
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'KÖPEKLER', style: Theme.of(context).textTheme.headlineSmall,
+                            'Köpekler', style: Theme.of(context).textTheme.headlineSmall,
                            
                           ),
 
@@ -140,7 +140,7 @@ class HomePage extends StatelessWidget{
 
 
                           Text(
-                            'KEDİLER',
+                            'Kediler',
                             style: Theme.of(context).textTheme.headlineSmall,
                           ),
                           Row(
@@ -204,7 +204,7 @@ class HomePage extends StatelessWidget{
 
 
                           Text(
-                            'HAMSTERLAR',
+                            'Hamsterlar',
                            style: Theme.of(context).textTheme.headlineSmall,
                           ),
 
@@ -264,7 +264,7 @@ class HomePage extends StatelessWidget{
 
 
                           Text(
-                            'KUŞLAR',
+                            'Kuşlar',
                             style: Theme.of(context).textTheme.headlineSmall,
                           ),
 
