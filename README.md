@@ -64,7 +64,9 @@ Sprint Review katılımcıları: Elanur Toptaş ve Hüseyin Arınç Şentürk
 # SPRINT 2
 - **Sprint Notları:**
 - **Sprint içinde tamamlanması tahmin edilen puan:** 130 Puan
-  
+- 
+- **Puan tamamlama mantığı:** Toplamda proje boyunca tamamlanması gereken 350 puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde ikinci sprint'in en azından 100 puan ile tamamlanması gerektiğine karar verildi.
+
 - **Daily Scrum:** Daily Scrum toplantılarının Discord üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint-2 Daily Scrum Chat](https://github.com/ElanurToptas/ANTHELION/assets/129093031/e89bf75a-772c-4475-a1b6-2697a46857d0)
 
 - **Sprint board update:** Sprint board screenshotları:
