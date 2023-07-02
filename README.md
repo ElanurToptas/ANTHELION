@@ -73,7 +73,8 @@ Sprint Review katılımcıları: Elanur Toptaş ve Hüseyin Arınç Şentürk
 - **Sprint board update:** Sprint board screenshotları:![WhatsApp Görsel 2023-07-02 saat 16 14 13](https://github.com/ElanurToptas/ANTHELION/assets/129093031/abf826e4-c616-4bc4-9c02-641ec49f9864)
 ![WhatsApp Görsel 2023-07-02 saat 16 12 11](https://github.com/ElanurToptas/ANTHELION/assets/129093031/e55ca08b-d7c8-4698-8475-f9b8a95c2381)
 
-- **Ürün Durumu:** Ekran görüntüleri:![WhatsApp Görsel 2023-07-02 saat 23 48 55](https://github.com/ElanurToptas/ANTHELION/assets/129093031/601fb304-9ae5-4dab-975b-fbad67320d7e)
+- **Ürün Durumu:** Ekran görüntüleri:
+![WhatsApp Görsel 2023-07-02 saat 23 48 55](https://github.com/ElanurToptas/ANTHELION/assets/129093031/601fb304-9ae5-4dab-975b-fbad67320d7e)
 ![WhatsApp Görsel 2023-07-02 saat 23 49 17](https://github.com/ElanurToptas/ANTHELION/assets/129093031/8d99405a-fc25-45fe-af51-32e25d94be2f)
 
 
