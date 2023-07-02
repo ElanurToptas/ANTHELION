@@ -69,7 +69,7 @@ Sprint Review katılımcıları: Elanur Toptaş ve Hüseyin Arınç Şentürk
 
 - **Daily Scrum:** Daily Scrum toplantılarının Discord üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint-2 Daily Scrum Chat](https://github.com/ElanurToptas/ANTHELION/assets/129093031/e89bf75a-772c-4475-a1b6-2697a46857d0)
 
-- **Sprint board update:** Sprint board screenshotları:![WhatsApp Görsel 2023-06-28 saat 09 41 04](https://github.com/ElanurToptas/ANTHELION/assets/129093031/aa0b66ef-2f2b-4721-a40e-46168d547625)
+- **Sprint board update:** Sprint board screenshotları:![WhatsApp Görsel 2023-07-02 saat 16 14 13](https://github.com/ElanurToptas/ANTHELION/assets/129093031/abf826e4-c616-4bc4-9c02-641ec49f9864)
 ![WhatsApp Görsel 2023-07-02 saat 16 12 11](https://github.com/ElanurToptas/ANTHELION/assets/129093031/e55ca08b-d7c8-4698-8475-f9b8a95c2381)
 
 - **Ürün Durumu:** Ekran görüntüleri:
