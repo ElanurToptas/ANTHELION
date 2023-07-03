@@ -23,7 +23,7 @@ class BottomBar extends StatelessWidget {
           tabBackgroundColor: Colors.indigoAccent,
           selectedIndex: selectedIndex,
           onTabChange: onTabSelected,
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.all(15),
           tabs: const [
             GButton(icon: Icons.home_rounded, text: "Ana Sayfa"),
             GButton(icon: Icons.local_hospital_rounded, text: "Veterinerler"),

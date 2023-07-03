@@ -6,7 +6,13 @@ ThemeData theme() {
   return ThemeData(
       fontFamily: GoogleFonts.poppins().fontFamily, 
       appBarTheme: appBarTheme(),
-      elevatedButtonTheme: buttonTheme(),);
+      elevatedButtonTheme: buttonTheme(),
+      inputDecorationTheme: inputDecorationTheme(),
+      textSelectionTheme: TextSelectionThemeData(
+      cursorColor: Colors.indigo,
+      ),// imleç Rengi
+      textTheme: TextTheme()
+      );
 }
 
 AppBarTheme appBarTheme() {
@@ -52,3 +58,45 @@ ElevatedButtonThemeData buttonTheme() {
     ),
   );
 }
+
+OutlineInputBorder outlineBorder() {
+  return OutlineInputBorder(
+    borderRadius: BorderRadius.circular(10),
+    borderSide: BorderSide(
+      color: Colors.blueGrey.shade800, 
+      width: 2.1),
+    gapPadding: 10,
+  );
+}
+
+OutlineInputBorder focusBorder() {
+  return OutlineInputBorder(
+    borderRadius: BorderRadius.circular(10),
+    borderSide: BorderSide(
+      color: Colors.indigo,
+      width: 2.1),
+    gapPadding: 10,
+
+  );
+}
+
+InputDecorationTheme inputDecorationTheme() {
+   return InputDecorationTheme(
+    labelStyle: TextStyle(
+      color: Colors.blueGrey.shade800,
+      fontWeight: FontWeight.w500), //Seçili Değilkenki Yazı Stili
+    hintStyle: const TextStyle(color: Colors.indigo,), //Seçili Yazı Stili
+    alignLabelWithHint: true,
+    fillColor: Colors.white,
+    contentPadding: EdgeInsets.symmetric(horizontal:40,vertical: 15),
+    enabledBorder: outlineBorder(),
+    focusedBorder: focusBorder(),
+    border: outlineBorder(),
+    
+   );
+}
+
+
+
+
+

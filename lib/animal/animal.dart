@@ -36,7 +36,7 @@ class DetailScreen extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                /*Padding(
+                Padding(
                   padding: EdgeInsets.symmetric(vertical: 2),
                   child: Text(
                     text,
@@ -46,7 +46,7 @@ class DetailScreen extends StatelessWidget {
                       color: Colors.black,
                     ),
                   ),
-                ),*/
+                ),
               ],
             ),
           ),
@@ -61,9 +61,11 @@ class HomePage extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        title: const Text("Animals "),
-      ),
+  // Temadan çekilen AppBar rengi
+  title: Text("Hayvanlar"),
+),
+
+
       body: Padding(
         padding: const EdgeInsets.all(5.0),
         child: Column(
@@ -78,11 +80,8 @@ class HomePage extends StatelessWidget{
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'KÖPEKLER',
-                           /* style: TextStyle(
-                                fontFamily: "Roboto",
-                                backgroundColor: Colors.white54,
-                                fontSize: 28),*/
+                            'Köpekler', style: Theme.of(context).textTheme.headlineSmall,
+                           
                           ),
 
                           Row(
@@ -152,11 +151,8 @@ class HomePage extends StatelessWidget{
 
 
                           Text(
-                            'KEDİLER',
-                            /*style: TextStyle(
-                                fontFamily: "Roboto",
-                                backgroundColor: Colors.white54,
-                                fontSize: 28),*/
+                            'Kediler',
+                            style: Theme.of(context).textTheme.headlineSmall,
                           ),
                           Row(
                             children: [
@@ -219,11 +215,8 @@ class HomePage extends StatelessWidget{
 
 
                           Text(
-                            'HAMSTERLAR',
-                            style: TextStyle(
-                                fontFamily: "Roboto",
-                                backgroundColor: Colors.white54,
-                                fontSize: 28),
+                            'Hamsterlar',
+                           style: Theme.of(context).textTheme.headlineSmall,
                           ),
 
                           Row(
@@ -282,11 +275,8 @@ class HomePage extends StatelessWidget{
 
 
                           Text(
-                            'KUŞLAR',
-                            style: TextStyle(
-                                fontFamily: "Roboto",
-                                backgroundColor: Colors.white54,
-                                fontSize: 28),
+                            'Kuşlar',
+                            style: Theme.of(context).textTheme.headlineSmall,
                           ),
 
 

@@ -62,18 +62,31 @@ Sprint Review katılımcıları: Elanur Toptaş ve Hüseyin Arınç Şentürk
 
 
 # SPRINT 2
-- **Sprint Notları:**
-- **Sprint içinde tamamlanması tahmin edilen puan:** 130 Puan
-  
-- **Daily Scrum:** Daily Scrum toplantılarının Discord üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint-2 Daily Scrum Chat](https://github.com/ElanurToptas/ANTHELION/assets/129093031/e89bf75a-772c-4475-a1b6-2697a46857d0)
+- **Sprint Notları:** User Story'ler product backlog'ların içine yazılmıştır. Product backlog item'lara tıklandığında hikayelerin detayları okunabilir.
 
-- **Sprint board update:** Sprint board screenshotları:
+- **Sprint içinde tamamlanması tahmin edilen puan:** 130 Puan
+- **Puan tamamlama mantığı:** Toplamda proje boyunca tamamlanması gereken 350 puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde ikinci sprint'in en azından 100 puan ile tamamlanması gerektiğine karar verildi.
+
+- **Daily Scrum:** Daily Scrum toplantılarının Discord üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint-2 Daily Scrum Chat](https://github.com/ElanurToptas/ANTHELION/assets/129093031/c1b21e4b-6427-4c2d-8d5d-8bf047046581)
+
+
+- **Sprint board update:** Sprint board screenshotları:![WhatsApp Görsel 2023-07-02 saat 16 14 13](https://github.com/ElanurToptas/ANTHELION/assets/129093031/abf826e4-c616-4bc4-9c02-641ec49f9864)
+![WhatsApp Görsel 2023-07-02 saat 16 12 11](https://github.com/ElanurToptas/ANTHELION/assets/129093031/e55ca08b-d7c8-4698-8475-f9b8a95c2381)
 
 - **Ürün Durumu:** Ekran görüntüleri:
+- ![WhatsApp Görsel 2023-07-02 saat 23 49 17](https://github.com/ElanurToptas/ANTHELION/assets/129093031/8d99405a-fc25-45fe-af51-32e25d94be2f)
 
-- **Sprint Review:**
+-![WhatsApp Görsel 2023-07-03 saat 05 00 33](https://github.com/ElanurToptas/ANTHELION/assets/129093031/452acc0a-fcb2-4465-904d-5d216c7884ad)
+
+-
+https://github.com/ElanurToptas/ANTHELION/assets/129093031/b700ea48-db81-4d95-9bad-6b8539ff9a1f
+
+- **Sprint Review:** Kullanıcı temel sayfaları arayüzleri ve bottonBar kodlanmış, tema tasarımı yapılmıştır. Kullanıcı sayfalarının bir kısmı, üye giriş sayfaları, ana sayfa kodlanmış, firebase servislerine bağlantıları yapılmış, eksiklikler değerlendirilmiştir ve 1.Sprintteki eksiklikler giderilmiştir.
+Sprint Review katılımcıları:Elanur Toptaş, Hüseyin Arınç Şentürk, Fatma Eser Kırmacı ve Mehmet Demirtürk.
 
 - **Sprint Retrospective:**
+  * Sprint planlama toplantılarının detaylandırılması kararı alınmıştır.
+  * Takım üyelerinin gelecek sprintlerde daha aktif olması gerektiğine vurgu yapılmıştır.
 
 ***
 ## PRODUCT BACKLOG URL
