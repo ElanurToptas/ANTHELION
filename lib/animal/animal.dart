@@ -36,6 +36,17 @@ class DetailScreen extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 2),
+                  child: Text(
+                    text,
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontFamily: "Roboto-Bold",
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -53,7 +64,6 @@ class HomePage extends StatelessWidget{
   // Temadan çekilen AppBar rengi
   title: Text("Hayvanlar"),
 ),
-
 
       body: Padding(
         padding: const EdgeInsets.all(5.0),
