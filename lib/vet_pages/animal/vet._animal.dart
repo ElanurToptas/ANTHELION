@@ -1,4 +1,5 @@
 ﻿import 'package:flutter/material.dart';
+import 'package:petcare/vet_pages/animal/vaccines.dart';
 
 class ButtonStyles {
   static final elevatedButtonStyle = ElevatedButton.styleFrom(
@@ -69,7 +70,13 @@ class _VetAnimalState extends State<VetAnimal> {
                             height: 120,
                             child: ElevatedButton(
                               style: ButtonStyles.elevatedButtonStyle,
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MyWidget()),
+                                );
+                              },
                               child: Text('Gelecek Aşıları'),
                             ),
                           ),
