@@ -74,18 +74,16 @@ Sprint Review katılımcıları: Elanur Toptaş ve Hüseyin Arınç Şentürk
 ![WhatsApp Görsel 2023-07-02 saat 16 12 11](https://github.com/ElanurToptas/ANTHELION/assets/129093031/e55ca08b-d7c8-4698-8475-f9b8a95c2381)
 
 - **Ürün Durumu:** Ekran görüntüleri:
-- ![WhatsApp Görsel 2023-07-02 saat 23 48 55](https://github.com/ElanurToptas/ANTHELION/assets/129093031/601fb304-9ae5-4dab-975b-fbad67320d7e)
 - ![WhatsApp Görsel 2023-07-02 saat 23 49 17](https://github.com/ElanurToptas/ANTHELION/assets/129093031/8d99405a-fc25-45fe-af51-32e25d94be2f)
+- ![WhatsApp Görsel 2023-07-02 saat 23 48 55](https://github.com/ElanurToptas/ANTHELION/assets/129093031/601fb304-9ae5-4dab-975b-fbad67320d7e)
 -
 https://github.com/ElanurToptas/ANTHELION/assets/129093031/b700ea48-db81-4d95-9bad-6b8539ff9a1f
-
-
-
 
 - **Sprint Review:** Kullanıcı temel sayfaları arayüzleri ve bottonBar kodlanmış, tema tasarımı yapılmıştır. Kullanıcı sayfalarının bir kısmı, üye giriş sayfaları, ana sayfa kodlanmış, firebase servislerine bağlantıları yapılmış, eksiklikler değerlendirilmiştir ve 1.Sprintteki eksiklikler giderilmiştir.
 
 - **Sprint Retrospective:**
-  * Sprint planlama toplantılarının detaylandırılması kararı alınmıştır. 
+  * Sprint planlama toplantılarının detaylandırılması kararı alınmıştır.
+  * Takım üyelerinin gelecek sprintlerde daha aktif olması gerektiğine vurgu yapılmıştır.
 
 ***
 ## PRODUCT BACKLOG URL
