@@ -36,6 +36,17 @@ class DetailScreen extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 2),
+                  child: Text(
+                    text,
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontFamily: "Roboto-Bold",
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
