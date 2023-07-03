@@ -75,6 +75,7 @@ Sprint Review katılımcıları: Elanur Toptaş ve Hüseyin Arınç Şentürk
 
 - **Ürün Durumu:** Ekran görüntüleri:
 - ![WhatsApp Görsel 2023-07-02 saat 23 49 17](https://github.com/ElanurToptas/ANTHELION/assets/129093031/8d99405a-fc25-45fe-af51-32e25d94be2f)
+
 -![WhatsApp Görsel 2023-07-03 saat 05 00 33](https://github.com/ElanurToptas/ANTHELION/assets/129093031/452acc0a-fcb2-4465-904d-5d216c7884ad)
 
 -
