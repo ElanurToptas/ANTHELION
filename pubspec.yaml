@@ -38,7 +38,7 @@ dependencies:
   firebase_core: ^2.14.0
   cloud_firestore: ^4.8.1
   firebase_auth: ^4.6.3
-  firebase_storage: ^11.2.3
+  firebase_storage: ^11.2.4
   firebase_storage_web: ^3.6.3
   google_fonts: ^4.0.4
   http: ^0.13.0
@@ -47,7 +47,11 @@ dependencies:
   image_cropper: ^4.0.1
   provider: ^6.0.5
   shared_preferences: ^2.1.2
-  
+  permission_handler: ^10.4.1
+
+
+
+
   flutter_heatmap_calendar: ^1.0.5
 
 dev_dependencies:

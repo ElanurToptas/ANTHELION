@@ -82,6 +82,7 @@ Sprint Review katılımcıları: Elanur Toptaş ve Hüseyin Arınç Şentürk
 https://github.com/ElanurToptas/ANTHELION/assets/129093031/b700ea48-db81-4d95-9bad-6b8539ff9a1f
 
 - **Sprint Review:** Kullanıcı temel sayfaları arayüzleri ve bottonBar kodlanmış, tema tasarımı yapılmıştır. Kullanıcı sayfalarının bir kısmı, üye giriş sayfaları, ana sayfa kodlanmış, firebase servislerine bağlantıları yapılmış, eksiklikler değerlendirilmiştir ve 1.Sprintteki eksiklikler giderilmiştir.
+Sprint Review katılımcıları:Elanur Toptaş, Hüseyin Arınç Şentürk, Fatma Eser Kırmacı ve Mehmet Demirtürk.
 
 - **Sprint Retrospective:**
   * Sprint planlama toplantılarının detaylandırılması kararı alınmıştır.
