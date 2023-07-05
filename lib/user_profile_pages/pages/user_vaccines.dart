@@ -57,7 +57,7 @@ class _YourPageState extends State<YourPage> {
   Widget build(BuildContext context) {
     return Scaffold(backgroundColor: Color.fromARGB(224, 234, 234, 234),
       appBar: AppBar(
-        title: Text('Your Page'),
+        title: Text('Aşılar ve Aşı Takvimi'),
       ),
       body: SingleChildScrollView(
         child: Center(
