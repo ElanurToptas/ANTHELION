@@ -57,16 +57,13 @@ class _RegisterPageState extends State<RegisterPage> {
                     DecoratedBox(
                       
                       decoration: BoxDecoration(color: Color.fromARGB(218, 177, 78, 195),borderRadius: BorderRadius.circular(12)),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left:20.0),
-                        child: TextFormField(
-                          controller: _emailController,
-                          decoration: InputDecoration(
-                            labelText: 'E-mail',
-                            border: InputBorder.none
-                            ),
-                          
-                        ),
+                      child: TextFormField(
+                        controller: _emailController,
+                        decoration: InputDecoration(
+                          labelText: 'E-mail',
+                          border: InputBorder.none
+                          ),
+                        
                       ),
                     ),
                     SizedBox(height: 10,),
@@ -74,17 +71,14 @@ class _RegisterPageState extends State<RegisterPage> {
                     DecoratedBox(
                       
                       decoration: BoxDecoration(color: Color.fromARGB(218, 177, 78, 195),borderRadius: BorderRadius.circular(12)),
-                      child: Padding(
-                         padding: const EdgeInsets.only(left:20.0),
-                        child: TextFormField(
-                          controller: _namesurnameController,
-                          decoration: InputDecoration(
-                            labelText: 'Ad Soyad',
-                            border: InputBorder.none
-                            ),
-                          
-                          
-                        ),
+                      child: TextFormField(
+                        controller: _namesurnameController,
+                        decoration: InputDecoration(
+                          labelText: 'Ad Soyad',
+                          border: InputBorder.none
+                          ),
+                        
+                        
                       ),
                     ),
                     SizedBox(height: 10,),
@@ -92,34 +86,28 @@ class _RegisterPageState extends State<RegisterPage> {
                     DecoratedBox(
                       
                       decoration: BoxDecoration(color: Color.fromARGB(218, 177, 78, 195),borderRadius: BorderRadius.circular(12)),
-                      child: Padding(
-                         padding: const EdgeInsets.only(left:20.0),
-                        child: TextFormField(
-                          controller: _passwordController,
-                          decoration: InputDecoration(
-                            labelText: 'Parola',
-                            border: InputBorder.none
-                            ),
-                          obscureText: true,
-                          
-                        ),
+                      child: TextFormField(
+                        controller: _passwordController,
+                        decoration: InputDecoration(
+                          labelText: 'Parola',
+                          border: InputBorder.none
+                          ),
+                        obscureText: true,
+                        
                       ),
                     ),
                     SizedBox(height: 10,),
                     //Parola  tekrar Kısmı
                     DecoratedBox( 
                       decoration: BoxDecoration(color: Color.fromARGB(218, 177, 78, 195),borderRadius: BorderRadius.circular(12)) ,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left:20.0),
-                        child: TextFormField(
-                          controller: _confirmPasswordController,
-                          decoration: InputDecoration(
-                            labelText: 'Parola Tekrar',
-                            border: InputBorder.none
-                            ),
-                          obscureText: true,
-                          
-                        ),
+                      child: TextFormField(
+                        controller: _confirmPasswordController,
+                        decoration: InputDecoration(
+                          labelText: 'Parola Tekrar',
+                          border: InputBorder.none
+                          ),
+                        obscureText: true,
+                        
                       ),
                     ),
                     SizedBox(height: 10,),
@@ -138,19 +126,16 @@ class _RegisterPageState extends State<RegisterPage> {
                               color: Color.fromARGB(218, 177, 78, 195),
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 20.0),
-                              child: TextFormField(
-                                decoration: InputDecoration(
-                                  labelText: 'Evcil Hayvan Chip ID',
-                                  border: InputBorder.none,
-                                ),
-                                onChanged: (value) {
-                                  setState(() {
-                                    pet['chipId'] = value;
-                                  });
-                                },
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                labelText: 'Evcil Hayvan Chip ID',
+                                border: InputBorder.none,
                               ),
+                              onChanged: (value) {
+                                setState(() {
+                                  pet['chipId'] = value;
+                                });
+                              },
                             ),
                           ),
                           SizedBox(height: 10),
