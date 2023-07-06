@@ -268,11 +268,9 @@ class _EditVetProfileState extends State<EditVetProfile> {
     final pickedFile = await ImagePicker().pickImage(source: source);
     if (pickedFile != null) {
       File? imageFile = File(pickedFile.path);
-      if (imageFile != null) {
-        setState(() {
-          _imageFile = imageFile;
-        });
-      }
+      setState(() {
+        _imageFile = imageFile;
+      });
     }
   }
 
