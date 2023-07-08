@@ -25,6 +25,7 @@ class _VetRegisterPageState extends State<VetRegisterPage> {
   TextEditingController _namesurnameController = TextEditingController();
   TextEditingController _universityController = TextEditingController();
   TextEditingController _speciesController = TextEditingController();
+  TextEditingController _phoneNumberController = TextEditingController();
   bool _checkValue1 = false;
   bool _checkValue2 = false;
 
@@ -76,93 +77,88 @@ class _VetRegisterPageState extends State<VetRegisterPage> {
                     SizedBox(height: 10,),
                     DecoratedBox(
                       decoration: BoxDecoration(color: Color.fromARGB(218, 177, 78, 195),borderRadius: BorderRadius.circular(12)),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left:20.0),
-                        child: TextFormField(
-                          controller: _emailController,
-                          decoration: InputDecoration(
-                            labelText: 'E-mail',
-                            border: InputBorder.none
-                            ),
-                          
-                        ),
+                      child: TextFormField(
+                        controller: _emailController,
+                        decoration: InputDecoration(
+                          labelText: 'E-mail',
+                          border: InputBorder.none
+                          ),
+                        
                       ),
                     ),SizedBox(height: 10,),
                     DecoratedBox(
                       decoration: BoxDecoration(color: Color.fromARGB(218, 177, 78, 195),borderRadius: BorderRadius.circular(12)),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left:20.0),
-                        child: TextFormField(
-                          controller: _namesurnameController,
-                          decoration: InputDecoration(
-                            labelText: 'Ad Soyad',
-                            border: InputBorder.none
-                            ),
-                          
-                        ),
+                      child: TextFormField(
+                        controller: _namesurnameController,
+                        decoration: InputDecoration(
+                          labelText: 'Ad Soyad',
+                          border: InputBorder.none
+                          ),
+                        
                       ),
                     ),
                     SizedBox(height: 10,),
                     DecoratedBox(
                       decoration: BoxDecoration(color: Color.fromARGB(218, 177, 78, 195),borderRadius: BorderRadius.circular(12)),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left:20.0),
-                        child: TextFormField(
-                          controller: _universityController,
-                          decoration: InputDecoration(
-                            labelText: 'Üniversiteniz',
-                            border: InputBorder.none
-                            ),
-                          
-                        ),
+                      child: TextFormField(
+                        controller: _universityController,
+                        decoration: InputDecoration(
+                          labelText: 'Üniversiteniz',
+                          border: InputBorder.none
+                          ),
+                        
                       ),
                     ),
                     SizedBox(height: 10,),
                     // Parola kısmı
                     DecoratedBox(decoration: BoxDecoration(color: Color.fromARGB(218, 177, 78, 195),borderRadius: BorderRadius.circular(12)),
-                      child: Padding(
-                         padding: const EdgeInsets.only(left:20.0),
-                        child: TextFormField(
-                          controller: _passwordController,
-                          decoration: InputDecoration(
-                            labelText: 'Parola',
-                            border: InputBorder.none
-                            ),
-                          obscureText: true,
-                          
-                        ),
+                      child: TextFormField(
+                        controller: _passwordController,
+                        decoration: InputDecoration(
+                          labelText: 'Parola',
+                          border: InputBorder.none
+                          ),
+                        obscureText: true,
+                        
                       ),
                     ),
                     SizedBox(height: 10,),
                     //Parola  tekrar Kısmı
                     DecoratedBox(
                       decoration: BoxDecoration(color: Color.fromARGB(218, 177, 78, 195),borderRadius: BorderRadius.circular(12)) ,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left:20.0),
-                        child: TextFormField(
-                          controller: _confirmPasswordController,
-                          decoration: InputDecoration(
-                            labelText: 'Parola Tekrar',
-                            border: InputBorder.none
-                            ),
-                          obscureText: true,
-                          
-                        ),
+                      child: TextFormField(
+                        controller: _confirmPasswordController,
+                        decoration: InputDecoration(
+                          labelText: 'Parola Tekrar',
+                          border: InputBorder.none
+                          ),
+                        obscureText: true,
+                        
+                      ),
+                    ), SizedBox(height: 10,),
+                    // Telefon numarasını aldığımız kısım
+                     DecoratedBox(
+                      decoration: BoxDecoration(color: Color.fromARGB(218, 177, 78, 195),borderRadius: BorderRadius.circular(12)) ,
+                      child: TextFormField(
+                        controller: _phoneNumberController,
+                        decoration: InputDecoration(
+                          labelText: 'Telefon Numarası',
+                          border: InputBorder.none
+                          ),
+                       
+                        
                       ),
                     ),
                     SizedBox(height: 10,),
                     DecoratedBox(
                       decoration: BoxDecoration(color: Color.fromARGB(218, 177, 78, 195),borderRadius: BorderRadius.circular(12)),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left:20.0),
-                        child: TextFormField(
-                          controller: _speciesController,
-                          decoration: InputDecoration(
-                            labelText: 'Baktığınız Türler? örnek: Kedi,Balık,Sincap...',
-                            border: InputBorder.none
-                            ),
-                          
-                        ),
+                      child: TextFormField(
+                        controller: _speciesController,
+                        decoration: InputDecoration(
+                          labelText: 'Baktığınız Türler? örnek: Kedi,Balık,Sincap...',
+                          border: InputBorder.none
+                          ),
+                        
                       ),
                     ),
                     SizedBox(height: 20.0),
@@ -248,6 +244,7 @@ class _VetRegisterPageState extends State<VetRegisterPage> {
        'name': _namesurnameController.text,
        'university': _universityController.text,
        'species': _speciesController.text,
+        'phone number': _phoneNumberController.text
     });
     // Resmi Firebase Storage'a yükle
       final storageRef = FirebaseStorage.instance.ref().child('Veterinarians/$uid/profile_image.jpg');

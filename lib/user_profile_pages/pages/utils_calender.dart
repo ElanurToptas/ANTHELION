@@ -6,6 +6,7 @@ class MyHeatMap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
    return HeatMap(
+    // firebaseden alıcak şekilde değiştirilicek burası datasets firebaseden hayvandan gelmeli veteriner bu bilgiyi yazmalı onun dökümanına gelecek aşıları olucak burda
   datasets: {
     DateTime(2023, 7, 6): 3,
     DateTime(2023, 7, 7): 7,

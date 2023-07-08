@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:petcare/user_profile_pages/pages/user_diagnosis.dart';
 
 import 'package:petcare/user_profile_pages/pages/user_edit_profile.dart';
+import 'package:petcare/user_profile_pages/pages/user_lab_result.dart';
 import 'package:petcare/user_profile_pages/pages/user_vaccines.dart';
 // tema buton için
 class ButtonStyles {
@@ -62,7 +64,11 @@ class UserProfile extends StatelessWidget{
                         SizedBox(height: 120,width: 150,
                           child: ElevatedButton(
                             style: ButtonStyles.elevatedButtonStyle,
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(context, MaterialPageRoute(builder: ((context) {
+                return PetDocumentsPage();
+              })));
+                            },
                             child: Text('     Tahlil \n Sonuçları'),
                           ),
                         ),
@@ -88,7 +94,11 @@ class UserProfile extends StatelessWidget{
                   children: [
                     ElevatedButton(
                       style: ButtonStyles.elevatedButtonStyle,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: ((context) {
+                return DiseasesPage();
+              })));
+                      },
                       child: Text('Hastalık Detayı'),
                     ),
                     SizedBox(width: 16),
