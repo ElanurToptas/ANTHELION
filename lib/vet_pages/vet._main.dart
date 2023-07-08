@@ -1,5 +1,6 @@
 ﻿import 'package:flutter/material.dart';
 import 'package:petcare/tasarim_UI/tema.dart';
+import 'package:petcare/vet_pages/animal/lab_results.dart';
 import 'package:petcare/vet_pages/vet_profile/edit_profile.dart';
 import 'package:petcare/vet_pages/animal/vet._animal.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -147,7 +148,16 @@ class EditAnimalPage extends StatelessWidget {
                             height: 120,
                             child: ElevatedButton(
                               style: ButtonStyles.elevatedButtonStyle,
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => LabResults(
+                                      chipNumber: chipNumber,
+                                    ),
+                                  ),
+                                );
+                              },
                               child: Text('Tahlil Sonuçları'),
                             ),
                           ),
