@@ -4,8 +4,6 @@ import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:io';
 import 'package:path/path.dart' as Path;
-import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_pdfview/flutter_pdfview.dart';
 
 class LabResults extends StatefulWidget {
   final String chipNumber;
@@ -74,15 +72,9 @@ class _LabResultsState extends State<LabResults> {
     _showSnackBar('Dosya silindi: $fileName');
   }
 
-  void viewLabResult(String fileName) async {
-    Reference ref = _storage.ref('Animals/${widget.chipNumber}/$fileName');
-    String url = await ref.getDownloadURL();
-
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Dosya açılamadı: $url';
-    }
+  void viewLabResult(String fileName) {
+    // Görüntüleme işlemleri burada gerçekleştirilecek
+    print('Görüntüle: $fileName');
   }
 
   Future<void> _uploadFileWithCustomName(File file, String fileName) async {
