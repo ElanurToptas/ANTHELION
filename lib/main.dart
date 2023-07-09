@@ -7,9 +7,11 @@ import 'package:petcare/tasarim_UI/services_page.dart';
 import 'package:petcare/tasarim_UI/tema.dart';
 import 'package:petcare/vet_list.dart';
 
+import 'firebase_options.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(MyApp());
 }
