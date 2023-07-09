@@ -4,6 +4,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:io';
 import 'package:path/path.dart' as Path;
+import 'package:intl/intl.dart';
 
 class LabResults extends StatefulWidget {
   final String chipNumber;
@@ -55,21 +56,48 @@ class _LabResultsState extends State<LabResults> {
   }
 
   void removeLabResult(String fileName) async {
-    setState(() {
-      labResults.remove(fileName);
-    });
+    bool confirm = await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Silmek istediğinize emin misiniz?'),
+          content:
+              Text('Dosyayı kalıcı olarak silmek istediğinize emin misiniz?'),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Vazgeç'),
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+            ),
+            TextButton(
+              child: Text('Sil'),
+              onPressed: () {
+                Navigator.of(context).pop(true);
+              },
+            ),
+          ],
+        );
+      },
+    );
 
-    FirebaseFirestore.instance
-        .collection('Pets')
-        .doc(widget.chipNumber)
-        .update({
-      'labResults': FieldValue.arrayRemove([fileName])
-    });
+    if (confirm == true) {
+      setState(() {
+        labResults.remove(fileName);
+      });
 
-    Reference ref = _storage.ref('Animals/${widget.chipNumber}/$fileName');
-    await ref.delete();
+      FirebaseFirestore.instance
+          .collection('Pets')
+          .doc(widget.chipNumber)
+          .update({
+        'labResults': FieldValue.arrayRemove([fileName])
+      });
 
-    _showSnackBar('Dosya silindi: $fileName');
+      Reference ref = _storage.ref('Animals/${widget.chipNumber}/$fileName');
+      await ref.delete();
+
+      _showSnackBar('Dosya silindi: $fileName');
+    }
   }
 
   void viewLabResult(String fileName) {
@@ -78,20 +106,23 @@ class _LabResultsState extends State<LabResults> {
   }
 
   Future<void> _uploadFileWithCustomName(File file, String fileName) async {
-    Reference ref = _storage.ref('Animals/${widget.chipNumber}/$fileName');
+    String currentDate = DateFormat('dd/MM/yy').format(DateTime.now());
+    String newFileName = '$fileName - ($currentDate)'; // Yeni dosya adı
+
+    Reference ref = _storage.ref('Animals/${widget.chipNumber}/$newFileName');
     UploadTask uploadTask = ref.putFile(file);
 
     await uploadTask.whenComplete(() {
       setState(() {
-        labResults.add(fileName);
+        labResults.add(newFileName);
       });
       FirebaseFirestore.instance
           .collection('Pets')
           .doc(widget.chipNumber)
           .update({
-        'labResults': FieldValue.arrayUnion([fileName])
+        'labResults': FieldValue.arrayUnion([newFileName])
       });
-      _showSnackBar('Dosya yüklendi: $fileName');
+      _showSnackBar('Dosya yüklendi: $newFileName');
     }).catchError((onError) {
       print(onError);
     });
