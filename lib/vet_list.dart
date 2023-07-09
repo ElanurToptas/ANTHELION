@@ -180,43 +180,72 @@ class _VetPageState extends State<VetPage> {
                         ),
                       );
                     }
+return GestureDetector(
+  onTap: () {
+    _showVeterinarianDetails(
+      veterinarianName,
+      veterinarianBio,
+      profilePictureUrl,
+      veterinarianAddress,
+      veterinarianPhone,
+      veterinarianUniversity,
+      veterinarianPets,
+    );
+  },
+  child: Card(
+    elevation: 5,
+    child: Container(
+      padding: EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Veteriner $veterinarianName',
+            style: TextStyle(
+              color: Colors.indigo,
+              fontWeight: FontWeight.bold,
+              fontSize: 17,
+            ),
+          ),
+          SizedBox(height: 10),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: 115,
+                height: 170
+                ,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Image.network(
+                    profilePictureUrl,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              SizedBox(width: 16, height: 75,),
+              Expanded(
+                child: Text(
+                  veterinarianBio.length > 190
+                      ? '${veterinarianBio.substring(0, 190
+                      )}...'
+                      : veterinarianBio,
+                  style: TextStyle(
+                    color: Colors.grey[600],
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    ),
+  ),
+);
 
-                    return GestureDetector(
-                      onTap: () {
-                        _showVeterinarianDetails(
-                          veterinarianName,
-                          veterinarianBio,
-                          profilePictureUrl,
-                          veterinarianAddress,
-                          veterinarianPhone,
-                          veterinarianUniversity,
-                          veterinarianPets,
-                        );
-                      },
-                      child: Card(
-                        child: ListTile(
-                          title: Text( 'Veteriner $veterinarianName'
-                            ,
-                            style: TextStyle(
-                              color: Colors.indigo,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          subtitle: Text(veterinarianBio),
-                          leading: ClipRRect(
-                            borderRadius: BorderRadius.circular(8.0),
-                            child: Container(
-                              width: 60,
-                              height: 100,
-                              child: Image.network(
-                                profilePictureUrl,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    );
+
+
                   },
                 );
               },
@@ -227,127 +256,208 @@ class _VetPageState extends State<VetPage> {
     );
   }
 
-void _showVeterinarianDetails(
-  String name,
-  String bio,
-  String profilePictureUrl,
-  String? address,
-  String? phone,
-  String? veterinarianUniversity,
-  String? veterinarianPets,
-) {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text(
-          name,
-          style: TextStyle(
-            color: Colors.indigo,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        content: SingleChildScrollView(
-          child: Column(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: Container(
-                  width: 100,
-                  height: 100,
-                  child: Image.network(
-                    profilePictureUrl,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              SizedBox(height: 16),
-              Text(
-                bio,
-                style: TextStyle(
-                  color: Colors.grey[800],
-                ),
-              ),
-              SizedBox(height: 16),
-              if (address != null)
-                Text(
-                  'Adres: $address',
-                  style: TextStyle(
-                    color: Colors.grey[800],
-                  ),
-                ),
-              if (veterinarianUniversity != null)
-                Text(
-                  'Mezun Olduğu Okul: $veterinarianUniversity',
-                  style: TextStyle(
-                    color: Colors.grey[800],
-                  ),
-                ),
-              if (veterinarianPets != null)
-                Text(
-                  'Baktığı Hayvan Türleri: $veterinarianPets',
-                  style: TextStyle(
-                    color: Colors.grey[800],
-                  ),
-                ),
-            ],
-          ),
-        ),
-        actions: [
-          Container(
-            alignment: Alignment.center,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    if (phone != null) {
-                      _contactVeterinarian(phone);
-                    }
-                  },
-                  child: Text(
-                    'İletişime Geç',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                SizedBox(width: 8),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Text(
-                    'Kapat',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-        contentPadding: EdgeInsets.symmetric(horizontal: 20),
-      );
-    },
-  );
-}
-
-  void _addAddress(String address) {
+  void _showVeterinarianDetails(
+      veterinarianName,
+      veterinarianBio,
+      profilePictureUrl,
+      veterinarianAddress,
+      veterinarianPhone,
+      veterinarianUniversity,
+      veterinarianPets,
+  ) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(
-            'Adres',
+            'Veteriner $veterinarianName',
+            style: TextStyle(
+              color: Colors.indigo,
+              fontWeight: FontWeight.bold,
+              fontSize: 17,
+            ),
+          ),
+          content: SingleChildScrollView(
+            // SingleChildScrollView eklenmiştir
+            child: Column(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Container(
+                    width: 100,
+                    height: 100,
+                    child: Image.network(
+                      profilePictureUrl,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 16),
+                Text(
+                  veterinarianBio,
+                  style: TextStyle(
+                    color: Colors.grey[800],
+                  ),
+                ),
+                SizedBox(height: 16),
+                if (veterinarianAddress != null)
+                  Text(
+                    'Adres: $veterinarianAddress',
+                    style: TextStyle(
+                      color: Colors.grey[800],
+                    ),
+                  ),
+                if (veterinarianUniversity != null)
+                  Text(
+                    'Mezun Olduğu Okul: $veterinarianUniversity',
+                    style: TextStyle(
+                      color: Colors.grey[800],
+                    ),
+                  ),
+                if (veterinarianPets != null)
+                  Text(
+                    'Baktığı Hayvan Türleri: $veterinarianPets',
+                    style: TextStyle(
+                      color: Colors.grey[800],
+                    ),
+                  ),
+              ],
+            ),
+          ),
+          actions: [
+            Container(
+              alignment: Alignment.center,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      if (veterinarianPhone != null) {
+                        _contactVeterinarian(veterinarianPhone);
+                      }
+                    },
+                    child: Text(
+                      'İletişime Geç',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 8),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text(
+                      'Kapat',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+          contentPadding: EdgeInsets.symmetric(horizontal: 20),
+        );
+      },
+    );
+  }
+
+  void _addAddress(String address) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: AlertDialog(
+            title: Text(
+              'Adres',
+              style: TextStyle(
+                color: Colors.indigo,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            content: Text(
+              address,
+              style: TextStyle(
+                color: Colors.grey[800],
+              ),
+            ),
+            actions: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text(
+                  'Kapat',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  void _contactVeterinarian(String phone) async {
+  if (phone != null && phone.isNotEmpty) {
+    final url = 'tel:$phone';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              'Hata',
+              style: TextStyle(
+                color: Colors.indigo,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            content: Text(
+              'İşlem Gerçekleştirilemedi!',
+              style: TextStyle(
+                color: Colors.grey[800],
+              ),
+            ),
+            actions: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text(
+                  'Kapat',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
+      );
+    }
+  } else {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'Uyarı',
             style: TextStyle(
               color: Colors.indigo,
               fontWeight: FontWeight.bold,
             ),
           ),
           content: Text(
-            address,
+            'Daha Sonra Tekrar Deneyin!',
             style: TextStyle(
               color: Colors.grey[800],
             ),
@@ -369,13 +479,5 @@ void _showVeterinarianDetails(
       },
     );
   }
-
-  void _contactVeterinarian(String phone) async {
-    final url = 'tel:$phone';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      print('Could not launch $url');
-    }
   }
 }
