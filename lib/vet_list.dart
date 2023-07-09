@@ -257,113 +257,112 @@ return GestureDetector(
   }
 
   void _showVeterinarianDetails(
-      veterinarianName,
-      veterinarianBio,
-      profilePictureUrl,
-      veterinarianAddress,
-      veterinarianPhone,
-      veterinarianUniversity,
-      veterinarianPets,
-  ) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(
+  veterinarianName,
+  veterinarianBio,
+  profilePictureUrl,
+  veterinarianAddress,
+  veterinarianPhone,
+  veterinarianUniversity,
+  veterinarianPets,
+) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Center(
+          child: Text(
             'Veteriner $veterinarianName',
             style: TextStyle(
               color: Colors.indigo,
               fontWeight: FontWeight.bold,
-              fontSize: 17,
+              fontSize: 18,
             ),
           ),
-          content: SingleChildScrollView(
-            // SingleChildScrollView eklenmiştir
-            child: Column(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: Container(
-                    width: 100,
-                    height: 100,
-                    child: Image.network(
-                      profilePictureUrl,
-                      fit: BoxFit.cover,
-                    ),
+        ),
+        content: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: 16),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: Container(
+                  width: 270,
+                  height: 270,
+                  child: Image.network(
+                    profilePictureUrl,
+                    fit: BoxFit.cover,
                   ),
                 ),
-                SizedBox(height: 16),
+              ),
+              SizedBox(height: 16),
+              Text(
+                veterinarianBio,
+                style: TextStyle(
+                  color: Colors.grey[800],
+                ),
+              ),
+              SizedBox(height: 16),
+              if (veterinarianAddress != null)
                 Text(
-                  veterinarianBio,
+                  'Adres: $veterinarianAddress',
                   style: TextStyle(
                     color: Colors.grey[800],
                   ),
                 ),
-                SizedBox(height: 16),
-                if (veterinarianAddress != null)
-                  Text(
-                    'Adres: $veterinarianAddress',
-                    style: TextStyle(
-                      color: Colors.grey[800],
-                    ),
+              if (veterinarianUniversity != null)
+                Text(
+                  'Mezun Olduğu Okul: $veterinarianUniversity',
+                  style: TextStyle(
+                    color: Colors.grey[800],
                   ),
-                if (veterinarianUniversity != null)
-                  Text(
-                    'Mezun Olduğu Okul: $veterinarianUniversity',
-                    style: TextStyle(
-                      color: Colors.grey[800],
-                    ),
+                ),
+              if (veterinarianPets != null)
+                Text(
+                  'Baktığı Hayvan Türleri: $veterinarianPets',
+                  style: TextStyle(
+                    color: Colors.grey[800],
                   ),
-                if (veterinarianPets != null)
-                  Text(
-                    'Baktığı Hayvan Türleri: $veterinarianPets',
-                    style: TextStyle(
-                      color: Colors.grey[800],
-                    ),
-                  ),
-              ],
-            ),
+                ),
+            ],
           ),
-          actions: [
-            Container(
-              alignment: Alignment.center,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      if (veterinarianPhone != null) {
-                        _contactVeterinarian(veterinarianPhone);
-                      }
-                    },
-                    child: Text(
-                      'İletişime Geç',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
+        ),
+        actions: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  if (veterinarianPhone != null) {
+                    _contactVeterinarian(veterinarianPhone);
+                  }
+                },
+                child: Text(
+                  'İletişime Geç',
+                  style: TextStyle(
+                    color: Colors.white,
                   ),
-                  SizedBox(width: 8),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Text(
-                      'Kapat',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ),
-          ],
-          contentPadding: EdgeInsets.symmetric(horizontal: 20),
-        );
-      },
-    );
-  }
+              SizedBox(width: 8),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text(
+                  'Kapat',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+        contentPadding: EdgeInsets.symmetric(horizontal: 20),
+      );
+    },
+  );
+}
 
   void _addAddress(String address) {
     showDialog(
