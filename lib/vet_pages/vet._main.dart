@@ -74,7 +74,7 @@ class ChipUpdatePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hayvan Bilgilerini Getirme'),
+        title: Text('Hayvan Bilgilerini Getir'),
       ),
       body: Padding(
         padding: EdgeInsets.all(20),
@@ -111,7 +111,7 @@ class EditAnimalPage extends StatelessWidget {
     // Seçilen ID'ye göre düzenleme yapmak için burada gerekli arayüzü oluşturun ve işlemleri gerçekleştirin
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hayvan Düzenleme Sayfası'),
+        title: Text('Hayvan Bilgileri'),
       ),
       body: Center(
         child: Column(
@@ -233,8 +233,6 @@ class EditAnimalPage extends StatelessWidget {
                 ),
               ),
             ),
-            // Düzenleme için gerekli arayüzü buraya ekleyin
-            // İşlemleri gerçekleştirecek butonları buraya ekleyin
           ],
         ),
       ),
@@ -247,8 +245,8 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
+      body: Scaffold(
         appBar: AppBar(
           title: Text('Veteriner Profili'),
         ),
