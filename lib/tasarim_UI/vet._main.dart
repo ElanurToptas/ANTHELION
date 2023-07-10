@@ -1,4 +1,5 @@
 ﻿import 'package:flutter/material.dart';
+import 'package:petcare/vet_pages/vet._main.dart';
 import 'package:petcare/vet_pages/vet_profile/edit_profile.dart';
 import 'package:petcare/vet_pages/animal/vet._animal.dart';
 
@@ -62,7 +63,8 @@ class _ProfilePageState extends State<ProfilePage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => VetAnimal()),
+                          MaterialPageRoute(
+                              builder: (context) => ChipUpdatePage()),
                         );
                       },
                       child: Text('Hayvan Çip No'),

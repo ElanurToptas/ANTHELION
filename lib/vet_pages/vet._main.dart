@@ -1,10 +1,12 @@
 ﻿import 'package:flutter/material.dart';
 import 'package:petcare/tasarim_UI/tema.dart';
 import 'package:petcare/vet_pages/animal/lab_results.dart';
+import 'package:petcare/vet_pages/animal/vaccines.dart';
 import 'package:petcare/vet_pages/vet_profile/edit_profile.dart';
 import 'package:petcare/vet_pages/animal/vet._animal.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:petcare/vet_pages/animal/disease_diagnosis.dart';
+import 'package:petcare/vet_pages/animal/vaccines.dart';
 
 class ButtonStyles {
   static final elevatedButtonStyle = ElevatedButton.styleFrom(
@@ -168,7 +170,16 @@ class EditAnimalPage extends StatelessWidget {
                             height: 120,
                             child: ElevatedButton(
                               style: ButtonStyles.elevatedButtonStyle,
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Vaccines(
+                                      chipNumber: chipNumber,
+                                    ),
+                                  ),
+                                );
+                              },
                               child: Text('Gelecek Aşıları'),
                             ),
                           ),
@@ -204,7 +215,14 @@ class EditAnimalPage extends StatelessWidget {
                             height: 120,
                             child: ElevatedButton(
                               style: ButtonStyles.elevatedButtonStyle,
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          VeterinariansPage()),
+                                );
+                              },
                               child: Text('Randevu Ekranı'),
                             ),
                           ),
@@ -269,7 +287,7 @@ class ProfilePage extends StatelessWidget {
                             ),
                           );
                         },
-                        child: Text('Hasta Bilgilerini Getir'),
+                        child: Text('Hasta Bilgileri'),
                       ),
                       SizedBox(width: 16),
                       ElevatedButton(
