@@ -56,7 +56,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     SizedBox(height: 10,),
                     DecoratedBox(
                       
-                      decoration: BoxDecoration(color: Color.fromARGB(218, 177, 78, 195),borderRadius: BorderRadius.circular(12)),
+                      decoration: BoxDecoration(),
                       child: TextFormField(
                         controller: _emailController,
                         decoration: InputDecoration(
@@ -70,7 +70,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     // Ad Soyad kısmı
                     DecoratedBox(
                       
-                      decoration: BoxDecoration(color: Color.fromARGB(218, 177, 78, 195),borderRadius: BorderRadius.circular(12)),
+                      decoration: BoxDecoration(),
                       child: TextFormField(
                         controller: _namesurnameController,
                         decoration: InputDecoration(
@@ -85,7 +85,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     // Parola kısmı
                     DecoratedBox(
                       
-                      decoration: BoxDecoration(color: Color.fromARGB(218, 177, 78, 195),borderRadius: BorderRadius.circular(12)),
+                      decoration: BoxDecoration(),
                       child: TextFormField(
                         controller: _passwordController,
                         decoration: InputDecoration(
@@ -99,7 +99,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     SizedBox(height: 10,),
                     //Parola  tekrar Kısmı
                     DecoratedBox( 
-                      decoration: BoxDecoration(color: Color.fromARGB(218, 177, 78, 195),borderRadius: BorderRadius.circular(12)) ,
+                      decoration: BoxDecoration() ,
                       child: TextFormField(
                         controller: _confirmPasswordController,
                         decoration: InputDecoration(
@@ -122,10 +122,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       return Column(
                         children: [
                           DecoratedBox(
-                            decoration: BoxDecoration(
-                              color: Color.fromARGB(218, 177, 78, 195),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
+                            decoration: BoxDecoration(),
                             child: TextFormField(
                               decoration: InputDecoration(
                                 labelText: 'Evcil Hayvan Chip ID',
@@ -185,12 +182,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     SizedBox(height: 20.0),
                     // Kayıt ol butonu
                     SizedBox(width: 345,height: 50,
-                      child: ElevatedButton(style: ElevatedButton.styleFrom(
-                         backgroundColor: Colors.deepPurple,
-                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12)
-                          )
-                          ),
+                      child: ElevatedButton(
+                        
                         onPressed: () {
                           if (_formKey.currentState!.validate()&& _passwordController.text ==_confirmPasswordController.text) {
                             _register();

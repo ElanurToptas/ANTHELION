@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:petcare/login_signup/login_screen.dart';
+import 'package:petcare/tasarim_UI/tema.dart';
 
 class PasswordResetPage extends StatefulWidget {
   @override
@@ -38,30 +39,33 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Şifremi Unuttum'),
-      ),
-      body: Center(
-        child: Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Column( mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextField(
-                controller: _emailController,
-                decoration: InputDecoration(
-                  labelText: 'E-posta',
+    return MaterialApp(
+      theme: theme(),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Şifremi Unuttum'),
+        ),
+        body: Center(
+          child: Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Column( mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextField(
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                    labelText: 'E-posta',
+                  ),
                 ),
-              ),
-              SizedBox(height: 16.0),
-              ElevatedButton(
-                onPressed: () {
-                  _resetPassword();
-                  
-                },
-                child: Text('Şifreyi Sıfırla'),
-              ),
-            ],
+                SizedBox(height: 16.0),
+                ElevatedButton(
+                  onPressed: () {
+                    _resetPassword();
+                    
+                  },
+                  child: Text('Şifreyi Sıfırla'),
+                ),
+              ],
+            ),
           ),
         ),
       ),

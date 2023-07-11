@@ -1,121 +1,133 @@
-﻿import 'package:flutter/material.dart';
-import 'package:petcare/vet_pages/animal/vaccines.dart';
+﻿import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 
-class ButtonStyles {
-  static final elevatedButtonStyle = ElevatedButton.styleFrom(
-    backgroundColor: Color.fromARGB(255, 111, 132, 255),
-    textStyle: TextStyle(fontSize: 18),
-    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-    minimumSize: Size(10, 10),
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(8),
-    ),
-  );
-}
+final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+final FirebaseStorage _storage = FirebaseStorage.instance;
 
-class VetAnimal extends StatefulWidget {
+class VeterinariansPage extends StatefulWidget {
   @override
-  _VetAnimalState createState() => _VetAnimalState();
+  _VeterinariansPageState createState() => _VeterinariansPageState();
 }
 
-class _VetAnimalState extends State<VetAnimal> {
+class _VeterinariansPageState extends State<VeterinariansPage> {
+  Future<String?> _getVeterinarianProfilePictureUrl(
+      String veterinarianUid) async {
+    try {
+      final ref = _storage
+          .ref()
+          .child('profile_picture/${veterinarianUid}_profile_image.jpg');
+      final url = await ref.getDownloadURL();
+      return url;
+    } catch (e) {
+      print(
+          'Error getting profile picture URL for veterinarian $veterinarianUid: $e');
+      return null;
+    }
+  }
+
+  Future<String?> _getVeterinarianName(String veterinarianUid) async {
+    try {
+      final snapshot = await _firestore
+          .collection('Veterinarians')
+          .doc(veterinarianUid)
+          .get();
+      if (snapshot.exists) {
+        final data = snapshot.data() as Map<String, dynamic>?;
+        if (data != null) {
+          return data['name'] as String?;
+        }
+      }
+    } catch (e) {
+      print(
+          'Error getting veterinarian name for veterinarian $veterinarianUid: $e');
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 240, 240, 240),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(48, 69, 27, 255),
-        title: Text('Hayvan Döküman'),
+        title: Text('Veterinarians'),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Expanded(
-              child: Container(),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-              child: Container(
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 255, 255, 255),
-                  borderRadius: BorderRadius.circular(8),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 1,
-                      blurRadius: 10,
-                      offset: Offset(1, 1),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: Container(
-                            height: 120,
-                            child: ElevatedButton(
-                              style: ButtonStyles.elevatedButtonStyle,
-                              onPressed: () {},
-                              child: Text('Tahlil Sonuçları'),
-                            ),
+      body: StreamBuilder<QuerySnapshot>(
+        stream: _firestore.collection('Veterinarians').snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          }
+
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator();
+          }
+
+          if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+            return Text('No veterinarians found.');
+          }
+
+          return ListView(
+            children: snapshot.data!.docs.map((DocumentSnapshot document) {
+              final veterinarianUid = document.id;
+              return FutureBuilder<String?>(
+                future: _getVeterinarianProfilePictureUrl(veterinarianUid),
+                builder:
+                    (BuildContext context, AsyncSnapshot<String?> snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return ListTile(
+                      title: Text('Loading...'),
+                      leading: CircularProgressIndicator(),
+                    );
+                  }
+
+                  if (snapshot.hasError ||
+                      !snapshot.hasData ||
+                      snapshot.data == null) {
+                    return ListTile(
+                      title: Text('Error'),
+                      leading: Icon(Icons.error),
+                    );
+                  }
+
+                  final profilePictureUrl = snapshot.data!;
+                  return FutureBuilder<String?>(
+                    future: _getVeterinarianName(veterinarianUid),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<String?> snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return ListTile(
+                          title: Text('Loading...'),
+                          leading: CircleAvatar(
+                            backgroundImage: NetworkImage(profilePictureUrl),
                           ),
-                        ),
-                        SizedBox(width: 16),
-                        Expanded(
-                          child: Container(
-                            height: 120,
-                            child: ElevatedButton(
-                              style: ButtonStyles.elevatedButtonStyle,
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => MyWidget()),
-                                );
-                              },
-                              child: Text('Gelecek Aşıları'),
-                            ),
+                        );
+                      }
+
+                      if (snapshot.hasError ||
+                          !snapshot.hasData ||
+                          snapshot.data == null) {
+                        return ListTile(
+                          title: Text('Error'),
+                          leading: CircleAvatar(
+                            backgroundImage: NetworkImage(profilePictureUrl),
                           ),
+                        );
+                      }
+
+                      final veterinarianName = snapshot.data!;
+                      return ListTile(
+                        title: Text(veterinarianName),
+                        leading: CircleAvatar(
+                          backgroundImage: NetworkImage(profilePictureUrl),
                         ),
-                      ],
-                    ),
-                    SizedBox(height: 16),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: Container(
-                            height: 120,
-                            child: ElevatedButton(
-                              style: ButtonStyles.elevatedButtonStyle,
-                              onPressed: () {},
-                              child: Text('Hastalık Detayı'),
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 16),
-                        Expanded(
-                          child: Container(
-                            height: 120,
-                            child: ElevatedButton(
-                              style: ButtonStyles.elevatedButtonStyle,
-                              onPressed: () {},
-                              child: Text('Randevu Ekranı'),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
+                      );
+                    },
+                  );
+                },
+              );
+            }).toList(),
+          );
+        },
       ),
     );
   }

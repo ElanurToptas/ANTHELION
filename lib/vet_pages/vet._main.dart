@@ -1,10 +1,12 @@
 ﻿import 'package:flutter/material.dart';
 import 'package:petcare/tasarim_UI/tema.dart';
 import 'package:petcare/vet_pages/animal/lab_results.dart';
+import 'package:petcare/vet_pages/animal/vaccines.dart';
 import 'package:petcare/vet_pages/vet_profile/edit_profile.dart';
 import 'package:petcare/vet_pages/animal/vet._animal.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:petcare/vet_pages/animal/disease_diagnosis.dart';
+import 'package:petcare/vet_pages/animal/vaccines.dart';
 
 class ButtonStyles {
   static final elevatedButtonStyle = ElevatedButton.styleFrom(
@@ -72,7 +74,7 @@ class ChipUpdatePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hayvan Bilgilerini Getirme'),
+        title: Text('Hayvan Bilgilerini Getir'),
       ),
       body: Padding(
         padding: EdgeInsets.all(20),
@@ -109,7 +111,7 @@ class EditAnimalPage extends StatelessWidget {
     // Seçilen ID'ye göre düzenleme yapmak için burada gerekli arayüzü oluşturun ve işlemleri gerçekleştirin
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hayvan Düzenleme Sayfası'),
+        title: Text('Hayvan Bilgileri'),
       ),
       body: Center(
         child: Column(
@@ -168,7 +170,16 @@ class EditAnimalPage extends StatelessWidget {
                             height: 120,
                             child: ElevatedButton(
                               style: ButtonStyles.elevatedButtonStyle,
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Vaccines(
+                                      chipNumber: chipNumber,
+                                    ),
+                                  ),
+                                );
+                              },
                               child: Text('Gelecek Aşıları'),
                             ),
                           ),
@@ -204,7 +215,14 @@ class EditAnimalPage extends StatelessWidget {
                             height: 120,
                             child: ElevatedButton(
                               style: ButtonStyles.elevatedButtonStyle,
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          VeterinariansPage()),
+                                );
+                              },
                               child: Text('Randevu Ekranı'),
                             ),
                           ),
@@ -215,8 +233,6 @@ class EditAnimalPage extends StatelessWidget {
                 ),
               ),
             ),
-            // Düzenleme için gerekli arayüzü buraya ekleyin
-            // İşlemleri gerçekleştirecek butonları buraya ekleyin
           ],
         ),
       ),
@@ -229,8 +245,8 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
+      body: Scaffold(
         appBar: AppBar(
           title: Text('Veteriner Profili'),
         ),
@@ -269,7 +285,7 @@ class ProfilePage extends StatelessWidget {
                             ),
                           );
                         },
-                        child: Text('Hasta Bilgilerini Getir'),
+                        child: Text('Hasta Bilgileri'),
                       ),
                       SizedBox(width: 16),
                       ElevatedButton(
