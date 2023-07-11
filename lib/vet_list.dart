@@ -38,8 +38,9 @@ class _VetPageState extends State<VetPage> {
   void _filterVeterinarians(String keyword) {
     setState(() {
       filteredVeterinarians = veterinarians.where((vet) {
-        final name =
-            (vet.data() as Map<String, dynamic>)['name'].toString().toLowerCase();
+        final name = (vet.data() as Map<String, dynamic>)['name']
+            .toString()
+            .toLowerCase();
         return name.contains(keyword.toLowerCase());
       }).toList();
     });
@@ -122,14 +123,21 @@ class _VetPageState extends State<VetPage> {
                     }
 
                     final veterinarianData = snapshot.data!;
-                    final veterinarianName = veterinarianData['name'] as String?;
+                    final veterinarianName =
+                        veterinarianData['name'] as String?;
                     final veterinarianBio = veterinarianData['bio'] as String?;
-                    final veterinarianAddress = veterinarianData['address'] as String?;
-                    final veterinarianPhone = veterinarianData['phone number'] as String?;
-                    final veterinarianUniversity = veterinarianData['university'] as String?;
-                    final veterinarianPets = veterinarianData['species'] as String?;
-                    final veterinarianAcil = veterinarianData['acil bakım'] = false;
-                    final veterinarianHome = veterinarianData['evde bakım'] = false;
+                    final veterinarianAddress =
+                        veterinarianData['address'] as String?;
+                    final veterinarianPhone =
+                        veterinarianData['phone number'] as String?;
+                    final veterinarianUniversity =
+                        veterinarianData['university'] as String?;
+                    final veterinarianPets =
+                        veterinarianData['species'] as String?;
+                    final veterinarianAcil =
+                        veterinarianData['acil bakım'] as bool;
+                    final veterinarianHome =
+                        veterinarianData['evde bakım'] as bool;
 
                     if (veterinarianName == null || veterinarianBio == null) {
                       return ListTile(
@@ -151,9 +159,10 @@ class _VetPageState extends State<VetPage> {
                           profilePictureUrl,
                           veterinarianAddress,
                           veterinarianPhone,
-                          veterinarianUniversity
-                          
-                          
+                          veterinarianUniversity,
+                          veterinarianPets,
+                          veterinarianAcil,
+                          veterinarianHome,
                         );
                       },
                       child: Card(
