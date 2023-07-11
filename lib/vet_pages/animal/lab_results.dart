@@ -106,17 +106,17 @@ class _LabResultsState extends State<LabResults> {
   }
 
   Future<void> _uploadFileWithCustomName(File file, String fileName) async {
-    String currentDate = DateFormat('dd/MM/yy').format(DateTime.now());
-    String newFileName = '$fileName - ($currentDate)'; // Yeni dosya adı
+    String currentDate = DateFormat('dd-MM-yy').format(DateTime.now());
+    String newFileName = '$fileName - $currentDate.pdf'; // Yeni dosya adı
 
     Reference ref = _storage.ref('Animals/${widget.chipNumber}/$newFileName');
     UploadTask uploadTask = ref.putFile(file);
 
-    await uploadTask.whenComplete(() {
+    await uploadTask.whenComplete(() async {
       setState(() {
         labResults.add(newFileName);
       });
-      FirebaseFirestore.instance
+      await FirebaseFirestore.instance
           .collection('Pets')
           .doc(widget.chipNumber)
           .update({

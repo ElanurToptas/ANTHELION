@@ -280,6 +280,8 @@ class _VetRegisterPageState extends State<VetRegisterPage> {
         'species': _speciesController.text,
         'phone number': _phoneNumberController.text,
         'bio': bio,
+        'evde bakım': _checkValue1,
+        'acil bakım': _checkValue2,
       });
       // Resmi Firebase Storage'a yükle
       final storageRef = FirebaseStorage.instance
@@ -295,8 +297,8 @@ class _VetRegisterPageState extends State<VetRegisterPage> {
 
       // Checkbox değerlerini Firestore'a yazdırma
       await userDocRef.update({
-        'option1': _checkValue1,
-        'option2': _checkValue2,
+        'evde bakım': _checkValue1,
+        'acil bakım': _checkValue2,
       });
 
       print(
