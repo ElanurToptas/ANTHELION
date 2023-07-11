@@ -25,22 +25,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return VetRegisterPage();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    Widget content;
-    if (selectedOption == Option.Option1) {
-      content = getOption1Content();
-    } else {
-      content = getOption2Content();
-    }
-    return MaterialApp(
-      theme: theme(),
-      home: Scaffold(
-        appBar: AppBar(
-          toolbarHeight: kToolbarHeight, // AppBar yüksekliğini ayarla
-          centerTitle: true, // Başlığı ortala
-          title: null, // Başlığı kaldır
-          actions: [
+  AppBar _buildAppBar() {
+    return AppBar(
+      title: null,
+      actions: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: TextButton(
@@ -59,6 +50,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
             ),
+            SizedBox(width: 16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: TextButton(
@@ -77,8 +69,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
             ),
+            SizedBox(width: 45), // Boşluk eklemek için SizedBox kullan
           ],
         ),
+      ],
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    Widget content;
+    if (selectedOption == Option.Option1) {
+      content = getOption1Content();
+    } else {
+      content = getOption2Content();
+    }
+    return MaterialApp(
+      theme: theme(),
+      home: Scaffold(
+        appBar: _buildAppBar(),
         body: SingleChildScrollView(
           child: Column(
             children: [

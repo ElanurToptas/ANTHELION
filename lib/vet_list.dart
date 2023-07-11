@@ -161,8 +161,8 @@ class _VetPageState extends State<VetPage> {
                           veterinarianPhone,
                           veterinarianUniversity,
                           veterinarianPets,
-                          veterinarianAcil,
-                          veterinarianHome,
+                          veterinarianAcil!,
+                          veterinarianHome!,
                         );
                       },
                       child: Card(
@@ -199,14 +199,33 @@ class _VetPageState extends State<VetPage> {
                                     width: 16,
                                   ),
                                   Expanded(
-                                    child: Text(
-                                      veterinarianBio.length > 190
-                                          ? '${veterinarianBio.substring(0, 190)}...'
-                                          : veterinarianBio,
-                                      style: TextStyle(
-                                        color: Colors.grey[600],
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          veterinarianBio.length > 190
+                                              ? '${veterinarianBio.substring(0, 190)}...'
+                                              : veterinarianBio,
+                                          style: TextStyle(
+                                            color: Colors.grey[600],
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        SizedBox(height: 8),
+                                        Text(
+                                          'Baktığı Hayvan Türleri:',
+                                          style: TextStyle(
+                                            color: Colors.grey[600],
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        Text(
+                                          veterinarianPets ?? '',
+                                          style: TextStyle(
+                                            color: Colors.grey[600],
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ],
@@ -311,41 +330,163 @@ class _VetPageState extends State<VetPage> {
                 ),
                 SizedBox(height: 16),
                 if (veterinarianAddress != null)
-                  Text(
-                    'Adres: $veterinarianAddress',
-                    style: TextStyle(
-                      color: Colors.grey[800],
+                  Container(width: 325,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.indigo,
+                        width: 2.0,
+                      ),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    padding: EdgeInsets.all(8.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(width: 8),
+                        Expanded(
+                          child: Text(
+                            'Adres: $veterinarianAddress',
+                            style: TextStyle(
+                              color: Colors.grey[800],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 SizedBox(height: 16),
                 if (veterinarianUniversity != null)
-                  Text(
-                    'Mezun Olduğu Okul: $veterinarianUniversity',
-                    style: TextStyle(
-                      color: Colors.grey[800],
+                  Container(width: 325,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.indigo,
+                        width: 2.0,
+                      ),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    padding: EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Text(textAlign: TextAlign.left,
+                          'Mezun Olduğu Okul:',
+                          style: TextStyle(
+                            color: Colors.grey[800],
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(textAlign: TextAlign.left,
+                          veterinarianUniversity,
+                          style: TextStyle(
+                            color: Colors.grey[800],
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 SizedBox(height: 16),
                 if (veterinarianPets != null)
-                  Text(
-                    'Baktığı Hayvan Türleri: $veterinarianPets',
-                    style: TextStyle(
-                      color: Colors.grey[800],
+                  Container(
+                    width: 325,
+    
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.indigo,
+                        width: 2.0,  
+                      ),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    padding: EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Text(textAlign: TextAlign.left,
+                          'Baktığı Hayvan Türleri:',
+                          style: TextStyle(
+                            color: Colors.grey[800],
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          veterinarianPets,
+                          style: TextStyle(
+                            color: Colors.grey[800],
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 SizedBox(height: 16),
-                Text(
-                  'Acil Durum: $acil',
-                  style: TextStyle(
-                    color: Colors.grey[800],
-                  ),
+                Row(
+                  children: [
+                    Container(width: 310,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.indigo,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      padding: EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          SizedBox(width: 8),
+                          Text(
+                            'Acil Ulaşım ',
+                            style: TextStyle(
+                              color: Colors.grey[800],
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            ': $acil',
+                            style: TextStyle(
+                              color: Colors.grey[800],
+                            ),
+                          ),
+                          Icon(
+                            veterinarianAcil ? Icons.check : Icons.clear,
+                            color: veterinarianAcil ? Colors.green : Colors.red,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(height: 16),
-                Text(
-                  'Evde Bakım: $home',
-                  style: TextStyle(
-                    color: Colors.grey[800],
-                  ),
+                Row(
+                  children: [
+                    Container(width: 310,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.indigo,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      padding: EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          SizedBox(width: 8),
+                          Text(
+                            'Evde Bakım ',
+                            style: TextStyle(
+                              color: Colors.grey[800],
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            ': $home',
+                            style: TextStyle(
+                              color: Colors.grey[800],
+                            ),
+                          ),
+                          Icon(
+                            veterinarianAcil ? Icons.check : Icons.clear,
+                            color: veterinarianAcil ? Colors.green : Colors.red,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(height: 16),
               ],
