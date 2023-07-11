@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:petcare/tasarim_UI/tema.dart';
 
 class EditProfilePage extends StatefulWidget {
   @override
@@ -78,7 +79,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
-        backgroundColor: Colors.green,
+        
       ),
     );
   }
@@ -87,84 +88,84 @@ class _EditProfilePageState extends State<EditProfilePage> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
-        backgroundColor: Colors.red,
+        
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( backgroundColor: Color.fromARGB(212, 255, 253, 253),
-      appBar: AppBar(
-        title: Text('Profil Düzenle'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          
-          children: [
-            Text(
-              'Kullanıcı Adı:',
-              style: TextStyle(fontSize: 16.0),
-            ),
-            TextFormField(
-              controller: _nameController,
-            ),
-            SizedBox(height: 16.0),
-            Text(
-              'E-posta Adresi:',
-              style: TextStyle(fontSize: 16.0),
-            ),
-            TextFormField(
-              controller: _emailController,
-            ),
-            SizedBox(height: 16.0),
+    return MaterialApp(
+      theme: theme(),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Profil Düzenle'),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
             
-            Text(
-              'Mevcut Kullanıcı Adı: $_currentName',
-              style: TextStyle(fontSize: 16.0),
-            ),
-            SizedBox(height: 8.0),
-            Text(
-              'Mevcut E-posta Adresi: $_currentEmail',
-              style: TextStyle(fontSize: 16.0),
-            ),
-             SizedBox(height: 16.0),
-            SizedBox(width: 250,
-              child: ElevatedButton(style:ElevatedButton.styleFrom(
-                           backgroundColor: Colors.deepPurple,),
-                onPressed: _changeUserName,
-                child: Text('Kullanıcı Adını Güncelle'),
+            children: [
+              Text(
+                'Kullanıcı Adı:',
+                style: TextStyle(fontSize: 16.0),
               ),
-            ),
-            SizedBox(height: 8.0),
-            SizedBox(width: 250,
-              child: ElevatedButton(style:ElevatedButton.styleFrom(
-                           backgroundColor: Colors.deepPurple,),
-                onPressed: _changeUserEmail,
-                child: Text('E-posta Adresini Güncelle'),
+              TextFormField(
+                controller: _nameController,
               ),
-            ),
-            SizedBox(height: 8.0),
-          
-             
-            SizedBox(width: 250, 
-              child: ElevatedButton(style:ElevatedButton.styleFrom(
-                           backgroundColor: Colors.deepPurple,),
-                onPressed: () async {
-                try {
-                  await FirebaseAuth.instance.signOut();
-                  // Oturum başarıyla kapatıldıktan sonra yapılacak işlemler
-                  // Örneğin, kullanıcıyı başka bir sayfaya yönlendirebilirsiniz.
-                } catch (e) {
-                  // Oturum kapatma işlemi başarısız oldu
-                  print('Oturum kapatma hatası: $e');
-                }
-              },
-                child: Text('Çıkış Yap'),
+              SizedBox(height: 16.0),
+              Text(
+                'E-posta Adresi:',
+                style: TextStyle(fontSize: 16.0),
               ),
-            ),
-          ],
+              TextFormField(
+                controller: _emailController,
+              ),
+              SizedBox(height: 16.0),
+              
+              Text(
+                'Mevcut Kullanıcı Adı: $_currentName',
+                style: TextStyle(fontSize: 16.0),
+              ),
+              SizedBox(height: 8.0),
+              Text(
+                'Mevcut E-posta Adresi: $_currentEmail',
+                style: TextStyle(fontSize: 16.0),
+              ),
+               SizedBox(height: 16.0),
+              SizedBox(width: 250,
+                child: ElevatedButton(
+                  onPressed: _changeUserName,
+                  child: Text('Kullanıcı Adını Güncelle'),
+                ),
+              ),
+              SizedBox(height: 8.0),
+              SizedBox(width: 250,
+                child: ElevatedButton(
+                  onPressed: _changeUserEmail,
+                  child: Text('E-posta Adresini Güncelle'),
+                ),
+              ),
+              SizedBox(height: 8.0),
+            
+               
+              SizedBox(width: 250, 
+                child: ElevatedButton(
+                  onPressed: () async {
+                  try {
+                    await FirebaseAuth.instance.signOut();
+                    // Oturum başarıyla kapatıldıktan sonra yapılacak işlemler
+                    // Örneğin, kullanıcıyı başka bir sayfaya yönlendirebilirsiniz.
+                  } catch (e) {
+                    // Oturum kapatma işlemi başarısız oldu
+                    print('Oturum kapatma hatası: $e');
+                  }
+                },
+                  child: Text('Çıkış Yap'),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

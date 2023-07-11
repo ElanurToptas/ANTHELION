@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
+import 'package:petcare/tasarim_UI/tema.dart';
 
 class PetDocumentsPage extends StatefulWidget {
   @override
@@ -97,43 +98,46 @@ class _PetDocumentsPageState extends State<PetDocumentsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Tahlillerim'),
-      ),
-      body: Column(
-        children: [
-          DropdownButton<String>(
-            value: _selectedPet,
-            hint: Text("Evcil Hayvan ID Seç") ,
-            items: _pets.map((String pet) {
-              return DropdownMenuItem<String>(
-                value: pet,
-                child: Text(pet),
-              );
-            }).toList(),
-            onChanged: (String? selectedPet) {
-              setState(() {
-                _selectedPet = selectedPet;
-                if (selectedPet != null) {
-                  _fetchPetDocuments(selectedPet);
-                } else {
-                  _documentPaths = [];
-                }
-              });
-            },
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: _documentPaths.length,
-              itemBuilder: (context, index) {
-                final path = _documentPaths[index];
-
-                return _buildDocumentCard(path);
+    return MaterialApp(
+      theme: theme(),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Tahlillerim'),
+        ),
+        body: Column(
+          children: [
+            DropdownButton<String>(
+              value: _selectedPet,
+              hint: Text("Evcil Hayvan ID Seç") ,
+              items: _pets.map((String pet) {
+                return DropdownMenuItem<String>(
+                  value: pet,
+                  child: Text(pet),
+                );
+              }).toList(),
+              onChanged: (String? selectedPet) {
+                setState(() {
+                  _selectedPet = selectedPet;
+                  if (selectedPet != null) {
+                    _fetchPetDocuments(selectedPet);
+                  } else {
+                    _documentPaths = [];
+                  }
+                });
               },
             ),
-          ),
-        ],
+            Expanded(
+              child: ListView.builder(
+                itemCount: _documentPaths.length,
+                itemBuilder: (context, index) {
+                  final path = _documentPaths[index];
+    
+                  return _buildDocumentCard(path);
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

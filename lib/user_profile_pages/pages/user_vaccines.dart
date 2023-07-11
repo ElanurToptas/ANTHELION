@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:petcare/tasarim_UI/tema.dart';
 
 import 'package:petcare/user_profile_pages/pages/utils_calender.dart';
 
@@ -55,53 +56,56 @@ class _YourPageState extends State<YourPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Color.fromARGB(224, 234, 234, 234),
-      appBar: AppBar(
-        title: Text('Aşılar ve Aşı Takvimi'),
-      ),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              DropdownButton<String>(
-                value: _selectedPet,
-                hint: Text('Select a pet'),
-                onChanged: (String? value) {
-                  setState(() {
-                    _selectedPet = value;
-                    _fetchPetVaccines();
-                  });
-                },
-                items: _pets.map<DropdownMenuItem<String>>((String pet) {
-                  return DropdownMenuItem<String>(
-                    value: pet,
-                    child: Text(pet),
-                  );
-                }).toList(),
-              ),
-              SizedBox(height: 16),
-              if (_vaccines.isNotEmpty)
-                Text(
-                  'Vaccines:',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+    return MaterialApp(
+      theme: theme(),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Aşılar ve Aşı Takvimi'),
+        ),
+        body: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                DropdownButton<String>(
+                  value: _selectedPet,
+                  hint: Text('Select a pet'),
+                  onChanged: (String? value) {
+                    setState(() {
+                      _selectedPet = value;
+                      _fetchPetVaccines();
+                    });
+                  },
+                  items: _pets.map<DropdownMenuItem<String>>((String pet) {
+                    return DropdownMenuItem<String>(
+                      value: pet,
+                      child: Text(pet),
+                    );
+                  }).toList(),
                 ),
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount: _vaccines.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(_vaccines[index]),
-                  );
-                },
-              ),
-                Row(mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    MyHeatMap(),
-                  ],
-                )
-            ],
- 
+                SizedBox(height: 16),
+                if (_vaccines.isNotEmpty)
+                  Text(
+                    'Vaccines:',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: _vaccines.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(_vaccines[index]),
+                    );
+                  },
+                ),
+                  Row(mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      MyHeatMap(),
+                    ],
+                  )
+              ],
+     
+            ),
           ),
         ),
       ),
