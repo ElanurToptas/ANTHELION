@@ -13,39 +13,6 @@ class VetPage extends StatefulWidget {
 }
 
 class _VetPageState extends State<VetPage> {
-  Future<String?> _getVeterinarianProfilePictureUrl(
-      String veterinarianUid) async {
-    try {
-      final ref = _storage
-          .ref()
-          .child('profile_picture/${veterinarianUid}_profile_image.jpg');
-      final url = await ref.getDownloadURL();
-      return url;
-    } catch (e) {
-      print(
-          'Error getting profile picture URL for veterinarian $veterinarianUid: $e');
-      return null;
-    }
-  }
-
-  Future<Map<String, dynamic>?> _getVeterinarianData(
-      String veterinarianUid) async {
-    try {
-      final snapshot = await _firestore
-          .collection('Veterinarians')
-          .doc(veterinarianUid)
-          .get();
-      if (snapshot.exists) {
-        final data = snapshot.data() as Map<String, dynamic>?;
-        return data;
-      }
-    } catch (e) {
-      print(
-          'Error getting veterinarian data for veterinarian $veterinarianUid: $e');
-    }
-    return null;
-  }
-
   late List<QueryDocumentSnapshot> veterinarians = [];
   late List<QueryDocumentSnapshot> filteredVeterinarians = [];
   TextEditingController _searchController = TextEditingController();
@@ -167,6 +134,10 @@ class _VetPageState extends State<VetPage> {
                         veterinarianData['university'] as String?;
                     final veterinarianPets =
                         veterinarianData['species'] as String?;
+                    final veterinarianAcil =
+                        veterinarianData['acil bakım'] as bool?;
+                    final veterinarianHome =
+                        veterinarianData['evde bakım'] as bool?;
 
                     if (veterinarianName == null || veterinarianBio == null) {
                       return ListTile(
@@ -180,72 +151,90 @@ class _VetPageState extends State<VetPage> {
                         ),
                       );
                     }
-return GestureDetector(
-  onTap: () {
-    _showVeterinarianDetails(
-      veterinarianName,
-      veterinarianBio,
-      profilePictureUrl,
-      veterinarianAddress,
-      veterinarianPhone,
-      veterinarianUniversity,
-      veterinarianPets,
-    );
-  },
-  child: Card(
-    elevation: 5,
-    child: Container(
-      padding: EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Veteriner $veterinarianName',
-            style: TextStyle(
-              color: Colors.indigo,
-              fontWeight: FontWeight.bold,
-              fontSize: 17,
-            ),
-          ),
-          SizedBox(height: 10),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: 115,
-                height: 170
-                ,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: Image.network(
-                    profilePictureUrl,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              SizedBox(width: 16, height: 75,),
-              Expanded(
-                child: Text(
-                  veterinarianBio.length > 190
-                      ? '${veterinarianBio.substring(0, 190
-                      )}...'
-                      : veterinarianBio,
-                  style: TextStyle(
-                    color: Colors.grey[600],
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    ),
-  ),
-);
-
-
-
+                    return GestureDetector(
+                      onTap: () {
+                        _showVeterinarianDetails(
+                          veterinarianName,
+                          veterinarianBio,
+                          profilePictureUrl,
+                          veterinarianAddress,
+                          veterinarianPhone,
+                          veterinarianUniversity,
+                          veterinarianPets,
+                          veterinarianAcil!,
+                          veterinarianHome!,
+                        );
+                      },
+                      child: Card(
+                        elevation: 5,
+                        child: Container(
+                          padding: EdgeInsets.all(16),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Veteriner $veterinarianName',
+                                style: TextStyle(
+                                  color: Colors.indigo,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 17,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width: 115,
+                                    height: 170,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      child: Image.network(
+                                        profilePictureUrl,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 16,
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          veterinarianBio.length > 190
+                                              ? '${veterinarianBio.substring(0, 190)}...'
+                                              : veterinarianBio,
+                                          style: TextStyle(
+                                            color: Colors.grey[600],
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        SizedBox(height: 8),
+                                        Text(
+                                          'Baktığı Hayvan Türleri:',
+                                          style: TextStyle(
+                                            color: Colors.grey[600],
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        Text(
+                                          veterinarianPets ?? '',
+                                          style: TextStyle(
+                                            color: Colors.grey[600],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
                   },
                 );
               },
@@ -256,172 +245,345 @@ return GestureDetector(
     );
   }
 
-  void _showVeterinarianDetails(
-  veterinarianName,
-  veterinarianBio,
-  profilePictureUrl,
-  veterinarianAddress,
-  veterinarianPhone,
-  veterinarianUniversity,
-  veterinarianPets,
-) {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Center(
-          child: Text(
-            'Veteriner $veterinarianName',
-            style: TextStyle(
-              color: Colors.indigo,
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-            ),
-          ),
-        ),
-        content: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(height: 16),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: Container(
-                  width: 270,
-                  height: 270,
-                  child: Image.network(
-                    profilePictureUrl,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              SizedBox(height: 16),
-              Text(
-                veterinarianBio,
-                style: TextStyle(
-                  color: Colors.grey[800],
-                ),
-              ),
-              SizedBox(height: 16),
-              if (veterinarianAddress != null)
-                Text(
-                  'Adres: $veterinarianAddress',
-                  style: TextStyle(
-                    color: Colors.grey[800],
-                  ),
-                ),
-              if (veterinarianUniversity != null)
-                Text(
-                  'Mezun Olduğu Okul: $veterinarianUniversity',
-                  style: TextStyle(
-                    color: Colors.grey[800],
-                  ),
-                ),
-              if (veterinarianPets != null)
-                Text(
-                  'Baktığı Hayvan Türleri: $veterinarianPets',
-                  style: TextStyle(
-                    color: Colors.grey[800],
-                  ),
-                ),
-            ],
-          ),
-        ),
-        actions: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  if (veterinarianPhone != null) {
-                    _contactVeterinarian(veterinarianPhone);
-                  }
-                },
-                child: Text(
-                  'İletişime Geç',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              SizedBox(width: 8),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text(
-                  'Kapat',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ],
-        contentPadding: EdgeInsets.symmetric(horizontal: 20),
-      );
-    },
-  );
-}
+  Future<String?> _getVeterinarianProfilePictureUrl(
+      String veterinarianUid) async {
+    try {
+      final ref = _storage
+          .ref()
+          .child('profile_picture/${veterinarianUid}_profile_image.jpg');
+      final url = await ref.getDownloadURL();
+      return url;
+    } catch (e) {
+      print(
+          'Error getting profile picture URL for veterinarian $veterinarianUid: $e');
+      return null;
+    }
+  }
 
-  void _addAddress(String address) {
+  Future<Map<String, dynamic>?> _getVeterinarianData(
+      String veterinarianUid) async {
+    try {
+      final snapshot = await _firestore
+          .collection('Veterinarians')
+          .doc(veterinarianUid)
+          .get();
+      if (snapshot.exists) {
+        final data = snapshot.data() as Map<String, dynamic>?;
+        return data;
+      }
+    } catch (e) {
+      print(
+          'Error getting veterinarian data for veterinarian $veterinarianUid: $e');
+    }
+    return null;
+  }
+
+  void _showVeterinarianDetails(
+    String veterinarianName,
+    String veterinarianBio,
+    String profilePictureUrl,
+    String? veterinarianAddress,
+    String? veterinarianPhone,
+    String? veterinarianUniversity,
+    String? veterinarianPets,
+    bool veterinarianAcil,
+    bool veterinarianHome,
+  ) {
+    String acil = veterinarianAcil ? 'Var' : 'Yok';
+    String home = veterinarianHome ? 'Var' : 'Yok';
+
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: AlertDialog(
-            title: Text(
-              'Adres',
+        return AlertDialog(
+          title: Center(
+            child: Text(
+              'Veteriner $veterinarianName',
               style: TextStyle(
                 color: Colors.indigo,
                 fontWeight: FontWeight.bold,
+                fontSize: 18,
               ),
             ),
-            content: Text(
-              address,
-              style: TextStyle(
-                color: Colors.grey[800],
-              ),
-            ),
-            actions: [
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text(
-                  'Kapat',
-                  style: TextStyle(
-                    color: Colors.white,
+          ),
+          content: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(height: 16),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Container(
+                    width: 270,
+                    height: 270,
+                    child: Image.network(
+                      profilePictureUrl,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-              ),
-            ],
+                SizedBox(height: 16),
+                Text(
+                  veterinarianBio,
+                  style: TextStyle(
+                    color: Colors.grey[800],
+                  ),
+                ),
+                SizedBox(height: 16),
+                if (veterinarianAddress != null)
+                  Container(width: 325,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.indigo,
+                        width: 2.0,
+                      ),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    padding: EdgeInsets.all(8.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(width: 8),
+                        Expanded(
+                          child: Text(
+                            'Adres: $veterinarianAddress',
+                            style: TextStyle(
+                              color: Colors.grey[800],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                SizedBox(height: 16),
+                if (veterinarianUniversity != null)
+                  Container(width: 325,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.indigo,
+                        width: 2.0,
+                      ),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    padding: EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Text(textAlign: TextAlign.left,
+                          'Mezun Olduğu Okul:',
+                          style: TextStyle(
+                            color: Colors.grey[800],
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(textAlign: TextAlign.left,
+                          veterinarianUniversity,
+                          style: TextStyle(
+                            color: Colors.grey[800],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                SizedBox(height: 16),
+                if (veterinarianPets != null)
+                  Container(
+                    width: 325,
+    
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.indigo,
+                        width: 2.0,  
+                      ),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    padding: EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Text(textAlign: TextAlign.left,
+                          'Baktığı Hayvan Türleri:',
+                          style: TextStyle(
+                            color: Colors.grey[800],
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          veterinarianPets,
+                          style: TextStyle(
+                            color: Colors.grey[800],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                SizedBox(height: 16),
+                Row(
+                  children: [
+                    Container(width: 310,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.indigo,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      padding: EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          SizedBox(width: 8),
+                          Text(
+                            'Acil Ulaşım ',
+                            style: TextStyle(
+                              color: Colors.grey[800],
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            ': $acil',
+                            style: TextStyle(
+                              color: Colors.grey[800],
+                            ),
+                          ),
+                          Icon(
+                            veterinarianAcil ? Icons.check : Icons.clear,
+                            color: veterinarianAcil ? Colors.green : Colors.red,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 16),
+                Row(
+                  children: [
+                    Container(width: 310,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.indigo,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      padding: EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          SizedBox(width: 8),
+                          Text(
+                            'Evde Bakım ',
+                            style: TextStyle(
+                              color: Colors.grey[800],
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            ': $home',
+                            style: TextStyle(
+                              color: Colors.grey[800],
+                            ),
+                          ),
+                          Icon(
+                            veterinarianAcil ? Icons.check : Icons.clear,
+                            color: veterinarianAcil ? Colors.green : Colors.red,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 16),
+              ],
+            ),
           ),
+          actions: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    if (veterinarianPhone != null) {
+                      _contactVeterinarian(veterinarianPhone);
+                    }
+                  },
+                  child: Text(
+                    'İletişime Geç',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                SizedBox(width: 8),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text(
+                    'Kapat',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+          contentPadding: EdgeInsets.symmetric(horizontal: 20),
         );
       },
     );
   }
 
   void _contactVeterinarian(String phone) async {
-  if (phone != null && phone.isNotEmpty) {
-    final url = 'tel:$phone';
-    if (await canLaunch(url)) {
-      await launch(url);
+    if (phone != null && phone.isNotEmpty) {
+      final url = 'tel:$phone';
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text(
+                'Hata',
+                style: TextStyle(
+                  color: Colors.indigo,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              content: Text(
+                'İşlem Gerçekleştirilemedi!',
+                style: TextStyle(
+                  color: Colors.grey[800],
+                ),
+              ),
+              actions: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text(
+                    'Kapat',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+      }
     } else {
       showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text(
-              'Hata',
+              'Uyarı',
               style: TextStyle(
                 color: Colors.indigo,
                 fontWeight: FontWeight.bold,
               ),
             ),
             content: Text(
-              'İşlem Gerçekleştirilemedi!',
+              'Daha Sonra Tekrar Deneyin!',
               style: TextStyle(
                 color: Colors.grey[800],
               ),
@@ -443,40 +605,5 @@ return GestureDetector(
         },
       );
     }
-  } else {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(
-            'Uyarı',
-            style: TextStyle(
-              color: Colors.indigo,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          content: Text(
-            'Daha Sonra Tekrar Deneyin!',
-            style: TextStyle(
-              color: Colors.grey[800],
-            ),
-          ),
-          actions: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text(
-                'Kapat',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ],
-        );
-      },
-    );
-  }
   }
 }
