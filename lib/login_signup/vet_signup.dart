@@ -83,8 +83,7 @@ class _VetRegisterPageState extends State<VetRegisterPage> {
                     ),
                     DecoratedBox(
                       decoration: BoxDecoration(
-                          color: Color.fromARGB(218, 177, 78, 195),
-                          borderRadius: BorderRadius.circular(12)),
+                          ),
                       child: TextFormField(
                         controller: _emailController,
                         decoration: InputDecoration(
@@ -96,8 +95,7 @@ class _VetRegisterPageState extends State<VetRegisterPage> {
                     ),
                     DecoratedBox(
                       decoration: BoxDecoration(
-                          color: Color.fromARGB(218, 177, 78, 195),
-                          borderRadius: BorderRadius.circular(12)),
+                          ),
                       child: TextFormField(
                         controller: _namesurnameController,
                         decoration: InputDecoration(
@@ -109,8 +107,7 @@ class _VetRegisterPageState extends State<VetRegisterPage> {
                     ),
                     DecoratedBox(
                       decoration: BoxDecoration(
-                          color: Color.fromARGB(218, 177, 78, 195),
-                          borderRadius: BorderRadius.circular(12)),
+                          ),
                       child: TextFormField(
                         controller: _universityController,
                         decoration: InputDecoration(
@@ -124,8 +121,7 @@ class _VetRegisterPageState extends State<VetRegisterPage> {
                     // Parola kısmı
                     DecoratedBox(
                       decoration: BoxDecoration(
-                          color: Color.fromARGB(218, 177, 78, 195),
-                          borderRadius: BorderRadius.circular(12)),
+                          ),
                       child: TextFormField(
                         controller: _passwordController,
                         decoration: InputDecoration(
@@ -139,8 +135,7 @@ class _VetRegisterPageState extends State<VetRegisterPage> {
                     //Parola  tekrar Kısmı
                     DecoratedBox(
                       decoration: BoxDecoration(
-                          color: Color.fromARGB(218, 177, 78, 195),
-                          borderRadius: BorderRadius.circular(12)),
+                          ),
                       child: TextFormField(
                         controller: _confirmPasswordController,
                         decoration: InputDecoration(
@@ -155,8 +150,7 @@ class _VetRegisterPageState extends State<VetRegisterPage> {
                     // Telefon numarasını aldığımız kısım
                     DecoratedBox(
                       decoration: BoxDecoration(
-                          color: Color.fromARGB(218, 177, 78, 195),
-                          borderRadius: BorderRadius.circular(12)),
+                          ),
                       child: TextFormField(
                         controller: _phoneNumberController,
                         decoration: InputDecoration(
@@ -169,8 +163,7 @@ class _VetRegisterPageState extends State<VetRegisterPage> {
                     ),
                     DecoratedBox(
                       decoration: BoxDecoration(
-                          color: Color.fromARGB(218, 177, 78, 195),
-                          borderRadius: BorderRadius.circular(12)),
+                          ),
                       child: TextFormField(
                         controller: _speciesController,
                         decoration: InputDecoration(
@@ -226,7 +219,7 @@ class _VetRegisterPageState extends State<VetRegisterPage> {
                       height: 50,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.deepPurple,
+                            
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12))),
                         onPressed: () {
