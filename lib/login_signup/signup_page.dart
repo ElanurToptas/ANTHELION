@@ -69,7 +69,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
             ),
-            SizedBox(width: 45), // Boşluk eklemek için SizedBox kullan
+            SizedBox(width: 45), // Boşluk eklemek için SizedBox kullandım. bu sayede ortalamış oldum.
           ],
         ),
       ],
