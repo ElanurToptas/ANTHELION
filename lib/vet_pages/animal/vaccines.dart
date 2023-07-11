@@ -1,6 +1,6 @@
 ﻿import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_heatmap_calendar/flutter_heatmap_calendar.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class Vaccines extends StatefulWidget {
   final String chipNumber;
@@ -13,10 +13,10 @@ class Vaccines extends StatefulWidget {
 
 class _VaccinesState extends State<Vaccines> {
   Map<String, Timestamp> vaccines = {};
-  Map<DateTime, int> datasets = {};
-  DateTime selectedDate = DateTime.now();
   TextEditingController vaccineNameController = TextEditingController();
-  TextEditingController vaccineDurationController = TextEditingController();
+  DateTime? selectedDate;
+  CalendarFormat calendarFormat = CalendarFormat.month;
+  DateTime focusedDay = DateTime.now();
 
   @override
   void initState() {
@@ -36,38 +36,22 @@ class _VaccinesState extends State<Vaccines> {
         final vaccinesData = data?['vaccines'] as Map<String, dynamic>?;
 
         if (vaccinesData != null) {
-          vaccines = Map<String, Timestamp>.from(vaccinesData);
+          vaccinesData.forEach((key, value) {
+            vaccines[key] = value as Timestamp;
+          });
         }
-
-        datasets = {};
-
-        vaccines.forEach((vaccineName, timestamp) {
-          DateTime date = timestamp.toDate();
-          datasets[date] = datasets[date] != null ? datasets[date]! + 1 : 1;
-        });
       });
     }
   }
 
   void addVaccine() {
     String vaccineName = vaccineNameController.text.trim();
-    String vaccineDuration = vaccineDurationController.text.trim();
 
-    if (vaccineName.isNotEmpty && vaccineDuration.isNotEmpty) {
-      DateTime currentDate = DateTime.now();
-      DateTime expirationDate =
-          currentDate.add(Duration(days: int.parse(vaccineDuration)));
-
-      Map<String, dynamic> vaccineInfo = {
-        'name': vaccineName,
-        'date': Timestamp.fromDate(expirationDate),
-      };
+    if (vaccineName.isNotEmpty && selectedDate != null) {
+      Timestamp vaccineDate = Timestamp.fromDate(selectedDate!);
 
       setState(() {
-        vaccines[vaccineName] = Timestamp.fromDate(expirationDate);
-        datasets[expirationDate] = datasets[expirationDate] != null
-            ? datasets[expirationDate]! + 1
-            : 1;
+        vaccines[vaccineName] = vaccineDate;
       });
 
       FirebaseFirestore.instance
@@ -78,7 +62,34 @@ class _VaccinesState extends State<Vaccines> {
       });
 
       vaccineNameController.clear();
-      vaccineDurationController.clear();
+      selectedDate = null;
+    }
+  }
+
+  void deleteVaccine(String vaccineName) {
+    setState(() {
+      vaccines.remove(vaccineName);
+    });
+
+    FirebaseFirestore.instance
+        .collection('Pets')
+        .doc(widget.chipNumber)
+        .update({
+      'vaccines': vaccines,
+    });
+  }
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2010),
+      lastDate: DateTime(2030),
+    );
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+      });
     }
   }
 
@@ -112,40 +123,12 @@ class _VaccinesState extends State<Vaccines> {
                   final vaccineDate = vaccines[vaccineName]!.toDate();
                   return ListTile(
                     title: Text('$vaccineName - $vaccineDate'),
+                    trailing: IconButton(
+                      icon: Icon(Icons.delete),
+                      onPressed: () => deleteVaccine(vaccineName),
+                    ),
                   );
                 },
-              ),
-              SizedBox(height: 20),
-              Text(
-                'Heatmap Calendar:',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 10),
-              Container(
-                height: 400,
-                child: HeatMap(
-                  datasets: datasets,
-                  startDate: DateTime.now(),
-                  endDate: DateTime.now().add(Duration(days: 40)),
-                  colorMode: ColorMode.opacity,
-                  size: 40,
-                  textColor: const Color.fromARGB(255, 255, 64, 64),
-                  showText: false,
-                  scrollable: true,
-                  colorsets: {
-                    1: Colors.red,
-                    3: Colors.orange,
-                    5: Colors.yellow,
-                    7: Colors.green,
-                    9: Colors.blue,
-                    11: Colors.indigo,
-                    13: Colors.purple,
-                  },
-                  onClick: (value) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text(value.toString())));
-                  },
-                ),
               ),
               SizedBox(height: 20),
               Text(
@@ -160,16 +143,65 @@ class _VaccinesState extends State<Vaccines> {
                 ),
               ),
               SizedBox(height: 10),
-              TextField(
-                controller: vaccineDurationController,
-                decoration: InputDecoration(
-                  labelText: 'Geçerlilik Süresi (gün)',
+              InkWell(
+                onTap: () => _selectDate(context),
+                child: InputDecorator(
+                  decoration: InputDecoration(
+                    labelText: 'Aşının Tarihi',
+                    hintText: 'Tarih Seçin',
+                  ),
+                  child: Text(selectedDate != null
+                      ? "${selectedDate!.day}/${selectedDate!.month}/${selectedDate!.year}"
+                      : 'Tarih Seçilmedi'),
                 ),
               ),
               SizedBox(height: 10),
               ElevatedButton(
                 onPressed: addVaccine,
                 child: Text('Aşı Ekle'),
+              ),
+              SizedBox(height: 20),
+              Text(
+                'Takvim:',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 10),
+              TableCalendar(
+                firstDay: DateTime.utc(2010, 10, 16),
+                lastDay: DateTime.utc(2030, 3, 14),
+                focusedDay: focusedDay,
+                calendarFormat: calendarFormat,
+                startingDayOfWeek: StartingDayOfWeek.monday,
+                calendarStyle: CalendarStyle(
+                  selectedDecoration: BoxDecoration(
+                    color: Colors.blue,
+                    shape: BoxShape.circle,
+                  ),
+                  todayDecoration: BoxDecoration(
+                    color: Colors.purpleAccent,
+                    shape: BoxShape.circle,
+                  ),
+                ),
+                headerStyle: HeaderStyle(
+                  formatButtonVisible: false,
+                ),
+                onDaySelected: (selectedDay, focusedDay) {
+                  setState(() {
+                    this.selectedDate = selectedDay;
+                    this.focusedDay = focusedDay;
+                  });
+                },
+                eventLoader: (day) {
+                  List<String> events = [];
+                  vaccines.forEach((key, value) {
+                    if (value.toDate().year == day.year &&
+                        value.toDate().month == day.month &&
+                        value.toDate().day == day.day) {
+                      events.add(key);
+                    }
+                  });
+                  return events;
+                },
               ),
             ],
           ),
