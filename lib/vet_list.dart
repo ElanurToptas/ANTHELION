@@ -135,9 +135,9 @@ class _VetPageState extends State<VetPage> {
                     final veterinarianPets =
                         veterinarianData['species'] as String?;
                     final veterinarianAcil =
-                        veterinarianData['acil bakım'] as bool;
+                        veterinarianData['acil bakım'] as bool?;
                     final veterinarianHome =
-                        veterinarianData['evde bakım'] as bool;
+                        veterinarianData['evde bakım'] as bool?;
 
                     if (veterinarianName == null || veterinarianBio == null) {
                       return ListTile(
