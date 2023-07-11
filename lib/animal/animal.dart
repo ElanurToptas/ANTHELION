@@ -53,22 +53,19 @@ class HomePage extends StatelessWidget {
   }
 
 
-  /*void _onSearchSubmitted(BuildContext context, String value) {
+  void _onSearchSubmitted(BuildContext context, String value) {
     if (value == "Norfolk") {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => DetailScreen(  image: 'asset/pictures/norfolkT.png',
-            text: " Norfolk Terrier, alıngan, cesur, meraklı, oyunbaz, kavgacı, sadık, neşeli, canlı, inatçı"
-                " ve bağımsız karakter özellikleriyle tam bir teriyerdir. Tarlada “iblis” olarak bilinir"
-                "ve avlanmayı, kazmayı ve Keşfetmeyi sever. Hareketli, bağımsız yapısından dolayı güvenli "
-                "bir alan tutulması gerekir. Zeki ve dost canlısıdır ancak iradeli bir yapıları ve kendi"
-                "düşünceleriyle hareket etmek isteyebilirler.",
-          ),
-        ),
+      MyCard card = MyCard(
+        title: " Norfolk Terrier, alıngan, cesur, meraklı, oyunbaz, kavgacı, sadık, neşeli, canlı, inatçı"
+            " ve bağımsız karakter özellikleriyle tam bir teriyerdir. Tarlada “iblis” olarak bilinir"
+            "ve avlanmayı, kazmayı ve Keşfetmeyi sever. Hareketli, bağımsız yapısından dolayı güvenli "
+            "bir alan tutulması gerekir. Zeki ve dost canlısıdır ancak iradeli bir yapıları ve kendi"
+            "düşünceleriyle hareket etmek isteyebilirler.",
+        imagePath: 'asset/pictures/norfolkT.png',
       );
+      _showCard(context, card);
     }
-  }*/
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,13 +84,13 @@ class HomePage extends StatelessWidget {
                 decoration: InputDecoration(
                   hintText: "Hayvan Ara",
                   hintStyle: TextStyle(fontSize: 17),
-                /*  prefixIcon: IconButton(
+                  prefixIcon: IconButton(
                     icon: Icon(Icons.search),
                     onPressed: () =>
                         _onSearchSubmitted(context, _searchController.text),
-                  ),*/
+                  ),
                 ),
-               // onFieldSubmitted: (value) => _onSearchSubmitted(context, value),
+                onFieldSubmitted: (value) => _onSearchSubmitted(context, value),
               ),
             ),
           ),
