@@ -431,7 +431,6 @@ class HomePage extends StatelessWidget {
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-
                                         Row(
                                           children: [
                                             InkWell(
