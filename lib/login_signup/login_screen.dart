@@ -21,8 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _isLoginSuccess = false;
   late DocumentSnapshot userSnapshot;
   late DocumentSnapshot vetSnapshot;
-   Stream<User?> get authStateChanges => _auth.authStateChanges();
-
+  Stream<User?> get authStateChanges => _auth.authStateChanges();
 
   Future<void> _signInWithEmailAndPassword() async {
     try {
@@ -32,7 +31,6 @@ class _LoginScreenState extends State<LoginScreen> {
         password: _passwordController.text.trim(),
       );
       String uid = userCredential.user!.uid;
-      
 
       // Firestore'da users koleksiyonundan kullanıcıyı sorgula
       userSnapshot =
@@ -53,12 +51,46 @@ class _LoginScreenState extends State<LoginScreen> {
         });
       } else {
         print('Giriş reddedildi, izin verilmedi.');
-        // İzin verilmediyse uygun işlemi yapabilirsiniz (örneğin hata mesajı göstermek)
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Hata'),
+              content: Text('Giriş reddedildi, izin verilmedi.'),
+              actions: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('Tamam'),
+                ),
+              ],
+            );
+          },
+        );
       }
     } catch (e) {
       print('Hata: $e');
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Hata'),
+            content: Text('Giriş yaparken bir hata oluştu.'),
+            actions: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text('Tamam'),
+              ),
+            ],
+          );
+        },
+      );
     }
   }
+
   Future<void> signOut() async {
     await _auth.signOut();
   }
@@ -68,7 +100,6 @@ class _LoginScreenState extends State<LoginScreen> {
     return MaterialApp(
       theme: theme(),
       home: Scaffold(
-       
         body: _isLoginSuccess
             ? _buildContent()
             : Padding(
@@ -82,9 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         labelText: 'E-posta',
                       ),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
+                    SizedBox(height: 10),
                     TextField(
                       controller: _passwordController,
                       decoration: InputDecoration(
@@ -116,7 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Hala üye değil misiniz ?"),
+                        Text("Hala üye değil misiniz?"),
                         TextButton(
                           onPressed: () {
                             Navigator.push(
@@ -138,16 +167,14 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget _buildContent() {
-  if (_isLoginSuccess) {
     if (userSnapshot.exists && userSnapshot.get('isUser') == 'true') {
       return UserProfile();
     } else if (vetSnapshot.exists && vetSnapshot.get('isVet') == 'true') {
       return ProfilePage();
     }
-  }
 
-  return Center(
-    child: Text('Giriş Başarılı!'),
-  );
-}
+    return Center(
+      child: Text('Giriş Başarılı!'),
+    );
+  }
 }
