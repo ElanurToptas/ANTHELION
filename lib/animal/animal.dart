@@ -34,6 +34,9 @@ class HomePage extends StatelessWidget {
     'Çin Hamster',
     'Avrupa Hamster',
     'Gonzales Hamster',
+    "Hothot Tavşanı",
+    "Hollanda Lop Tavşanı",
+    "Havana Tavşanı",
   ];
 
 
@@ -247,6 +250,59 @@ class HomePage extends StatelessWidget {
                     );
                     _showCard(context, card);
                   }
+
+                  if (suggestion == "Hothot Tavşanı") {
+                    MyCard card = MyCard(
+                      titles:["Kişilik & Karakter Özellikleri"],
+                      descriptions:["Tür genel anlamda arkadaş canlısıdır ve evcil hayvan olarak beslenebilir. "
+                          "Sahiplenilen tavşanın sosyal bir canlı olması için yavruluğundan itibaren insanlarla"
+                          " etkileşim halinde olması gerekir. Günlük ihtiyaçlarının karşılanması için kafesinden"
+                          " çıkartılması iyi bir başlangıç olacaktır. Bu sayede insanlar tarafından tutulmaya alışır. "
+                          "Çocuklar tarafından beslenecekse, onlara tavşanı nasıl tutmaları gerektiği öğretilmelidir.",],
+                      imagePath:  "asset/pictures-2/Hothot tavşanı (2).png",
+                    );
+                    _showCard(context, card);
+                  }
+
+                  if (suggestion == "Hollanda Lop Tavşanı") {
+                    MyCard card = MyCard(
+                      titles:["Kişilik & Karakter Özellikleri"],
+                      descriptions:[ "Hollanda lop tavşanınızın karakter gelişimi için, ona kafesinin "
+                          "dışında geçireceği uzun vakitler sağlamanız çok önemlidir. "
+                          "Evde yaşayan tavşanlar evin tamamında olmasa bile en azından bir odasında "
+                          "kafesinden çıkıp etrafta dolaşabilmeli, bacaklarını esnetebilmeli, güneş ışığı almalı"
+                          " ve özellikle sahibi ile etkileşim halinde olabilmelidir. Bu ufak tavşanlar ister yalnız "
+                          "yaşayan bir insan, ister evli bir çift, isterse de çocuklu aileler olsun; herkes için harika"
+                          " evcil hayvanlardır.Hollanda lopları görece aktif tavşanlardır ve hava sıcaklığı uygun "
+                          "olduğunda dışarıda vakit geçirmeye bayılırlar. Etrafı çevrili bir bahçe onlar için"
+                          " harika olacaktır, ancak açık bir bahçede kafes içinde beslenmelidir. "
+                          "Üstü açık, çevresi tel örgüyle çevrili bir kafes hem tavşanınıza biraz özgürlük "
+                          "hissi verecek, hem de komşu bahçelere kaçmasını önleyecektir.",],
+                      imagePath:  'asset/pictures-2/Hollanda Lop tavşanı (2).png',
+                    );
+                    _showCard(context, card);
+                  }
+
+                  if (suggestion == "Havana Tavşanı") {
+                    MyCard card = MyCard(
+                      titles:["Kişilik & Karakter Özellikleri"],
+                      descriptions:[ "Bazı tavşanlar birçok oyuncakla eğlenmeye ihtiyaç duyarlar "
+                          "(bir mağaza satın alınmış mı yoksa tuvalet kağıdı rulosu kadar basit bir şey "
+                          "tamamen size bağlıdır), diğerleri onları mutlu etmek için fazla bir şeye ihtiyaç duymaz."
+                          " Her biri, evcil hayvanınızın kendi muhafazaları dışında çok sayıda oyun süresiyle "
+                          "keşfetmesi gereken tavşanınızın kişiliğine bağlıdır.Bu tavşan eğitim lazım olduğunda,"
+                          " bir kedi ya da köpek gibi başka bir evcil hayvan eğitimi daha önemli olduğunu"
+                          " görebilirsiniz. Daha zorlu olsa da, tavşanlar eğitmek kesinlikle imkansız değil"
+                          " ama diğer hayvanlara göre daha fazla sabır ve zaman gerektiriyorlar. "
+                          "Birçok evcil hayvan ailesi, evin etrafına birkaç çöp kutusu yerleştirmenin "
+                          "en iyi şekilde işe yaradığını fark etti, çünkü tavşanı yapmak için tavşanınızın "
+                          "evinizin diğer tarafına gitmesi gerekmiyor.",],
+                      imagePath: 'asset/pictures-2/Havana tavşanı (2).png',
+                    );
+                    _showCard(context, card);
+                  }
+
+
 
                 },
               ),
@@ -530,6 +586,104 @@ class HomePage extends StatelessWidget {
     ),
     ],
     ),),
+
+
+
+            Container(width: MediaQuery.of(context).size.width,
+              height: 24,
+              child:Stack(
+                children: [
+                  Text(
+                    'Tavşanlar', style: TextStyle(color: Colors.black, fontSize: 20),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 10),
+
+            Container(
+              width: MediaQuery.of(context).size.width -0,
+              height: 160,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  MyCard card = MyCard(
+                                    titles:["Kişilik & Karakter Özellikleri"],
+                                    descriptions:["Tür genel anlamda arkadaş canlısıdır ve evcil hayvan olarak beslenebilir. "
+                                        "Sahiplenilen tavşanın sosyal bir canlı olması için yavruluğundan itibaren insanlarla"
+                                        " etkileşim halinde olması gerekir. Günlük ihtiyaçlarının karşılanması için kafesinden"
+                                        " çıkartılması iyi bir başlangıç olacaktır. Bu sayede insanlar tarafından tutulmaya alışır. "
+                                        "Çocuklar tarafından beslenecekse, onlara tavşanı nasıl tutmaları gerektiği öğretilmelidir.",],
+                                    imagePath:  "asset/pictures-2/Hothot tavşanı (2).png",
+                                  );
+                                  _showCard(context, card);
+                                },
+                                child: Image.asset(
+                                  "asset/pictures/Hothot tavşanı.png", width: 150,
+                                  height: 140,),),
+
+                              InkWell(
+                                onTap: () {
+                                  MyCard card = MyCard(
+                                    titles:["Kişilik & Karakter Özellikleri"],
+                                    descriptions:[ "Hollanda lop tavşanınızın karakter gelişimi için, ona kafesinin "
+                                  "dışında geçireceği uzun vakitler sağlamanız çok önemlidir. "
+                                  "Evde yaşayan tavşanlar evin tamamında olmasa bile en azından bir odasında "
+                                    "kafesinden çıkıp etrafta dolaşabilmeli, bacaklarını esnetebilmeli, güneş ışığı almalı"
+                                    " ve özellikle sahibi ile etkileşim halinde olabilmelidir. Bu ufak tavşanlar ister yalnız "
+                                    "yaşayan bir insan, ister evli bir çift, isterse de çocuklu aileler olsun; herkes için harika"
+                                    " evcil hayvanlardır.Hollanda lopları görece aktif tavşanlardır ve hava sıcaklığı uygun "
+                                        "olduğunda dışarıda vakit geçirmeye bayılırlar. Etrafı çevrili bir bahçe onlar için"
+                                        " harika olacaktır, ancak açık bir bahçede kafes içinde beslenmelidir. "
+                                        "Üstü açık, çevresi tel örgüyle çevrili bir kafes hem tavşanınıza biraz özgürlük "
+                                        "hissi verecek, hem de komşu bahçelere kaçmasını önleyecektir.",],
+                                    imagePath:  'asset/pictures-2/Hollanda Lop tavşanı (2).png',
+                                  );
+                                  _showCard(context, card);
+                                },
+                                child: Image.asset(
+                                  'asset/pictures/Hollanda Lop tavşanı.png', width: 150,
+                                  height: 140,),),
+
+                              InkWell(
+                                onTap: () {
+                                  MyCard card = MyCard(
+                                    titles:["Kişilik & Karakter Özellikleri"],
+                                    descriptions:[ "Bazı tavşanlar birçok oyuncakla eğlenmeye ihtiyaç duyarlar "
+                                  "(bir mağaza satın alınmış mı yoksa tuvalet kağıdı rulosu kadar basit bir şey "
+                                  "tamamen size bağlıdır), diğerleri onları mutlu etmek için fazla bir şeye ihtiyaç duymaz."
+                                    " Her biri, evcil hayvanınızın kendi muhafazaları dışında çok sayıda oyun süresiyle "
+                                    "keşfetmesi gereken tavşanınızın kişiliğine bağlıdır.Bu tavşan eğitim lazım olduğunda,"
+                                        " bir kedi ya da köpek gibi başka bir evcil hayvan eğitimi daha önemli olduğunu"
+                                        " görebilirsiniz. Daha zorlu olsa da, tavşanlar eğitmek kesinlikle imkansız değil"
+                                        " ama diğer hayvanlara göre daha fazla sabır ve zaman gerektiriyorlar. "
+                                        "Birçok evcil hayvan ailesi, evin etrafına birkaç çöp kutusu yerleştirmenin "
+                                        "en iyi şekilde işe yaradığını fark etti, çünkü tavşanı yapmak için tavşanınızın "
+                                        "evinizin diğer tarafına gitmesi gerekmiyor.",],
+                                    imagePath: 'asset/pictures-2/Havana tavşanı (2).png',
+                                  );
+                                  _showCard(context, card);
+                                },
+                                child: Image.asset(
+                                  'asset/pictures/Havana tavşanı.png', width: 150,
+                                  height: 140,),),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),),
 
 
 

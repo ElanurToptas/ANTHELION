@@ -96,6 +96,9 @@ flutter:
    - asset/pictures/MuhabbetK.png
    - asset/pictures/KırmızıAraraunaP.png
    - asset/pictures/SultanP.png
+   - asset/pictures/Havana tavşanı.png
+   - asset/pictures/Hollanda Lop tavşanı.png
+   - asset/pictures/Hothot tavşanı.png
    - asset/pictures-2/norfolkT.png
    - asset/pictures-2/collie.png
    - asset/pictures-2/goldenR.png
@@ -108,6 +111,10 @@ flutter:
    - asset/pictures-2/MuhabbetK.png
    - asset/pictures-2/KırmızıAraraunaP.png
    - asset/pictures-2/SultanP.png
+   - asset/pictures-2/Havana tavşanı (2).png
+   - asset/pictures-2/Hollanda Lop tavşanı (2).png
+   - asset/pictures-2/Hothot tavşanı (2).png
+
   
 
   # An image asset can refer to one or more resolution-specific "variants", see
