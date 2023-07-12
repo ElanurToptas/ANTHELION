@@ -299,7 +299,7 @@ class ServicesPage extends StatelessWidget {
                         ["Sevgi dolu evcil hayvanlar için doğru adres!"],],
                       descriptions:[[""],
                         ["Köpek ve kedi mamaları, evcil hayvan oyuncakları,"
-                      " kuş kafesleri, balık tankları ve akvaryum malzemeleri."],],
+                      " kuş kafesleri, balık tankları ve akvaryum malzemeleri. "],],
                       imagePath:  'asset/pictures-2/gonzalesH.png',
                     );
                     _showCard(context, card);
