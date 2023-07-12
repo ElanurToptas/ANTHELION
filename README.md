@@ -78,7 +78,6 @@ Sprint Review katılımcıları: Elanur Toptaş ve Hüseyin Arınç Şentürk
 
 -![WhatsApp Görsel 2023-07-03 saat 05 00 33](https://github.com/ElanurToptas/ANTHELION/assets/129093031/452acc0a-fcb2-4465-904d-5d216c7884ad)
 
--
 https://github.com/ElanurToptas/ANTHELION/assets/129093031/b700ea48-db81-4d95-9bad-6b8539ff9a1f
 
 - **Sprint Review:** Kullanıcı temel sayfaları arayüzleri ve bottonBar kodlanmış, tema tasarımı yapılmıştır. Kullanıcı sayfalarının bir kısmı, üye giriş sayfaları, ana sayfa kodlanmış, firebase servislerine bağlantıları yapılmış, eksiklikler değerlendirilmiştir ve 1.Sprintteki eksiklikler giderilmiştir.
@@ -93,6 +92,27 @@ Sprint Review katılımcıları:Elanur Toptaş, Hüseyin Arınç Şentürk, Fatm
 [Flutter Team 10 Miro Backlog Board](https://miro.com/app/board/uXjVM9rmae8=/)
 ***
 
+# SPRINT 3
+- **Sprint Notları:** User Story'ler product backlog'ların içine yazılmıştır. Product backlog item'lara tıklandığında hikayelerin detayları okunabilir.
+
+- **Sprint içinde tamamlanması tahmin edilen puan:** 120 Puan
+- **Puan tamamlama mantığı:** Toplamda proje boyunca tamamlanması gereken 350 puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde üçüncü sprint'in en azından 100 puan ile tamamlanması gerektiğine karar verildi.
+
+- **Daily Scrum:** Daily Scrum toplantılarının Discord üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır:
+
+- **Sprint board update:** Sprint board screenshotları:
+
+- **Ürün Durumu:** Ekran görüntüleri:
+
+- **Sprint Review:** Veteriner sayfalarının tamamı kodlanmış, firebase servislerine bağlantıları yapılmış, eksiklikler giderilmiştir. Sayfalara tasarımsal eklemeler yapılmıştır. 2.Sprintteki eksiklikler giderilmiştir firebase servislerine bağlantıları yapılmıştır.
+
+- **Sprint Retrospective:**
+  * Takım üyelerinin gelecek projelerde daha fazla aktif olması gerektiğine vurgu yapılmıştır.
+
+***
+## PRODUCT BACKLOG URL
+[Flutter Team 10 Miro Backlog Board](https://miro.com/app/board/uXjVM9rmae8=/)
+***
 
 
 
