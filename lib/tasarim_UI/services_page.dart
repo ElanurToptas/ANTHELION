@@ -330,7 +330,7 @@ class ServicesPage extends StatelessWidget {
             ),
           ),
         ),
-      ),
+      ), // buradan sonra iconlar bulunuyor üst kısım ise arama kısmı
       body:  SingleChildScrollView(
         padding: EdgeInsets.all(8),
         child: Column(
