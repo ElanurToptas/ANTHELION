@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:petcare/tasarim_UI/tema.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 final FirebaseStorage _storage = FirebaseStorage.instance;
@@ -41,7 +41,23 @@ class _VetPageState extends State<VetPage> {
         final name = (vet.data() as Map<String, dynamic>)['name']
             .toString()
             .toLowerCase();
-        return name.contains(keyword.toLowerCase());
+        final bio = (vet.data() as Map<String, dynamic>)['bio']
+            .toString()
+            .toLowerCase();
+        final address = (vet.data() as Map<String, dynamic>)['address']
+            .toString()
+            .toLowerCase();
+        final university = (vet.data() as Map<String, dynamic>)['university']
+            .toString()
+            .toLowerCase();
+        final pets = (vet.data() as Map<String, dynamic>)['species']
+            .toString()
+            .toLowerCase();
+        return name.contains(keyword.toLowerCase()) ||
+            bio.contains(keyword.toLowerCase()) ||
+            address.contains(keyword.toLowerCase()) ||
+            university.contains(keyword.toLowerCase()) ||
+            pets.contains(keyword.toLowerCase());
       }).toList();
     });
   }
@@ -230,6 +246,56 @@ class _VetPageState extends State<VetPage> {
                                   ),
                                 ],
                               ),
+                              SizedBox(height: 8),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Container(
+                                      width: 140,
+                                      padding: EdgeInsets.symmetric(vertical: 4),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.indigo,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8.0),
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          'Acil Bakım: ${veterinarianAcil ? 'Var' : 'Yok'}',
+                                          style: TextStyle(
+                                            color: veterinarianAcil ? Colors.green : Colors.red,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(width: 8),
+                                  Expanded(
+                                    child: Container(
+                                      width: 140,
+                                      padding: EdgeInsets.symmetric(vertical: 4),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.indigo,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8.0),
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          'Evde Bakım: ${veterinarianHome ? 'Var' : 'Yok'}',
+                                          style: TextStyle(
+                                            color: veterinarianHome ? Colors.green : Colors.red,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
                         ),
@@ -330,7 +396,8 @@ class _VetPageState extends State<VetPage> {
                 ),
                 SizedBox(height: 16),
                 if (veterinarianAddress != null)
-                  Container(width: 325,
+                  Container(
+                    width: 325,
                     decoration: BoxDecoration(
                       border: Border.all(
                         color: Colors.indigo,
@@ -356,7 +423,8 @@ class _VetPageState extends State<VetPage> {
                   ),
                 SizedBox(height: 16),
                 if (veterinarianUniversity != null)
-                  Container(width: 325,
+                  Container(
+                    width: 325,
                     decoration: BoxDecoration(
                       border: Border.all(
                         color: Colors.indigo,
@@ -367,14 +435,14 @@ class _VetPageState extends State<VetPage> {
                     padding: EdgeInsets.all(8.0),
                     child: Column(
                       children: [
-                        Text(textAlign: TextAlign.left,
+                        Text(
                           'Mezun Olduğu Okul:',
                           style: TextStyle(
                             color: Colors.grey[800],
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Text(textAlign: TextAlign.left,
+                        Text(
                           veterinarianUniversity,
                           style: TextStyle(
                             color: Colors.grey[800],
@@ -387,18 +455,17 @@ class _VetPageState extends State<VetPage> {
                 if (veterinarianPets != null)
                   Container(
                     width: 325,
-    
                     decoration: BoxDecoration(
                       border: Border.all(
                         color: Colors.indigo,
-                        width: 2.0,  
+                        width: 2.0,
                       ),
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     padding: EdgeInsets.all(8.0),
                     child: Column(
                       children: [
-                        Text(textAlign: TextAlign.left,
+                        Text(
                           'Baktığı Hayvan Türleri:',
                           style: TextStyle(
                             color: Colors.grey[800],
@@ -417,73 +484,65 @@ class _VetPageState extends State<VetPage> {
                 SizedBox(height: 16),
                 Row(
                   children: [
-                    Container(width: 310,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.indigo,
-                          width: 2.0,
+                    Expanded(
+                      child: Container(
+                        width: 310,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.indigo,
+                            width: 2.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      padding: EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          SizedBox(width: 8),
-                          Text(
-                            'Acil Ulaşım ',
-                            style: TextStyle(
-                              color: Colors.grey[800],
-                              fontWeight: FontWeight.bold,
+                        padding: EdgeInsets.all(8.0),
+                        child: Row(
+                          children: [
+                            SizedBox(width: 8),
+                            Text(
+                              'Acil Ulaşım: $acil',
+                              style: TextStyle(
+                                color: Colors.grey[800],
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          Text(
-                            ': $acil',
-                            style: TextStyle(
-                              color: Colors.grey[800],
+                            SizedBox(width: 8),
+                            Icon(
+                              veterinarianAcil ? Icons.check : Icons.clear,
+                              color: veterinarianAcil ? Colors.green : Colors.red,
                             ),
-                          ),
-                          Icon(
-                            veterinarianAcil ? Icons.check : Icons.clear,
-                            color: veterinarianAcil ? Colors.green : Colors.red,
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ],
-                ),
-                SizedBox(height: 16),
-                Row(
-                  children: [
-                    Container(width: 310,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.indigo,
-                          width: 2.0,
+                    SizedBox(width: 8),
+                    Expanded(
+                      child: Container(
+                        width: 310,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.indigo,
+                            width: 2.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      padding: EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          SizedBox(width: 8),
-                          Text(
-                            'Evde Bakım ',
-                            style: TextStyle(
-                              color: Colors.grey[800],
-                              fontWeight: FontWeight.bold,
+                        padding: EdgeInsets.all(8.0),
+                        child: Row(
+                          children: [
+                            SizedBox(width: 8),
+                            Text(
+                              'Evde Bakım: $home',
+                              style: TextStyle(
+                                color: Colors.grey[800],
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          Text(
-                            ': $home',
-                            style: TextStyle(
-                              color: Colors.grey[800],
+                            SizedBox(width: 8),
+                            Icon(
+                              veterinarianHome ? Icons.check : Icons.clear,
+                              color: veterinarianHome ? Colors.green : Colors.red,
                             ),
-                          ),
-                          Icon(
-                            veterinarianAcil ? Icons.check : Icons.clear,
-                            color: veterinarianAcil ? Colors.green : Colors.red,
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ],
