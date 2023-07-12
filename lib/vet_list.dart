@@ -13,8 +13,8 @@ class VetPage extends StatefulWidget {
 }
 
 class _VetPageState extends State<VetPage> {
-  late List<QueryDocumentSnapshot> veterinarians = [];
-  late List<QueryDocumentSnapshot> filteredVeterinarians = [];
+  List<QueryDocumentSnapshot<Map<String, dynamic>>> veterinarians = [];
+  List<QueryDocumentSnapshot<Map<String, dynamic>>> filteredVeterinarians = [];
   TextEditingController _searchController = TextEditingController();
 
   @override
@@ -38,21 +38,11 @@ class _VetPageState extends State<VetPage> {
   void _filterVeterinarians(String keyword) {
     setState(() {
       filteredVeterinarians = veterinarians.where((vet) {
-        final name = (vet.data() as Map<String, dynamic>)['name']
-            .toString()
-            .toLowerCase();
-        final bio = (vet.data() as Map<String, dynamic>)['bio']
-            .toString()
-            .toLowerCase();
-        final address = (vet.data() as Map<String, dynamic>)['address']
-            .toString()
-            .toLowerCase();
-        final university = (vet.data() as Map<String, dynamic>)['university']
-            .toString()
-            .toLowerCase();
-        final pets = (vet.data() as Map<String, dynamic>)['species']
-            .toString()
-            .toLowerCase();
+        final name = vet.data()['name'].toString().toLowerCase();
+        final bio = vet.data()['bio'].toString().toLowerCase();
+        final address = vet.data()['address'].toString().toLowerCase();
+        final university = vet.data()['university'].toString().toLowerCase();
+        final pets = vet.data()['species'].toString().toLowerCase();
         return name.contains(keyword.toLowerCase()) ||
             bio.contains(keyword.toLowerCase()) ||
             address.contains(keyword.toLowerCase()) ||
@@ -99,17 +89,14 @@ class _VetPageState extends State<VetPage> {
                   );
                 }
 
-                if (snapshot.hasError ||
-                    !snapshot.hasData ||
-                    snapshot.data == null) {
+                if (snapshot.hasError || !snapshot.hasData || snapshot.data == null) {
                   return ListTile();
                 }
 
                 final profilePictureUrl = snapshot.data!;
                 return FutureBuilder<Map<String, dynamic>?>(
                   future: _getVeterinarianData(veterinarianUid),
-                  builder: (BuildContext context,
-                      AsyncSnapshot<Map<String, dynamic>?> snapshot) {
+                  builder: (BuildContext context, AsyncSnapshot<Map<String, dynamic>?> snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return ListTile(
                         leading: ClipRRect(
@@ -123,9 +110,7 @@ class _VetPageState extends State<VetPage> {
                       );
                     }
 
-                    if (snapshot.hasError ||
-                        !snapshot.hasData ||
-                        snapshot.data == null) {
+                    if (snapshot.hasError || !snapshot.hasData || snapshot.data == null) {
                       return ListTile(
                         leading: ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
@@ -139,21 +124,14 @@ class _VetPageState extends State<VetPage> {
                     }
 
                     final veterinarianData = snapshot.data!;
-                    final veterinarianName =
-                        veterinarianData['name'] as String?;
+                    final veterinarianName = veterinarianData['name'] as String?;
                     final veterinarianBio = veterinarianData['bio'] as String?;
-                    final veterinarianAddress =
-                        veterinarianData['address'] as String?;
-                    final veterinarianPhone =
-                        veterinarianData['phone number'] as String?;
-                    final veterinarianUniversity =
-                        veterinarianData['university'] as String?;
-                    final veterinarianPets =
-                        veterinarianData['species'] as String?;
-                    final veterinarianAcil =
-                        veterinarianData['acil bakım'] as bool?;
-                    final veterinarianHome =
-                        veterinarianData['evde bakım'] as bool?;
+                    final veterinarianAddress = veterinarianData['address'] as String?;
+                    final veterinarianPhone = veterinarianData['phone number'] as String?;
+                    final veterinarianUniversity = veterinarianData['university'] as String?;
+                    final veterinarianPets = veterinarianData['species'] as String?;
+                    final veterinarianAcil = veterinarianData['acil bakım'] as bool?;
+                    final veterinarianHome = veterinarianData['evde bakım'] as bool?;
 
                     if (veterinarianName == null || veterinarianBio == null) {
                       return ListTile(
@@ -227,71 +205,7 @@ class _VetPageState extends State<VetPage> {
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
-                                        SizedBox(height: 8),
-                                        Text(
-                                          'Baktığı Hayvan Türleri:',
-                                          style: TextStyle(
-                                            color: Colors.grey[600],
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        Text(
-                                          veterinarianPets ?? '',
-                                          style: TextStyle(
-                                            color: Colors.grey[600],
-                                          ),
-                                        ),
                                       ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 8),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Container(
-                                      width: 140,
-                                      padding: EdgeInsets.symmetric(vertical: 4),
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color: Colors.indigo,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius: BorderRadius.circular(8.0),
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          'Acil Bakım: ${veterinarianAcil ? 'Var' : 'Yok'}',
-                                          style: TextStyle(
-                                            color: veterinarianAcil ? Colors.green : Colors.red,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(width: 8),
-                                  Expanded(
-                                    child: Container(
-                                      width: 140,
-                                      padding: EdgeInsets.symmetric(vertical: 4),
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color: Colors.indigo,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius: BorderRadius.circular(8.0),
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          'Evde Bakım: ${veterinarianHome ? 'Var' : 'Yok'}',
-                                          style: TextStyle(
-                                            color: veterinarianHome ? Colors.green : Colors.red,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
                                     ),
                                   ),
                                 ],
@@ -311,93 +225,173 @@ class _VetPageState extends State<VetPage> {
     );
   }
 
-  Future<String?> _getVeterinarianProfilePictureUrl(
-      String veterinarianUid) async {
+  Future<String?> _getVeterinarianProfilePictureUrl(String veterinarianUid) async {
     try {
-      final ref = _storage
-          .ref()
-          .child('profile_picture/${veterinarianUid}_profile_image.jpg');
+      final ref = _storage.ref().child('profile_picture/${veterinarianUid}_profile_image.jpg');
       final url = await ref.getDownloadURL();
       return url;
     } catch (e) {
-      print(
-          'Error getting profile picture URL for veterinarian $veterinarianUid: $e');
+      print('Error getting profile picture URL for veterinarian $veterinarianUid: $e');
       return null;
     }
   }
 
-  Future<Map<String, dynamic>?> _getVeterinarianData(
-      String veterinarianUid) async {
+  Future<Map<String, dynamic>?> _getVeterinarianData(String veterinarianUid) async {
     try {
-      final snapshot = await _firestore
-          .collection('Veterinarians')
-          .doc(veterinarianUid)
-          .get();
+      final snapshot = await _firestore.collection('Veterinarians').doc(veterinarianUid).get();
       if (snapshot.exists) {
-        final data = snapshot.data() as Map<String, dynamic>?;
+        final data = snapshot.data();
         return data;
       }
     } catch (e) {
-      print(
-          'Error getting veterinarian data for veterinarian $veterinarianUid: $e');
+      print('Error getting veterinarian data for veterinarian $veterinarianUid: $e');
     }
     return null;
   }
 
-  void _showVeterinarianDetails(
-    String veterinarianName,
-    String veterinarianBio,
-    String profilePictureUrl,
-    String? veterinarianAddress,
-    String? veterinarianPhone,
-    String? veterinarianUniversity,
-    String? veterinarianPets,
-    bool veterinarianAcil,
-    bool veterinarianHome,
-  ) {
-    String acil = veterinarianAcil ? 'Var' : 'Yok';
-    String home = veterinarianHome ? 'Var' : 'Yok';
+void _showVeterinarianDetails(
+  String veterinarianName,
+  String veterinarianBio,
+  String profilePictureUrl,
+  String? veterinarianAddress,
+  String? veterinarianPhone,
+  String? veterinarianUniversity,
+  String? veterinarianPets,
+  bool veterinarianAcil,
+  bool veterinarianHome,
+) {
+  String acil = veterinarianAcil ? 'Var' : 'Yok';
+  String home = veterinarianHome ? 'Var' : 'Yok';
 
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Center(
-            child: Text(
-              'Veteriner $veterinarianName',
-              style: TextStyle(
-                color: Colors.indigo,
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Center(
+          child: Text(
+            'Veteriner $veterinarianName',
+            style: TextStyle(
+              color: Colors.indigo,
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
             ),
           ),
-          content: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(height: 16),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: Container(
-                    width: 270,
-                    height: 270,
-                    child: Image.network(
-                      profilePictureUrl,
-                      fit: BoxFit.cover,
+        ),
+        content: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: 16),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: Container(
+                  width: 270,
+                  height: 270,
+                  child: Image.network(
+                    profilePictureUrl,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              SizedBox(height: 16),
+              Text(
+                veterinarianBio,
+                style: TextStyle(
+                  color: Colors.grey[800],
+                ),
+              ),
+              SizedBox(height: 16),
+              if (veterinarianAddress != null) // Adres bilgisi varsa gösterilecek
+                Container(
+                  width: 325,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.indigo,
+                      width: 2.0,
                     ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  padding: EdgeInsets.all(8.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          'Adres: $veterinarianAddress',
+                          style: TextStyle(
+                            color: Colors.grey[800],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                SizedBox(height: 16),
-                Text(
-                  veterinarianBio,
-                  style: TextStyle(
-                    color: Colors.grey[800],
+              SizedBox(height: 16),
+              if (veterinarianUniversity != null) // Üniversite bilgisi varsa gösterilecek
+                Container(
+                  width: 325,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.indigo,
+                      width: 2.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  padding: EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Mezun Olduğu Okul:',
+                        style: TextStyle(
+                          color: Colors.grey[800],
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        veterinarianUniversity,
+                        style: TextStyle(
+                          color: Colors.grey[800],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                SizedBox(height: 16),
-                if (veterinarianAddress != null)
+              SizedBox(height: 16),
+              if (veterinarianPets != null) // Hayvan türleri bilgisi varsa gösterilecek
+                Container(
+                  width: 325,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.indigo,
+                      width: 2.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  padding: EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Baktığı Hayvan Türleri:',
+                        style: TextStyle(
+                          color: Colors.grey[800],
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        veterinarianPets,
+                        style: TextStyle(
+                          color: Colors.grey[800],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              SizedBox(height: 16),
+              Column(
+                children: [
                   Container(
-                    width: 325,
+                    width: 310,
+                    padding: EdgeInsets.symmetric(vertical: 4),
                     decoration: BoxDecoration(
                       border: Border.all(
                         color: Colors.indigo,
@@ -405,26 +399,28 @@ class _VetPageState extends State<VetPage> {
                       ),
                       borderRadius: BorderRadius.circular(8.0),
                     ),
-                    padding: EdgeInsets.all(8.0),
                     child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(width: 8),
-                        Expanded(
-                          child: Text(
-                            'Adres: $veterinarianAddress',
-                            style: TextStyle(
-                              color: Colors.grey[800],
-                            ),
+                        Text(
+                          'Acil Bakım:',
+                          style: TextStyle(
+                            color: Colors.grey[800],
+                            fontWeight: FontWeight.bold,
                           ),
+                        ),
+                        SizedBox(width: 8),
+                        Icon(
+                          veterinarianAcil ? Icons.check : Icons.clear,
+                          color: veterinarianAcil ? Colors.green : Colors.red,
                         ),
                       ],
                     ),
                   ),
-                SizedBox(height: 16),
-                if (veterinarianUniversity != null)
+                  SizedBox(height: 8),
                   Container(
-                    width: 325,
+                    width: 310,
+                    padding: EdgeInsets.symmetric(vertical: 4),
                     decoration: BoxDecoration(
                       border: Border.all(
                         color: Colors.indigo,
@@ -432,162 +428,67 @@ class _VetPageState extends State<VetPage> {
                       ),
                       borderRadius: BorderRadius.circular(8.0),
                     ),
-                    padding: EdgeInsets.all(8.0),
-                    child: Column(
+                    child: Row(
                       children: [
+                        SizedBox(width: 8),
                         Text(
-                          'Mezun Olduğu Okul:',
+                          'Evde Bakım:',
                           style: TextStyle(
                             color: Colors.grey[800],
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Text(
-                          veterinarianUniversity,
-                          style: TextStyle(
-                            color: Colors.grey[800],
-                          ),
+                        SizedBox(width: 8),
+                        Icon(
+                          veterinarianHome ? Icons.check : Icons.clear,
+                          color: veterinarianHome ? Colors.green : Colors.red,
                         ),
                       ],
                     ),
                   ),
-                SizedBox(height: 16),
-                if (veterinarianPets != null)
-                  Container(
-                    width: 325,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.indigo,
-                        width: 2.0,
-                      ),
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    padding: EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Text(
-                          'Baktığı Hayvan Türleri:',
-                          style: TextStyle(
-                            color: Colors.grey[800],
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          veterinarianPets,
-                          style: TextStyle(
-                            color: Colors.grey[800],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                SizedBox(height: 16),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        width: 310,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.indigo,
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        padding: EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            SizedBox(width: 8),
-                            Text(
-                              'Acil Ulaşım: $acil',
-                              style: TextStyle(
-                                color: Colors.grey[800],
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(width: 8),
-                            Icon(
-                              veterinarianAcil ? Icons.check : Icons.clear,
-                              color: veterinarianAcil ? Colors.green : Colors.red,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 8),
-                    Expanded(
-                      child: Container(
-                        width: 310,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.indigo,
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        padding: EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            SizedBox(width: 8),
-                            Text(
-                              'Evde Bakım: $home',
-                              style: TextStyle(
-                                color: Colors.grey[800],
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(width: 8),
-                            Icon(
-                              veterinarianHome ? Icons.check : Icons.clear,
-                              color: veterinarianHome ? Colors.green : Colors.red,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 16),
-              ],
-            ),
+                ],
+              ),
+            ],
           ),
-          actions: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    if (veterinarianPhone != null) {
-                      _contactVeterinarian(veterinarianPhone);
-                    }
-                  },
-                  child: Text(
-                    'İletişime Geç',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
+        ),
+        actions: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  if (veterinarianPhone != null) {
+                    _contactVeterinarian(veterinarianPhone);
+                  }
+                },
+                child: Text(
+                  'İletişime Geç',
+                  style: TextStyle(
+                    color: Colors.white,
                   ),
                 ),
-                SizedBox(width: 8),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Text(
-                    'Kapat',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
+              ),
+              SizedBox(width: 8),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text(
+                  'Kapat',
+                  style: TextStyle(
+                    color: Colors.white,
                   ),
                 ),
-              ],
-            ),
-          ],
-          contentPadding: EdgeInsets.symmetric(horizontal: 20),
-        );
-      },
-    );
-  }
+              ),
+            ],
+          ),
+        ],
+        contentPadding: EdgeInsets.symmetric(horizontal: 20),
+      );
+    },
+  );
+}
+
 
   void _contactVeterinarian(String phone) async {
     if (phone != null && phone.isNotEmpty) {
