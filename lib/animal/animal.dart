@@ -261,7 +261,6 @@ class HomePage extends StatelessWidget {
                   _showCard(context, card);
                 },
               ),
-
             ),
           ),
         ),
