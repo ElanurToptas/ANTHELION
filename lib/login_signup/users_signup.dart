@@ -39,9 +39,9 @@ class _RegisterPageState extends State<RegisterPage> {
         children: [
           Container(
             padding: EdgeInsets.all(20.0),
+      child: SingleChildScrollView(
             child: Form(
               key: _formKey,
-              
                 child: Column(
                   children: <Widget>[
                     Padding(
@@ -113,6 +113,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     SizedBox(height: 10,),
                       ListView.builder(
                     shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
                     itemCount: _pets.length,
                     itemBuilder: (context, index) {
                       final pet = _pets[index];
@@ -198,6 +199,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               
             ),
+          ),
           ),
         ],
       ),
