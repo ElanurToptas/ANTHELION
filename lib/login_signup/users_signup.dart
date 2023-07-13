@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'login_screen.dart';
 
+const SizedBox _sizedBoxHeight10 = SizedBox(height: 10);
+
 class RegisterPage extends StatefulWidget {
   @override
   _RegisterPageState createState() => _RegisterPageState();
@@ -48,9 +50,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
+                    _sizedBoxHeight10,
                     DecoratedBox(
                       decoration: BoxDecoration(),
                       child: TextFormField(
@@ -59,9 +59,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             labelText: 'E-mail', border: InputBorder.none),
                       ),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
+                    _sizedBoxHeight10,
                     DecoratedBox(
                       decoration: BoxDecoration(),
                       child: TextFormField(
@@ -70,9 +68,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             labelText: 'Ad Soyad', border: InputBorder.none),
                       ),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
+                    _sizedBoxHeight10,
                     DecoratedBox(
                       decoration: BoxDecoration(),
                       child: TextFormField(
@@ -82,9 +78,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         obscureText: true,
                       ),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
+                    _sizedBoxHeight10,
                     DecoratedBox(
                       decoration: BoxDecoration(),
                       child: TextFormField(
@@ -95,9 +89,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         obscureText: true,
                       ),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
+                    _sizedBoxHeight10,
                     ListView.builder(
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
@@ -123,7 +115,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 },
                               ),
                             ),
-                            SizedBox(height: 10),
+                            _sizedBoxHeight10,
                             Text(
                               'Aşı Bilgileri (Yapılmış Aşılar)',
                               style: TextStyle(
@@ -143,7 +135,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 );
                               }).toList(),
                             ),
-                            SizedBox(height: 10),
+                            _sizedBoxHeight10,
                             Row(
                               children: [
                                 Expanded(
@@ -160,7 +152,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                     },
                                   ),
                                 ),
-                                SizedBox(width: 10),
+                                _sizedBoxHeight10,
                                 Expanded(
                                   flex: 1,
                                   child: GestureDetector(
@@ -182,7 +174,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(width: 10),
+                                _sizedBoxHeight10,
                                 ElevatedButton(
                                   onPressed: () {
                                     setState(() {
@@ -201,7 +193,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 10),
+                            _sizedBoxHeight10,
                           ],
                         );
                       },
