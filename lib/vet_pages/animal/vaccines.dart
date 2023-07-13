@@ -83,7 +83,7 @@ class _VaccinesState extends State<Vaccines> {
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
-      firstDate: DateTime(2010),
+      firstDate: DateTime(2020),
       lastDate: DateTime(2030),
     );
     if (picked != null && picked != selectedDate) {
@@ -106,12 +106,54 @@ class _VaccinesState extends State<Vaccines> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Seçilen Hayvanın Çip Numarası: ${widget.chipNumber}',
-                style: TextStyle(fontSize: 24),
+                'Hasta Çip Numarası: ${widget.chipNumber}',
+                style: TextStyle(fontSize: 22),
               ),
               SizedBox(height: 20),
               Text(
-                'Aşı Bilgileri:',
+                'Takvim',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              TableCalendar(
+                locale: 'tr_TR',
+                firstDay: DateTime.utc(2010, 10, 16),
+                lastDay: DateTime.utc(2030, 3, 14),
+                focusedDay: focusedDay,
+                calendarFormat: calendarFormat,
+                startingDayOfWeek: StartingDayOfWeek.monday,
+                calendarStyle: CalendarStyle(
+                  selectedDecoration: BoxDecoration(
+                    color: Colors.blue,
+                    shape: BoxShape.circle,
+                  ),
+                  todayDecoration: BoxDecoration(
+                    color: Colors.purpleAccent,
+                    shape: BoxShape.circle,
+                  ),
+                ),
+                headerStyle: HeaderStyle(
+                  formatButtonVisible: false,
+                ),
+                onDaySelected: (selectedDay, focusedDay) {
+                  setState(() {
+                    this.selectedDate = selectedDay;
+                    this.focusedDay = focusedDay;
+                  });
+                },
+                eventLoader: (day) {
+                  List<Map<String, dynamic>> events = [];
+                  vaccines.forEach((key, value) {
+                    if (value.toDate().year == day.year &&
+                        value.toDate().month == day.month &&
+                        value.toDate().day == day.day) {
+                      events.add({'name': key, 'date': value.toDate()});
+                    }
+                  });
+                  return events;
+                },
+              ),
+              Text(
+                'Gelecek Aşı Tarihleri:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 10),
@@ -121,8 +163,11 @@ class _VaccinesState extends State<Vaccines> {
                 itemBuilder: (context, index) {
                   final vaccineName = vaccines.keys.toList()[index];
                   final vaccineDate = vaccines[vaccineName]!.toDate();
+                  final formattedDate =
+                      "${vaccineDate.day}/${vaccineDate.month}/${vaccineDate.year}";
+
                   return ListTile(
-                    title: Text('$vaccineName - $vaccineDate'),
+                    title: Text('$vaccineName - $formattedDate'),
                     trailing: IconButton(
                       icon: Icon(Icons.delete),
                       onPressed: () => deleteVaccine(vaccineName),
@@ -161,48 +206,7 @@ class _VaccinesState extends State<Vaccines> {
                 child: Text('Aşı Ekle'),
               ),
               SizedBox(height: 20),
-              Text(
-                'Takvim:',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
               SizedBox(height: 10),
-              TableCalendar(
-                firstDay: DateTime.utc(2010, 10, 16),
-                lastDay: DateTime.utc(2030, 3, 14),
-                focusedDay: focusedDay,
-                calendarFormat: calendarFormat,
-                startingDayOfWeek: StartingDayOfWeek.monday,
-                calendarStyle: CalendarStyle(
-                  selectedDecoration: BoxDecoration(
-                    color: Colors.blue,
-                    shape: BoxShape.circle,
-                  ),
-                  todayDecoration: BoxDecoration(
-                    color: Colors.purpleAccent,
-                    shape: BoxShape.circle,
-                  ),
-                ),
-                headerStyle: HeaderStyle(
-                  formatButtonVisible: false,
-                ),
-                onDaySelected: (selectedDay, focusedDay) {
-                  setState(() {
-                    this.selectedDate = selectedDay;
-                    this.focusedDay = focusedDay;
-                  });
-                },
-                eventLoader: (day) {
-                  List<String> events = [];
-                  vaccines.forEach((key, value) {
-                    if (value.toDate().year == day.year &&
-                        value.toDate().month == day.month &&
-                        value.toDate().day == day.day) {
-                      events.add(key);
-                    }
-                  });
-                  return events;
-                },
-              ),
             ],
           ),
         ),
