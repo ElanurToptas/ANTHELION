@@ -65,11 +65,12 @@ class _YourPageState extends State<YourPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Your Page'),
+        title: Text('Gelecek Aşı Takvimi'),
       ),
       body: Column(
         children: [
           DropdownButton<String>(
+            hint: Text("Evcil Hayvan ID Seç"),
             value: _selectedPet,
             items: _pets.map((pet) {
               return DropdownMenuItem<String>(
