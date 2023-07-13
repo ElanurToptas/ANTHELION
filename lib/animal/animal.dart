@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import '../tasarim_UI/tema.dart';
 
+const SizedBox _sizedBoxHeight10 = SizedBox(height: 10);
+
 class MyApp extends StatelessWidget{
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context){
     return MaterialApp(
@@ -159,6 +163,8 @@ class HomePage extends StatelessWidget {
 
   ];
 
+  HomePage({super.key});
+
 
   void _showCard(BuildContext context,  MyCard card) {
     showDialog(
@@ -173,7 +179,7 @@ class HomePage extends StatelessWidget {
               Image.asset(card.imagePath,
                 width: 150,
                 height: 140,),// Resim yolunu güncelleyin
-              SizedBox(height: 10),
+              _sizedBoxHeight10,
               Column(
                 children: List.generate(
                   card.titles.length,
@@ -183,18 +189,18 @@ class HomePage extends StatelessWidget {
                         alignment: Alignment.centerLeft,
                         child: Text(
                           card.titles[index],
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
                           ),
                         ),
                       ),
-                      SizedBox(height: 10),
+                      _sizedBoxHeight10,
                       Text(
                         card.descriptions[index],
                         textAlign: TextAlign.start,
                       ),
-                      SizedBox(height: 10),
+                      _sizedBoxHeight10,
                     ],
                   ),
                 ),
@@ -203,7 +209,7 @@ class HomePage extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('Kapat'),
+                child: const Text('Kapat'),
               ),
             ],
           ),
@@ -220,17 +226,17 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(20),
+          preferredSize: const Size.fromHeight(20),
           child: Container(
            height: 75,
-            padding: EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(12.0),
             alignment: Alignment.center,
             child: Form(
               key: _formKey,
               child: TypeAheadField(
                 textFieldConfiguration: TextFieldConfiguration(
                   controller: _searchController,
-                  decoration: InputDecoration(
+                  decoration:const InputDecoration(
                     hintText: "Hayvan Ara",
                     hintStyle: TextStyle(fontSize: 17),
                     prefixIcon: Icon(Icons.search),
@@ -266,12 +272,12 @@ class HomePage extends StatelessWidget {
         ),
       ),
       body:  SingleChildScrollView(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         child: Column(
           children: [
-            Container(width: MediaQuery.of(context).size.width,
+            SizedBox(width: MediaQuery.of(context).size.width,
               height: 28,
-              child:Stack(
+              child: const Stack(
                 children: [
                   Text(
                     'Köpekler', style: TextStyle(color: Colors.black, fontSize: 20),
@@ -279,17 +285,20 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 10),
+            _sizedBoxHeight10,
 
-            Container(
+      Flex(
+        direction: Axis.horizontal,
+        children: [
+        Expanded(
+        flex: 1,
+        child:SizedBox(
               width: MediaQuery.of(context).size.width -0,
               height: 160,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: Column(
+                  Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
@@ -357,14 +366,12 @@ class HomePage extends StatelessWidget {
 
                         ],
                       ),
-                    ),
-                  ),
                 ],
-              ),),
+              ),),),],),
 
-                          Container(width: MediaQuery.of(context).size.width,
+                     SizedBox(width: MediaQuery.of(context).size.width,
                             height: 24,
-                            child:Stack(
+                            child: const Stack(
                               children: [
                                 Text(
                                   'Kediler', style: TextStyle(color: Colors.black, fontSize: 20),
@@ -372,17 +379,20 @@ class HomePage extends StatelessWidget {
                               ],
                             ),
                           ),
-                          SizedBox(height: 10),
+                            _sizedBoxHeight10,
 
-                          Container(
+      Flex(
+        direction: Axis.horizontal,
+        children: [
+        Expanded(
+        flex: 1,
+        child:SizedBox(
                             width: MediaQuery.of(context).size.width -0,
                             height: 160,
                             child: ListView(
                               scrollDirection: Axis.horizontal,
                               children: [
-                                Expanded(
-                                  child: SingleChildScrollView(
-                                    child: Column(
+                                Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Row(
@@ -445,19 +455,18 @@ class HomePage extends StatelessWidget {
 
                                       ],
                                     ),
-                                  ),
-                                ),
                               ],
                             ),),
+    ),],),
 
 
 
 
 
 
-                          Container(width: MediaQuery.of(context).size.width,
+                            SizedBox(width: MediaQuery.of(context).size.width,
                             height: 24,
-                            child:Stack(
+                            child: const Stack(
                               children: [
                                 Text(
                                   'Hamstırlar', style: TextStyle(color: Colors.black, fontSize: 20),
@@ -465,17 +474,20 @@ class HomePage extends StatelessWidget {
                               ],
                             ),
                           ),
-                          SizedBox(height: 10),
+                          _sizedBoxHeight10,
 
-                          Container(
+    Flex(
+    direction: Axis.horizontal,
+    children: [
+    Expanded(
+    flex: 1,
+    child: SizedBox(
                             width: MediaQuery.of(context).size.width -0,
                             height: 160,
                             child: ListView(
                               scrollDirection: Axis.horizontal,
                               children: [
-                                Expanded(
-                                  child: SingleChildScrollView(
-                                    child: Column(
+                                Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Row(
@@ -535,16 +547,14 @@ class HomePage extends StatelessWidget {
                                         ),
           ],
         ),
-      ),
-    ),
     ],
-    ),),
+    ),),),],),
 
 
 
-            Container(width: MediaQuery.of(context).size.width,
+             SizedBox(width: MediaQuery.of(context).size.width,
               height: 24,
-              child:Stack(
+              child:const Stack(
                 children: [
                   Text(
                     'Tavşanlar', style: TextStyle(color: Colors.black, fontSize: 20),
@@ -552,17 +562,20 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 10),
+            _sizedBoxHeight10,
 
-            Container(
+      Flex(
+        direction: Axis.horizontal,
+        children: [
+        Expanded(
+        flex: 1,
+        child:SizedBox(
               width: MediaQuery.of(context).size.width -0,
               height: 160,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: Column(
+                   Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
@@ -633,10 +646,8 @@ class HomePage extends StatelessWidget {
                           ),
                         ],
                       ),
-                    ),
-                  ),
                 ],
-              ),),
+              ),),),],),
 
 
 
