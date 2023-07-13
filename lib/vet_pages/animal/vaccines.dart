@@ -89,6 +89,7 @@ class _VaccinesState extends State<Vaccines> {
     if (picked != null && picked != selectedDate) {
       setState(() {
         selectedDate = picked;
+        focusedDay = selectedDate!;
       });
     }
   }
@@ -121,7 +122,7 @@ class _VaccinesState extends State<Vaccines> {
                 focusedDay: focusedDay,
                 calendarFormat: calendarFormat,
                 startingDayOfWeek: StartingDayOfWeek.monday,
-                calendarStyle: CalendarStyle(
+                calendarStyle: const CalendarStyle(
                   selectedDecoration: BoxDecoration(
                     color: Colors.blue,
                     shape: BoxShape.circle,
@@ -131,12 +132,12 @@ class _VaccinesState extends State<Vaccines> {
                     shape: BoxShape.circle,
                   ),
                 ),
-                headerStyle: HeaderStyle(
+                headerStyle: const HeaderStyle(
                   formatButtonVisible: false,
                 ),
                 onDaySelected: (selectedDay, focusedDay) {
                   setState(() {
-                    this.selectedDate = selectedDay;
+                    selectedDate = selectedDay;
                     this.focusedDay = focusedDay;
                   });
                 },
@@ -151,6 +152,35 @@ class _VaccinesState extends State<Vaccines> {
                   });
                   return events;
                 },
+                calendarBuilders: CalendarBuilders(
+                  todayBuilder: (context, date, _) {
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedDate = date;
+                          focusedDay = date;
+                        });
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: selectedDate == date
+                              ? Colors.blue
+                              : Colors.transparent,
+                        ),
+                        child: Text(
+                          date.day.toString(),
+                          style: TextStyle(
+                            color: selectedDate == date
+                                ? Colors.white
+                                : Colors.black,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
               Text(
                 'Gelecek Aşı Tarihleri:',
@@ -206,7 +236,6 @@ class _VaccinesState extends State<Vaccines> {
                 child: Text('Aşı Ekle'),
               ),
               SizedBox(height: 20),
-              SizedBox(height: 10),
             ],
           ),
         ),
