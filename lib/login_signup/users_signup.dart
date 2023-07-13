@@ -16,14 +16,8 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _confirmPasswordController = TextEditingController();
   TextEditingController _namesurnameController = TextEditingController();
-  List<Map<String, dynamic>> _pets = []; // Kullanıcının evcil hayvanlarını tutmak için liste
+  List<Map<String, dynamic>> _pets = [];
 
-  List<String> _vaccines = [
-    'Aşı 1',
-    'Aşı 2',
-    'Aşı 3',
-    // Diğer aşılar...
-  ];
   void _navigateToAnotherPage() {
     Navigator.push(
       context,
@@ -34,176 +28,243 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Center(
-    
-      child: Column(mainAxisAlignment: MainAxisAlignment.center,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
             padding: EdgeInsets.all(20.0),
-      child: SingleChildScrollView(
-            child: Form(
-              key: _formKey,
+            child: SingleChildScrollView(
+              child: Form(
+                key: _formKey,
                 child: Column(
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical:8.0),
-                      child: Text("Bilgilerim",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
-                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Text(
+                        "Bilgilerim",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
+                        ),
                       ),
                     ),
-                    SizedBox(height: 10,),
+                    SizedBox(
+                      height: 10,
+                    ),
                     DecoratedBox(
-                      
                       decoration: BoxDecoration(),
                       child: TextFormField(
                         controller: _emailController,
                         decoration: InputDecoration(
-                          labelText: 'E-mail',
-                          border: InputBorder.none
-                          ),
-                        
+                            labelText: 'E-mail', border: InputBorder.none),
                       ),
                     ),
-                    SizedBox(height: 10,),
-                    // Ad Soyad kısmı
+                    SizedBox(
+                      height: 10,
+                    ),
                     DecoratedBox(
-                      
                       decoration: BoxDecoration(),
                       child: TextFormField(
                         controller: _namesurnameController,
                         decoration: InputDecoration(
-                          labelText: 'Ad Soyad',
-                          border: InputBorder.none
-                          ),
-                        
-                        
+                            labelText: 'Ad Soyad', border: InputBorder.none),
                       ),
                     ),
-                    SizedBox(height: 10,),
-                    // Parola kısmı
+                    SizedBox(
+                      height: 10,
+                    ),
                     DecoratedBox(
-                      
                       decoration: BoxDecoration(),
                       child: TextFormField(
                         controller: _passwordController,
                         decoration: InputDecoration(
-                          labelText: 'Parola',
-                          border: InputBorder.none
-                          ),
+                            labelText: 'Parola', border: InputBorder.none),
                         obscureText: true,
-                        
                       ),
                     ),
-                    SizedBox(height: 10,),
-                    //Parola  tekrar Kısmı
-                    DecoratedBox( 
-                      decoration: BoxDecoration() ,
+                    SizedBox(
+                      height: 10,
+                    ),
+                    DecoratedBox(
+                      decoration: BoxDecoration(),
                       child: TextFormField(
                         controller: _confirmPasswordController,
                         decoration: InputDecoration(
-                          labelText: 'Parola Tekrar',
-                          border: InputBorder.none
-                          ),
+                            labelText: 'Parola Tekrar',
+                            border: InputBorder.none),
                         obscureText: true,
-                        
                       ),
                     ),
-                    SizedBox(height: 10,),
-                      ListView.builder(
-                    shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                    itemCount: _pets.length,
-                    itemBuilder: (context, index) {
-                      final pet = _pets[index];
-                      List<String>? vaccines = pet['vaccines'] != null
-                          ? List<String>.from(pet['vaccines'])
-                          : <String>[];
-                      return Column(
-                        children: [
-                          DecoratedBox(
-                            decoration: BoxDecoration(),
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                labelText: 'Evcil Hayvan Chip ID',
-                                border: InputBorder.none,
-                              ),
-                              onChanged: (value) {
-                                setState(() {
-                                  pet['chipId'] = value;
-                                });
-                              },
-                            ),
-                          ),
-                          SizedBox(height: 10),
-                          Text(
-                            'Aşı Bilgileri',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
-                          ),
-                          Column(
-                            children: _vaccines.map((vaccine) {
-                              return CheckboxListTile(
-                                title: Text(vaccine),
-                                value: vaccines.contains(vaccine),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: _pets.length,
+                      itemBuilder: (context, index) {
+                        final pet = _pets[index];
+                        List<Map<String, dynamic>> vaccines =
+                            (pet['vaccines'] as List<dynamic>)
+                                .cast<Map<String, dynamic>>();
+                        return Column(
+                          children: [
+                            DecoratedBox(
+                              decoration: BoxDecoration(),
+                              child: TextFormField(
+                                decoration: InputDecoration(
+                                  labelText: 'Evcil Hayvan Chip ID',
+                                  border: InputBorder.none,
+                                ),
                                 onChanged: (value) {
                                   setState(() {
-                                    if (value!) {
-                                      vaccines.add(vaccine);
-                                    } else {
-                                      vaccines.remove(vaccine);
-                                    }
-                                    pet['vaccines'] = vaccines;
+                                    pet['chipId'] = value;
                                   });
                                 },
-                              );
-                            }).toList(),
-                          ),
-                          SizedBox(height: 10),
-                        ],
-                      );
-                    },
-                  ),
-
-                  // Evcil Hayvan Ekle Butonu
-                  ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        _pets.add({
-                          'chipId': '',
-                          'vaccines': [],
+                              ),
+                            ),
+                            SizedBox(height: 10),
+                            Text(
+                              'Aşı Bilgileri (Yapılmış Aşılar)',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
+                            Column(
+                              children: vaccines.map((vaccine) {
+                                final dateTime =
+                                    (vaccine['date'] as Timestamp).toDate();
+                                final formattedDate =
+                                    '${dateTime.day}/${dateTime.month}/${dateTime.year}';
+                                return ListTile(
+                                  title: Text(vaccine['name']),
+                                  subtitle: Text(formattedDate),
+                                );
+                              }).toList(),
+                            ),
+                            SizedBox(height: 10),
+                            Row(
+                              children: [
+                                Expanded(
+                                  flex: 2,
+                                  child: TextFormField(
+                                    decoration: InputDecoration(
+                                      labelText: 'Aşı Adı',
+                                      border: InputBorder.none,
+                                    ),
+                                    onChanged: (value) {
+                                      setState(() {
+                                        pet['vaccineName'] = value;
+                                      });
+                                    },
+                                  ),
+                                ),
+                                SizedBox(width: 10),
+                                Expanded(
+                                  flex: 1,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      _selectDate(index);
+                                    },
+                                    child: AbsorbPointer(
+                                      child: TextFormField(
+                                        controller: TextEditingController(
+                                          text: pet['vaccineDate'] != null
+                                              ? pet['vaccineDate']
+                                              : '',
+                                        ),
+                                        decoration: InputDecoration(
+                                          labelText: 'Tarih',
+                                          border: InputBorder.none,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(width: 10),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      vaccines.add({
+                                        'name': pet['vaccineName'],
+                                        'date': Timestamp.fromDate(
+                                          DateTime.parse(pet['vaccineDate']),
+                                        ),
+                                      });
+                                      pet['vaccines'] = vaccines;
+                                      pet['vaccineName'] = '';
+                                      pet['vaccineDate'] = '';
+                                    });
+                                  },
+                                  child: Text('Ekle'),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 10),
+                          ],
+                        );
+                      },
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          _pets.add({
+                            'chipId': '',
+                            'vaccines': [],
+                            'vaccineName': '',
+                            'vaccineDate': '',
+                          });
                         });
-                      });
-                    },
-                    child: Text('Evcil Hayvan Ekle'),
-                  ),
+                      },
+                      child: Text('Evcil Hayvan Ekle'),
+                    ),
                     SizedBox(height: 20.0),
-                    // Kayıt ol butonu
-                    SizedBox(width: 345,height: 50,
+                    SizedBox(
+                      width: 345,
+                      height: 50,
                       child: ElevatedButton(
-                        
                         onPressed: () {
-                          if (_formKey.currentState!.validate()&& _passwordController.text ==_confirmPasswordController.text) {
+                          if (_formKey.currentState!.validate() &&
+                              _passwordController.text ==
+                                  _confirmPasswordController.text) {
                             _register();
                             _navigateToAnotherPage();
-                          } else {var snackBar = SnackBar(content: Text('E-mail veya Parola Hatalı !'));
-                        ScaffoldMessenger.of(context).showSnackBar(snackBar);}
+                          } else {
+                            var snackBar = SnackBar(
+                                content: Text('E-mail veya Parola Hatalı !'));
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
+                          }
                         },
-                        child: Text('Kayıt Ol', style: TextStyle(fontSize: 24),),
+                        child: Text(
+                          'Kayıt Ol',
+                          style: TextStyle(fontSize: 24),
+                        ),
                       ),
                     ),
                   ],
                 ),
-              
+              ),
             ),
-          ),
           ),
         ],
       ),
     );
+  }
+
+  Future<void> _selectDate(int index) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2015, 1),
+      lastDate: DateTime(2100),
+    );
+    if (picked != null) {
+      setState(() {
+        _pets[index]['vaccineDate'] = picked.toString();
+      });
+    }
   }
 
   void _register() async {
@@ -213,39 +274,41 @@ class _RegisterPageState extends State<RegisterPage> {
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
-      // Kullanıcının Firestore'daki döküman yolunu oluşturun
-    String uid = userCredential.user!.uid;
-    DocumentReference userDocRef = FirebaseFirestore.instance.collection('Users').doc(uid);
+      String uid = userCredential.user!.uid;
+      DocumentReference userDocRef =
+          FirebaseFirestore.instance.collection('Users').doc(uid);
 
-    // Kullanıcının evcil hayvan bilgilerini oluşturun
       List<Map<String, dynamic>> pets = [];
       for (var pet in _pets) {
         String chipId = pet['chipId'];
-        List<String>? vaccines = pet['vaccines'];
+        List<Map<String, dynamic>> vaccines =
+            (pet['vaccines'] as List<dynamic>).cast<Map<String, dynamic>>();
+
+        Map<String, dynamic> vaccinesMap = {};
+        for (var vaccine in vaccines) {
+          vaccinesMap[vaccine['name']] = vaccine['date'];
+        }
+
         DocumentReference petDocRef =
             FirebaseFirestore.instance.collection('Pets').doc(chipId);
 
         await petDocRef.set({
           'chipId': chipId,
-          'vaccines': vaccines,
+          'vaccines': vaccinesMap,
         });
 
         pets.add({
           'chipId': chipId,
         });
       }
-      
 
-      // Firestore dökümanını oluşturun
       await userDocRef.set({
-        'name' : _namesurnameController.text,
+        'name': _namesurnameController.text,
         'email': userCredential.user!.email,
         'isUser': "true",
         'pets': pets,
       });
     } catch (e) {
-      // Kayıt işlemi başarısız oldu.
-      // Hata mesajını ekrana veya konsola yazdırabilirsiniz.
       print(e.toString());
     }
   }
