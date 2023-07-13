@@ -58,6 +58,7 @@ class UsersProfile extends StatelessWidget {
                           Text(
                             'Yetkisiz kullanıcı! Moderatörler Veterinerlik yeterliliğinizi onaylayana kadar bu hesap askıdadır.',
                             style: TextStyle(fontSize: 16),
+                            textAlign: TextAlign.center,
                           ),
                           SizedBox(height: 10),
                           ElevatedButton(
