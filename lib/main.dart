@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:petcare/tasarim_UI/services_page.dart';
 import 'package:petcare/tasarim_UI/tema.dart';
 import 'package:petcare/vet_list.dart';
-
 import 'firebase_options.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  runApp(MyApp());
+  initializeDateFormatting().then((_) => runApp(MyApp()));
 }
 
 class MyApp extends StatefulWidget {
@@ -70,8 +70,8 @@ class _MyAppState extends State<MyApp> {
       );
     } else {
       return AppBar(
-        // Diğer AppBar özellikleri
-      );
+          // Diğer AppBar özellikleri
+          );
     }
   }
 
@@ -81,7 +81,6 @@ class _MyAppState extends State<MyApp> {
       title: 'Bottom Bar',
       theme: theme(),
       home: Scaffold(
-        
         body: _pageOptions[_selectedIndex],
         bottomNavigationBar: BottomBar(
           selectedIndex: _selectedIndex,
