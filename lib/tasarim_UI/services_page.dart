@@ -3,7 +3,11 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../tasarim_UI/tema.dart';
 
+const SizedBox _sizedBoxHeight10 = SizedBox(height: 10);
+
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -46,6 +50,8 @@ class ServicesPage extends StatelessWidget {
     "Smart Paws Training Center"
   ];
 
+  ServicesPage({super.key});
+
   void _showCard(BuildContext context, MyCard card) {
     showDialog(
       context: context,
@@ -61,7 +67,7 @@ class ServicesPage extends StatelessWidget {
                     width: 150,
                     height: 140,
                   ),
-                  SizedBox(height: 10),
+                  _sizedBoxHeight10,
                   Column(
                       children: List.generate(
                         card.titles.length,
@@ -82,18 +88,16 @@ class ServicesPage extends StatelessWidget {
                                       alignment: Alignment.centerLeft,
                                       child: Text(
                                         title,
-                                        style: TextStyle(
+                                        style:const TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 18,
                                         ),
                                       ),
                                     ),
-                                    SizedBox(height: 1),
                                     Text(
                                       description,
                                       textAlign: TextAlign.start,
                                     ),
-                                    SizedBox(height: 1),
                                   ],
                                 );
                               },
@@ -109,14 +113,14 @@ class ServicesPage extends StatelessWidget {
                         onPressed: () {
                           launch('tel:+123456789');
                         },
-                        child: Text('Telefon'),
+                        child: const Text('Telefon'),
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       ElevatedButton(
                         onPressed: () {
                           launch('https://www.google.com');
                         },
-                        child: Text('Web Sitesi'),
+                        child: const Text('Web Sitesi'),
                       ),
                     ],
                   ),
@@ -124,9 +128,9 @@ class ServicesPage extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: Text('Kapat'),
+                    child: const Text('Kapat'),
                   ),
-                  SizedBox(height: 10),
+                  _sizedBoxHeight10,
                 ],
               ),
             ),
@@ -141,17 +145,17 @@ class ServicesPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(20),
+          preferredSize: const Size.fromHeight(20),
           child: Container(
             height: 75,
-            padding: EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(12.0),
             alignment: Alignment.center,
             child: Form(
               key: _formKey,
               child: TypeAheadField(
                 textFieldConfiguration: TextFieldConfiguration(
                   controller: _searchController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: "Hizmet Ara",
                     hintStyle: TextStyle(fontSize: 17),
                     prefixIcon: Icon(Icons.search),
@@ -392,30 +396,33 @@ class ServicesPage extends StatelessWidget {
         ),
       ), // buradan sonra iconlar bulunuyor üst kısım ise arama kısmı
       body:  SingleChildScrollView(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         child: Column(
           children: [
-            Container(width: MediaQuery.of(context).size.width,
+            SizedBox(width: MediaQuery.of(context).size.width,
               height: 28,
-              child:Stack(
+              child:const Stack(
                 children: [
                   Text(
-                    'Köpekler', style: TextStyle(color: Colors.black, fontSize: 20),
+                    'Oteller', style: TextStyle(color: Colors.black, fontSize: 20),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 10),
+            _sizedBoxHeight10,
 
-            Container(
+      Flex(
+        direction: Axis.horizontal,
+        children: [
+        Expanded(
+        flex: 1,
+        child:SizedBox(
               width: MediaQuery.of(context).size.width -0,
               height: 160,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: Column(
+                  Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
@@ -483,36 +490,38 @@ class ServicesPage extends StatelessWidget {
                           ),
 
                         ],
-                      ),
-                    ),
                   ),
                 ],
               ),),
+        ),],),
 
-            Container(width: MediaQuery.of(context).size.width,
+
+            SizedBox(width: MediaQuery.of(context).size.width,
               height: 24,
-              child:Stack(
+              child:const Stack(
                 children: [
                   Text(
-                    'Kediler', style: TextStyle(color: Colors.black, fontSize: 20),
+                    'Bakıcılar', style: TextStyle(color: Colors.black, fontSize: 20),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 10),
+            _sizedBoxHeight10,
 
-            Container(
+      Flex(
+        direction: Axis.horizontal,
+        children: [
+        Expanded(
+        flex: 1,
+        child:SizedBox(
               width: MediaQuery.of(context).size.width -0,
               height: 160,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: Column(
+                   Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-
                           Row(
                             children: [
                               InkWell(
@@ -592,37 +601,39 @@ class ServicesPage extends StatelessWidget {
 
                         ],
                       ),
-                    ),
-                  ),
                 ],
               ),),
+        ),],),
 
 
 
 
 
 
-            Container(width: MediaQuery.of(context).size.width,
+            SizedBox(width: MediaQuery.of(context).size.width,
               height: 24,
-              child:Stack(
+              child:const Stack(
                 children: [
                   Text(
-                    'Hamstırlar', style: TextStyle(color: Colors.black, fontSize: 20),
+                    'Pet Shop', style: TextStyle(color: Colors.black, fontSize: 20),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 10),
+            _sizedBoxHeight10,
 
-            Container(
+      Flex(
+        direction: Axis.horizontal,
+        children: [
+        Expanded(
+        flex: 1,
+        child:SizedBox(
               width: MediaQuery.of(context).size.width -0,
               height: 160,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: Column(
+                  Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
@@ -678,34 +689,36 @@ class ServicesPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                    ),
-                  ),
                 ],
               ),),
+        ),],),
 
 
 
-            Container(width: MediaQuery.of(context).size.width,
+            SizedBox(width: MediaQuery.of(context).size.width,
               height: 24,
-              child:Stack(
+              child:const Stack(
                 children: [
                   Text(
-                    'Tavşanlar', style: TextStyle(color: Colors.black, fontSize: 20),
+                    'Pet Kuaför', style: TextStyle(color: Colors.black, fontSize: 20),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 10),
+            _sizedBoxHeight10,
 
-            Container(
+      Flex(
+        direction: Axis.horizontal,
+        children: [
+        Expanded(
+        flex: 1,
+        child:SizedBox(
               width: MediaQuery.of(context).size.width -0,
               height: 160,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: Column(
+                   Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
@@ -730,7 +743,7 @@ class ServicesPage extends StatelessWidget {
                                 onTap: () {
                                   MyCard card = MyCard(
                                     titles:[["Furry Styles"],
-                                      ["Kişilik & Karakter Özellikleri"],],
+                                      ["Evcil dostlarınızı stil sahibi yapın!"],],
                                     descriptions:[[""],
                                       ["Tüy kesimi ve şekillendirme, yaratıcı tımar stilleri, renkli tüy boyama, köpük banyolar, tırnak cilalama, göz ve kulak temizliği."],],
                                     imagePath:  'asset/pictures-2/Hollanda Lop tavşanı (2).png',
@@ -760,33 +773,35 @@ class ServicesPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                    ),
-                  ),
                 ],
               ),),
+        ),],),
 
 
-            Container(width: MediaQuery.of(context).size.width,
+            SizedBox(width: MediaQuery.of(context).size.width,
               height: 24,
-              child:Stack(
+              child:const Stack(
                 children: [
                   Text(
-                    'Son Eklenenler', style: TextStyle(color: Colors.black, fontSize: 20),
+                    'Köpek Eğitimi', style: TextStyle(color: Colors.black, fontSize: 20),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 10),
+            _sizedBoxHeight10,
 
-            Container(
+      Flex(
+        direction: Axis.horizontal,
+        children: [
+        Expanded(
+        flex: 1,
+        child:SizedBox(
               width: MediaQuery.of(context).size.width -0,
               height: 160,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: Column(
+                   Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
@@ -851,10 +866,9 @@ class ServicesPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                    ),
-                  ),
                 ],
               ),),
+        ),],),
 
 
 
