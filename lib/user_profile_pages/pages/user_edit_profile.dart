@@ -99,8 +99,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
       theme: theme(),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Profil Düzenle'),
-        ),
+  leading: IconButton(
+    icon: Icon(Icons.arrow_back),
+    onPressed: () {
+      Navigator.pop(context);
+    },
+  ),
+  title: Text('Profil Düzenle'),
+),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -108,7 +114,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
             children: [
               Text(
                 'Kullanıcı Adı:',
-                style: TextStyle(fontSize: 16.0),
+                style: TextStyle(fontSize: 18),
               ),
               TextFormField(
                 controller: _nameController,
@@ -116,7 +122,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               SizedBox(height: 16.0),
               Text(
                 'E-posta Adresi:',
-                style: TextStyle(fontSize: 16.0),
+                style: TextStyle(fontSize: 18),
               ),
               TextFormField(
                 controller: _emailController,
@@ -125,31 +131,31 @@ class _EditProfilePageState extends State<EditProfilePage> {
               
               Text(
                 'Mevcut Kullanıcı Adı: $_currentName',
-                style: TextStyle(fontSize: 16.0),
+                style: TextStyle(fontSize: 18),
               ),
               SizedBox(height: 8.0),
               Text(
                 'Mevcut E-posta Adresi: $_currentEmail',
-                style: TextStyle(fontSize: 16.0),
+                style: TextStyle(fontSize: 18),
               ),
                SizedBox(height: 16.0),
-              SizedBox(width: 250,
+              SizedBox(width:350,
                 child: ElevatedButton(
                   onPressed: _changeUserName,
-                  child: Text('Kullanıcı Adını Güncelle'),
+                  child: Text('Kullanıcı Adını Güncelle', style: TextStyle(fontSize: 20),),
                 ),
               ),
               SizedBox(height: 8.0),
-              SizedBox(width: 250,
+              SizedBox(width: 350,
                 child: ElevatedButton(
                   onPressed: _changeUserEmail,
-                  child: Text('E-posta Adresini Güncelle'),
+                  child: Text('E-posta Adresini Güncelle',style: TextStyle(fontSize: 20),)
                 ),
               ),
               SizedBox(height: 8.0),
             
                
-              SizedBox(width: 250, 
+              SizedBox(width: 350, 
                 child: ElevatedButton(
                   onPressed: () async {
                   try {
@@ -161,7 +167,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     print('Oturum kapatma hatası: $e');
                   }
                 },
-                  child: Text('Çıkış Yap'),
+                  child: Text('Çıkış Yap',style: TextStyle(fontSize: 20)),
                 ),
               ),
             ],

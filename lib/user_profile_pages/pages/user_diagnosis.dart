@@ -53,10 +53,15 @@ class _DiseasesPageState extends State<DiseasesPage> {
     return MaterialApp(
       theme: theme(),
       home: Scaffold(
-        backgroundColor: Color.fromARGB(224, 234, 234, 234),
         appBar: AppBar(
-          title: Text('Hastalıklar Detay'),
-        ),
+  leading: IconButton(
+    icon: Icon(Icons.arrow_back),
+    onPressed: () {
+      Navigator.pop(context);
+    },
+  ),
+  title: Text('Hastalık Detayı'),
+),
         body: SingleChildScrollView(
           child: Center(
             child: Column(

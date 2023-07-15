@@ -95,7 +95,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(height: 16.0),
                     ElevatedButton(
                       onPressed: _signInWithEmailAndPassword,
-                      child: Text('Giriş Yap'),
+                      child: Text('Giriş Yap',style: TextStyle(
+    fontSize: 18, 
+  ),),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -109,14 +111,21 @@ class _LoginScreenState extends State<LoginScreen> {
                               })),
                             );
                           },
-                          child: Text("Şifremi Unuttum"),
+                          child: Text("Şifremi Unuttum!",style: TextStyle(
+    fontSize: 18, 
+    color: Colors.indigo, 
+  ),
+  ),
                         ),
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Hala üye değil misiniz ?"),
+                        Text("Hala üye değil misiniz ?", style: TextStyle(
+    fontSize: 18, 
+   
+  ),),
                         TextButton(
                           onPressed: () {
                             Navigator.push(
@@ -126,7 +135,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               })),
                             );
                           },
-                          child: Text("Hemen üye ol"),
+                          child: Text("Hemen üye ol!", style: TextStyle(
+    fontSize: 18, 
+    color: Colors.indigo, 
+  ),),
                         ),
                       ],
                     ),

@@ -63,18 +63,19 @@ class _VetPageState extends State<VetPage> {
     return MaterialApp(
       theme: theme(),
       home: Scaffold(
-        appBar: AppBar(
-          title: TextField(
-            controller: _searchController,
-            decoration: InputDecoration(
-              hintText: 'Veteriner Ara!',
-              suffixIcon: Icon(Icons.search),
-            ),
-            onChanged: (value) {
-              _filterVeterinarians(value);
-            },
-          ),
-        ),
+    appBar: AppBar(
+  title: TextField(
+    controller: _searchController,
+    decoration: InputDecoration(
+      hintText: 'Veteriner Ara!',
+      prefixIcon: Icon(Icons.search), // Arama ikonu
+    ),
+    onChanged: (value) {
+      _filterVeterinarians(value);
+    },
+  ),
+),
+
         body: ListView.builder(
           itemCount: filteredVeterinarians.length,
           itemBuilder: (context, index) {

@@ -65,8 +65,14 @@ class _YourPageState extends State<YourPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Gelecek Aşı Takvimi'),
-      ),
+  leading: IconButton(
+    icon: Icon(Icons.arrow_back),
+    onPressed: () {
+      Navigator.pop(context);
+    },
+  ),
+  title: Text('Gelecek Aşı Takvimi'),
+),
       body: Column(
         children: [
           DropdownButton<String>(

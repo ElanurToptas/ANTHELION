@@ -102,8 +102,14 @@ class _PetDocumentsPageState extends State<PetDocumentsPage> {
       theme: theme(),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Tahlillerim'),
-        ),
+  leading: IconButton(
+    icon: Icon(Icons.arrow_back),
+    onPressed: () {
+      Navigator.pop(context);
+    },
+  ),
+  title: Text('Tahlillerim'),
+),
         body: Column(
           children: [
             DropdownButton<String>(

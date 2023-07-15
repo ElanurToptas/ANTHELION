@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+
 ThemeData theme() {
   return ThemeData(
     fontFamily: GoogleFonts.poppins().fontFamily,
@@ -90,13 +91,23 @@ InputDecorationTheme inputDecorationTheme() {
     ),
     hintStyle: const TextStyle(color: Colors.indigo),
     alignLabelWithHint: true,
-    fillColor: Colors.white,
+    filled: true,
     contentPadding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+    // Arka plan resmi için decoration
+    // ignore: prefer_const_constructors
+    // fillColor: AssetImage('asset/ArkaPlan/Arka Plan.png'), // Bu satırı kaldırın
+    // contentPadding: EdgeInsets.symmetric(horizontal: 40, vertical: 15), // Bu satırı kaldırın
     enabledBorder: outlineBorder(),
     focusedBorder: focusBorder(),
     border: outlineBorder(),
-
-    
+    // Arka plan resmi için decoration ekleyin
+    // ignore: prefer_const_constructors
+    // decoration: BoxDecoration(
+    //   image: DecorationImage(
+    //     image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
+    //     fit: BoxFit.cover,
+    //   ),
+    // ),
   );
 }
 
