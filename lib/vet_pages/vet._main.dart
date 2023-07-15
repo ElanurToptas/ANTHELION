@@ -10,7 +10,7 @@ import 'package:petcare/vet_pages/animal/vaccines.dart';
 
 class ButtonStyles {
   static final elevatedButtonStyle = ElevatedButton.styleFrom(
-    backgroundColor: Color.fromARGB(255, 111, 132, 255),
+    backgroundColor: Colors.indigo,
     textStyle: TextStyle(fontSize: 18),
     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
     minimumSize: Size(120, 120),
@@ -75,8 +75,14 @@ class ChipUpdatePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Hayvan Bilgilerini Getir'),
-      ),
-      body: Padding(
+      ),body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+      child: Padding(
         padding: EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -97,7 +103,7 @@ class ChipUpdatePage extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 }
 
@@ -112,11 +118,22 @@ class EditAnimalPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Hayvan Bilgileri'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+      ),body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+      child: Center(
+        child:Column(
+          //mainAxisAlignment: MainAxisAlignment.center,
           children: [
+             Image.asset(
+  'asset/Kullanıcı/vet bilgi.png',
+  
+),
+            
             Text(
               'Seçilen Hayvanın ID\'si: $chipNumber',
               style: TextStyle(fontSize: 24),
@@ -236,7 +253,7 @@ class EditAnimalPage extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 }
 
@@ -249,8 +266,14 @@ class ProfilePage extends StatelessWidget {
       body: Scaffold(
         appBar: AppBar(
           title: Text('Veteriner Profili'),
-        ),
-        body: Center(
+        ),body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+        child: Center(
           child: Column(
             children: [
               Expanded(
@@ -308,6 +331,6 @@ class ProfilePage extends StatelessWidget {
           ),
         ),
       ),
-    );
+    ));
   }
 }

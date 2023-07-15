@@ -72,8 +72,14 @@ class _YourPageState extends State<YourPage> {
     },
   ),
   title: Text('Gelecek Aşı Takvimi'),
-),
-      body: Column(
+),body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+      child: Column(
         children: [
           DropdownButton<String>(
             hint: Text("Evcil Hayvan ID Seç"),
@@ -180,6 +186,6 @@ class _YourPageState extends State<YourPage> {
           ),
         ],
       ),
-    );
+    ));
   }
 }

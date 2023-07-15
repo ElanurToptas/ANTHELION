@@ -332,7 +332,13 @@ class ServicesPage extends StatelessWidget {
           ),
         ),
       ), // buradan sonra iconlar bulunuyor üst kısım ise arama kısmı
-      body:  SingleChildScrollView(
+      body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
+              fit: BoxFit.cover,
+            ),
+          ),child:  SingleChildScrollView(
         padding: const EdgeInsets.all(8),
         child: Column(
           children: [
@@ -700,7 +706,7 @@ class ServicesPage extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 
   List<String> _getSuggestions(String query) {

@@ -67,15 +67,26 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: theme(),
-      home: Scaffold(
+      home: Scaffold(body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
        
-        body: _isLoginSuccess
+        child: _isLoginSuccess
             ? _buildContent()
             : Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
+            
                   children: [
+                    Image.asset(
+  'asset/Kullanıcı/uye.png',
+  
+),
                     TextField(
                       controller: _emailController,
                       decoration: InputDecoration(
@@ -146,7 +157,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
       ),
-    );
+    ));
   }
 
   Widget _buildContent() {

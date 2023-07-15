@@ -8,8 +8,8 @@ import 'package:petcare/main.dart';
 
 class ButtonStyles {
   static final elevatedButtonStyle = ElevatedButton.styleFrom(
-    backgroundColor: Color.fromARGB(255, 111, 132, 255),
-    textStyle: TextStyle(fontSize: 12),
+    backgroundColor: Colors.indigo,
+    textStyle: TextStyle(fontSize: 18),
     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
     minimumSize: Size(10, 10),
     shape: RoundedRectangleBorder(
@@ -297,8 +297,14 @@ class _EditVetProfileState extends State<EditVetProfile> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Profil Düzenle'),
-        ),
-        body: SingleChildScrollView(
+        ),body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+        child: SingleChildScrollView(
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -619,6 +625,6 @@ class _EditVetProfileState extends State<EditVetProfile> {
               ],
             ),
           ),
-        ));
+        )));
   }
 }

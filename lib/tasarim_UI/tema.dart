@@ -92,22 +92,11 @@ InputDecorationTheme inputDecorationTheme() {
     hintStyle: const TextStyle(color: Colors.indigo),
     alignLabelWithHint: true,
     filled: true,
+    fillColor: Colors.white,
     contentPadding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-    // Arka plan resmi için decoration
-    // ignore: prefer_const_constructors
-    // fillColor: AssetImage('asset/ArkaPlan/Arka Plan.png'), // Bu satırı kaldırın
-    // contentPadding: EdgeInsets.symmetric(horizontal: 40, vertical: 15), // Bu satırı kaldırın
     enabledBorder: outlineBorder(),
     focusedBorder: focusBorder(),
     border: outlineBorder(),
-    // Arka plan resmi için decoration ekleyin
-    // ignore: prefer_const_constructors
-    // decoration: BoxDecoration(
-    //   image: DecorationImage(
-    //     image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
-    //     fit: BoxFit.cover,
-    //   ),
-    // ),
   );
 }
 

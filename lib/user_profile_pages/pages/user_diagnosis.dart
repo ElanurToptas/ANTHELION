@@ -62,7 +62,14 @@ class _DiseasesPageState extends State<DiseasesPage> {
   ),
   title: Text('Hastalık Detayı'),
 ),
-        body: SingleChildScrollView(
+body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+        child: SingleChildScrollView(
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -104,6 +111,6 @@ class _DiseasesPageState extends State<DiseasesPage> {
           ),
         ),
       ),
-    );
+    ));
   }
 }
