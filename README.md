@@ -104,10 +104,11 @@ Sprint Review katılımcıları:Elanur Toptaş, Hüseyin Arınç Şentürk, Fatm
 - **Sprint board update:** Sprint board screenshotları:![WhatsApp Görsel 2023-07-15 saat 21 04 40](https://github.com/ElanurToptas/ANTHELION/assets/129093031/d0a56c75-4031-4044-a752-e325f99e7e8a)
 
 
-- **Ürün Durumu:** Ekran görüntüleri:![WhatsApp Görsel 2023-07-15 saat 21 02 38](https://github.com/ElanurToptas/ANTHELION/assets/129093031/8c0fb8b3-2ac9-42ae-a94a-bac63e5e9749)
-![WhatsApp Görsel 2023-07-15 saat 20 59 39](https://github.com/ElanurToptas/ANTHELION/assets/129093031/0522719e-3c75-47c7-9921-7e43f67f45af)
-![WhatsApp Görsel 2023-07-15 saat 21 00 22](https://github.com/ElanurToptas/ANTHELION/assets/129093031/8ecf8429-a69a-4ce5-a03a-28db8bca718b)
-![image](https://github.com/ElanurToptas/ANTHELION/assets/129093031/6a6465d2-cca6-47df-8b2d-dff7bce1031a)
+- **Ürün Durumu:** Ekran görüntüleri:
+- ![WhatsApp Görsel 2023-07-15 saat 21 02 38](https://github.com/ElanurToptas/ANTHELION/assets/129093031/8c0fb8b3-2ac9-42ae-a94a-bac63e5e9749)
+- ![WhatsApp Görsel 2023-07-15 saat 20 59 39](https://github.com/ElanurToptas/ANTHELION/assets/129093031/0522719e-3c75-47c7-9921-7e43f67f45af)
+- ![WhatsApp Görsel 2023-07-15 saat 21 00 22](https://github.com/ElanurToptas/ANTHELION/assets/129093031/8ecf8429-a69a-4ce5-a03a-28db8bca718b)
+- ![image](https://github.com/ElanurToptas/ANTHELION/assets/129093031/6a6465d2-cca6-47df-8b2d-dff7bce1031a)
 
 
 
