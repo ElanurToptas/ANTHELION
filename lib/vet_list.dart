@@ -75,8 +75,15 @@ class _VetPageState extends State<VetPage> {
     },
   ),
 ),
+body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
 
-        body: ListView.builder(
+        child: ListView.builder(
           itemCount: filteredVeterinarians.length,
           itemBuilder: (context, index) {
             final vet = filteredVeterinarians[index];
@@ -223,6 +230,7 @@ class _VetPageState extends State<VetPage> {
           },
         ),
       ),
+    )
     );
   }
 

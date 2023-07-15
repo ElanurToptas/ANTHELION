@@ -85,65 +85,11 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
    - lib/google_fonts/
-   - asset/pictures/norfolkT.png
-   - asset/pictures/collie.png
-   - asset/pictures/goldenR.png
-   - asset/pictures/chartreux.png
-   - asset/pictures/europeanS.png
-   - asset/pictures/scottishF.png
-   - asset/pictures/avrupaH.png
-   - asset/pictures/gonzalesH.png
-   - asset/pictures/çinH.png
-   - asset/pictures/MuhabbetK.png
-   - asset/pictures/KırmızıAraraunaP.png
-   - asset/pictures/SultanP.png
-   - asset/pictures/Havana tavşanı.png
-   - asset/pictures/Hollanda Lop tavşanı.png
-   - asset/pictures/Hothot tavşanı.png
-   - asset/pictures-2/norfolkT.png
-   - asset/pictures-2/collie.png
-   - asset/pictures-2/goldenR.png
-   - asset/pictures-2/chartreux.png
-   - asset/pictures-2/europeanS.png
-   - asset/pictures-2/scottishF.png
-   - asset/pictures-2/avrupaH.png
-   - asset/pictures-2/gonzalesH.png
-   - asset/pictures-2/çinH.png
-   - asset/pictures-2/MuhabbetK.png
-   - asset/pictures-2/KırmızıAraraunaP.png
-   - asset/pictures-2/SultanP.png
-   - asset/pictures-2/Havana tavşanı (2).png
-   - asset/pictures-2/Hollanda Lop tavşanı (2).png
-   - asset/pictures-2/Hothot tavşanı (2).png
-   - asset/hizmetler/Canine.png
-   - asset/hizmetler/Canine 2.png
-   - asset/hizmetler/Canine 3.png
-   - asset/hizmetler/Evcil.png
-   - asset/hizmetler/Evcil 2.png
-   - asset/hizmetler/Furry.png
-   - asset/hizmetler/Furry 2.png
-   - asset/hizmetler/Happy.png
-   - asset/hizmetler/Happy 2.png
-   - asset/hizmetler/Happy 3.png
-   - asset/hizmetler/Pampered.png
-   - asset/hizmetler/Pampered 2.png
-   - asset/hizmetler/Patili.png
-   - asset/hizmetler/Patili 2.png
-   - asset/hizmetler/PawS.png
-   - asset/hizmetler/PawS 2.png
-   - asset/hizmetler/Paws .png
-   - asset/hizmetler/Paws 3.png
-   - asset/hizmetler/PawsCo.png
-   - asset/hizmetler/PawsCo 2.png
-   - asset/hizmetler/Pet Paradise Oteli.png
-   - asset/hizmetler/Pet Paradise Oteli 2.png
-   - asset/hizmetler/Pet Paradise Oteli 3.png
-   - asset/hizmetler/Sevimli.png
-   - asset/hizmetler/Sevimli 2.png
-   - asset/hizmetler/Smart.png
-   - asset/hizmetler/Smart 2.png
-   - asset/hizmetler/Smart 3.png
+   - asset/pictures/
+   - asset/pictures-2/
+   - asset/hizmetler/
    - asset/ArkaPlan/
+   - asset/Kullanıcı/
 
   
 

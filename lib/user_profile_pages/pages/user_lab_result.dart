@@ -109,8 +109,14 @@ class _PetDocumentsPageState extends State<PetDocumentsPage> {
     },
   ),
   title: Text('Tahlillerim'),
-),
-        body: Column(
+),body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+        child: Column(
           children: [
             DropdownButton<String>(
               value: _selectedPet,
@@ -145,7 +151,7 @@ class _PetDocumentsPageState extends State<PetDocumentsPage> {
           ],
         ),
       ),
-    );
+    ));
   }
 }
 

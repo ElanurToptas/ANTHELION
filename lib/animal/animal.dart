@@ -297,8 +297,14 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
-      ),
-      body:SingleChildScrollView(
+      ),body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+      child:SingleChildScrollView(
         padding: const EdgeInsets.all(8),
         child: Column(
           children: [
@@ -682,6 +688,7 @@ class HomePage extends StatelessWidget {
           ],
     ),
       ),
+    )
     );
   }
 

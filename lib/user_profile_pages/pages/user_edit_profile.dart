@@ -107,7 +107,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
   ),
   title: Text('Profil Düzenle'),
 ),
-        body: Padding(
+body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+        child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             
@@ -174,6 +181,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
           ),
         ),
       ),
-    );
+    ));
   }
 }

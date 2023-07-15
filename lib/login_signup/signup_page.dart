@@ -40,6 +40,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     selectedOption = Option.Option1;
                   });
                 },
+                
                 child: const Text(
                   'Üye Ol',
                   style: TextStyle(
@@ -74,6 +75,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
       ],
     );
+    
   }
 
   @override
@@ -87,8 +89,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return MaterialApp(
       theme: theme(),
       home: Scaffold(
-        appBar: _buildAppBar(),
-        body: SingleChildScrollView(
+        appBar: _buildAppBar(),body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+        child: SingleChildScrollView(
           child: Column(
             children: [
               content,
@@ -96,6 +104,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
         ),
       ),
-    );
+    ));
   }
 }

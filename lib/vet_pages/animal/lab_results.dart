@@ -173,10 +173,19 @@ class _LabResultsState extends State<LabResults> {
       appBar: AppBar(
         title: Text('Lab Sonuçları'),
       ),
-      body: Padding(
+      body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+      child: Padding(
         padding: EdgeInsets.all(20),
         child: Column(
           children: [
+           
+              
             Text(
               'Seçilen Hayvanın Çip Numarası: ${widget.chipNumber}',
               style: TextStyle(fontSize: 24),
@@ -209,6 +218,6 @@ class _LabResultsState extends State<LabResults> {
           ],
         ),
       ),
-    );
+    ));
   }
 }

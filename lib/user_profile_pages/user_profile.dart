@@ -15,14 +15,21 @@ class UserProfile extends StatelessWidget {
         appBar: AppBar(
   title: Text('Kullanıcı Profili'),
 ),
-        body: SafeArea(
+body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+        child: SafeArea(
           child: Column(
             children: [
-              Image.network(
-                'https://www.medivet.co.uk/globalassets/assets/shutterstock-and-istock/shutterstock_708732331.png?width=585',
-                width: 450,
-                height: 230,
-              ),
+              Image.asset(
+  'asset/Kullanıcı/Kullanıcı profil.png',
+  width: 350,
+  height: 350,
+),
               Expanded(
                 child: Container(),
               ),
@@ -169,6 +176,6 @@ class UserProfile extends StatelessWidget {
           ),
         ),
       ),
-    );
+    ));
   }
 }
