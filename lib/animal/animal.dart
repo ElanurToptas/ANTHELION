@@ -186,7 +186,7 @@ class HomePage extends StatelessWidget {
   ),
 
   MyCard(
-  titles:["Kişilik & Karakter Özellikleri","----------------------------","Sağlık Durumu",
+  titles:["Kişilik & Karakter Özellikleri","----------------------------", "Sağlık Durumu",
     "Sindirim Problemleri",
     "Diş Problemleri",
     "Cilt Problemleri",
