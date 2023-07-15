@@ -46,23 +46,51 @@ class HomePage extends StatelessWidget {
 
   final List<MyCard> myCards = [
     MyCard(
-      titles: ['Kişilik & Karakter Özellikleri'],
+      titles: ['Kişilik & Karakter Özellikleri',"----------------------------" ,"Sağlık Durumu","Luxating patella", "Kalıtsal göz sorunları","Hipotiroidizm","Allerjiler","Diş sağlığı sorunları"],
       descriptions: [
         "Norfolk Terrier, alıngan, cesur, meraklı, oyunbaz, kavgacı, sadık, neşeli, canlı, inatçı ve bağımsız karakter özellikleriyle tam bir teriyerdir. Tarlada “iblis” olarak bilinir ve avlanmayı, kazmayı ve keşfetmeyi sever. Hareketli, bağımsız yapısından dolayı güvenli bir alan tutulması gerekir. Zeki ve dost canlısıdır ancak iradeli bir yapıları ve kendi düşünceleriyle hareket etmek isteyebilirler.",
+      "",
+     "Norfolk Terrier, genel olarak sağlıklı bir köpek ırkıdır. Ancak, her köpek gibi bazı sağlık sorunlarıyla karşılaşabilirler. İşte Norfolk Terrier'ın sağlık durumuyla ilgili bazı önemli noktalar:",
+         "Luxating patella: Norfolk Terrier'lar arasında sıkça görülen bir sağlık sorunu olan luxating patella, diz ekleminde bir kayma veya çıkık olması durumunu ifade eder. Bu durum köpeğin zorlukla yürümesine ve ağrıya neden olabilir.",
+
+       "Kalıtsal göz sorunları Norfolk Terrier'lar bazı kalıtsal göz sorunlarına yatkın olabilirler. Özellikle katarakt, retinal displazi ve glokom gibi sorunlar gözlenebilir. Düzenli göz kontrolleri bu sorunların erken teşhis edilmesine yardımcı olur.",
+
+        "Hipotiroidizm Norfolk Terrier'lar, tiroid bezinin düşük aktivitesi olarak bilinen hipotiroidizm sorunuyla karşılaşabilirler. Bu durumda metabolizma yavaşlar ve köpeklerde kilo alımı, yorgunluk, cilt sorunları gibi belirtiler ortaya çıkabilir.",
+
+        "Allerjiler Norfolk Terrier'lar, çevresel faktörlere veya yiyeceklere karşı allerjik reaksiyonlar geliştirebilirler. Cilt kaşıntısı, kızarıklık, döküntüler gibi belirtiler görülebilir. Doğru beslenme ve uygun ortam koşulları sağlanarak allerjilerin kontrol altında tutulması önemlidir.",
+
+       "Diş sağlığı sorunları Norfolk Terrier'lar, diş taşı oluşumu ve diş eti hastalıklarına yatkın olabilirler. Düzenli diş temizliği ve veteriner kontrolü bu sorunların önlenmesinde önemlidir.",
       ],
       imagePath: 'asset/pictures-2/norfolkT.png',
     ),
     MyCard(
-      titles: ["Kişilik & Karakter Özellikleri"],
+      titles: ["Kişilik & Karakter Özellikleri","----------------------------" ,"Sağlık Durumu","Göz sorunları","Hip displaz","Dermatomiyozit","Epilepsi","Sindirim sorunları","Kalp sorunları"],
       descriptions: [
-        "Collie zeki, tatlı, canlı, uysal, hassas, yumuşak huylu, uyumlu ve arkadaş canlısı bir köpektir. Collie sahibine sadık, eğitilmesi kolay ve itaatkar bir ırktır. Genellikle diğer evcil hayvanlarla ve diğer köpeklerle de arası iyi, arkadaş canlısıdır. Çocukları çok sever, çocuklarla oyun oynamaktan mutlu olurlar ve çocukları çevresindeki olumsuzluklara karşı korumak isterler. İyi yetiştirilmiş, eğitilmiş bir Collie köpeğinin oldukça arkadaş canlısı ve uysal olduğu gözlemlenmektedir. Collie karakter yapısıyla tam bir aile köpeğidir ve tüm ailenin vazgeçilmez bir parçası olmaktan çok mutlu olur.",
+        "Collie zeki, tatlı, canlı, uysal, hassas, yumuşak huylu, uyumlu ve arkadaş canlısı bir köpektir. Collie sahibine sadık, eğitilmesi kolay ve itaatkar bir ırktır. Genellikle diğer evcil hayvanlarla ve diğer köpeklerle de arası iyi, arkadaş canlısıdır. Çocukları çok sever, çocuklarla oyun oynamaktan mutlu olurlar ve çocukları çevresindeki olumsuzluklara karşı korumak isterler. "
+            "İyi yetiştirilmiş, eğitilmiş bir Collie köpeğinin oldukça arkadaş canlısı ve uysal olduğu gözlemlenmektedir. Collie karakter yapısıyla tam bir aile köpeğidir ve tüm ailenin vazgeçilmez bir parçası olmaktan çok mutlu olur.",
+        "",
+        "Collie, genel olarak sağlıklı bir köpek ırkıdır. Ancak, bazı genetik ve ırksal sağlık sorunlarına yatkın olabilirler. İşte Collie'nin sağlık durumuyla ilgili bazı önemli noktalar:",
+        "Collie'ler, göz sorunlarına yatkın bir ırktır. Özellikle göz yapısı nedeniyle glokom, retinal displazi ve katarakt gibi sorunlar görülebilir. Düzenli göz kontrolleri bu sorunların erken teşhis edilmesine yardımcı olur.",
+        "Collie'lerde kalça displazisi, kalça eklemi bozukluğuna işaret eder. Bu durumda kalça ekleminde ağrı, yürüme zorluğu ve sakatlık görülebilir. Düzenli veteriner kontrolleri ve uygun egzersiz yönetimi önemlidir.",
+        "Collie'lerde görülen genetik bir cilt ve kas hastalığı olan dermatomiyozit, ciltte yara, döküntü ve kas zayıflığına neden olabilir. Erken teşhis ve tedavi önemlidir.",
+        "Collie'lerde epilepsi gibi nörolojik bozukluklar görülebilir. Krizler, bilinç kaybı ve kasılma gibi belirtiler gözlenebilir. Uygun veteriner takibi ve tedavi yönetimi önemlidir.",
+        "Bazı Collie'lerde sindirim sorunları, özellikle hassas bir sindirim sistemine sahip olabilirler. Düzenli beslenme, uygun diyet ve besin takviyeleri bu sorunların yönetiminde yardımcı olabilir.",
+        "Collie'lerde kalp hastalıkları, özellikle mitral kapak prolapsusu gibi durumlar görülebilir. Düzenli veteriner kontrolleri ve uygun tedavi yönetimi önemlidir.",
       ],
       imagePath: 'asset/pictures-2/collie.png',
     ),
     MyCard(
-      titles: ["Kişilik & Karakter Özellikleri"],
+      titles: ["Kişilik & Karakter Özellikleri","----------------------------","Sağlık Durumu","Kalça displazisi","Diz sorunlar","Cilt sorunları","Göz sorunları","Kanser","Kalp sorunları"],
       descriptions: [
         "Golden Retriever bulunduğu ortamda sevimliliği, cana yakınlığı ve oyunculuğu ile tüm gözleri üzerine çekmektedir. Orta büyüklüğe sahip bu sevimli ırk, açık kahverengi ve krem tonlarındaki yumuşak ve göz alıcı bedeniyle kalpleri kazanır. Atletik ve güçlü bir yapısı vardır. Güçlü ön ve arka ayakları ile karada olduğu gibi suda da hareket etme ve avlanma yeteneğine sahiptir. Düz veya dalgalı kabarık kürke sahiptir. Dost canlısı olan Golden Retriever kısa sürede ailenizden birisi olur.",
+        "",
+        "Golden Retriever, genel olarak sağlıklı ve dayanıklı bir köpek ırkıdır. Ancak, bazı genetik yatkınlıkları ve ırksal sağlık sorunları bulunabilir. İşte Golden Retriever'ın sağlık durumuyla ilgili bazı önemli bilgiler:",
+        "Golden Retriever'lar arasında yaygın olan bir sorun olan kalça displazisi, kalça eklemi bozukluğuna işaret eder. Düzenli veteriner kontrolleri ve kalça displazisine yatkınlığı olan köpeklerde genetik testlerle erken teşhis önemlidir.",
+        "Patella çıkığı (luxating patella) ve ön çapraz bağ yaralanmaları gibi diz sorunları Golden Retriever'lar arasında sıkça görülebilir. Bu tür sorunlar köpeğin hareketliliğini etkileyebilir ve cerrahi müdahale gerektirebilir.",
+        "Golden Retriever'lar, alerjik dermatit ve kulak enfeksiyonları gibi cilt sorunlarına yatkın olabilirler. Düzenli temizlik ve bakım, cilt sorunlarının önlenmesinde önemlidir. Ayrıca, uygun diyet ve alerjenlere karşı hassaslık kontrolü yapılması da önemlidir.",
+        "Katarakt, retinal displazi ve göz enfeksiyonları gibi göz sorunları Golden Retriever'lar arasında görülebilir. Düzenli göz kontrolleri ve erken teşhis önemlidir.",
+        "Golden Retriever'lar, kansere yatkın bir ırktır. Özellikle lenfoma ve kanser gibi çeşitli türler görülebilir. Erken teşhis, düzenli veteriner kontrolleri ve kanserle mücadelede uygun tedavi yöntemleri önemlidir.",
+        "Dilate kardiyomiyopati gibi kalp sorunları, Golden Retriever'lar arasında görülebilir. Düzenli veteriner kontrolleri ve uygun tedavi yönetimi önemlidir.",
       ],
       imagePath: 'asset/pictures-2/goldenR.png',
     ),
@@ -195,7 +223,6 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      _sizedBoxHeight10,
                       Text(
                         card.descriptions[index],
                         textAlign: TextAlign.start,
@@ -271,7 +298,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      body:  SingleChildScrollView(
+      body:SingleChildScrollView(
         padding: const EdgeInsets.all(8),
         child: Column(
           children: [
