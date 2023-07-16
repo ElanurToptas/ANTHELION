@@ -365,6 +365,19 @@ class _EditVetProfileState extends State<EditVetProfile> {
                       height: 10,
                     ),
                     Container(
+                      padding: EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 255, 255, 255),
+                        borderRadius: BorderRadius.circular(8),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 1,
+                            blurRadius: 10,
+                            offset: Offset(1, 1),
+                          ),
+                        ],
+                      ),
                       width: 350,
                       child: Column(
                         children: [
@@ -499,6 +512,9 @@ class _EditVetProfileState extends State<EditVetProfile> {
                         ],
                       ),
                     ),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Container(
                       width: 350,
                       child: Padding(
@@ -568,39 +584,47 @@ class _EditVetProfileState extends State<EditVetProfile> {
                               SizedBox(
                                 height: 10,
                               ),
-                              ElevatedButton(
-                                style: ButtonStyles.elevatedButtonStyle,
-                                onPressed: () {
-                                  String newPassword =
-                                      _newPasswordController.text;
-                                  String confirmPassword =
-                                      _confirmPasswordController.text;
+                              Align(
+                                alignment:
+                                    Alignment.centerRight, // Sağa hizalama
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    textStyle: TextStyle(
+                                      fontSize: 15, // İstenen yazı tipi boyutu
+                                    ),
+                                  ),
+                                  onPressed: () {
+                                    String newPassword =
+                                        _newPasswordController.text;
+                                    String confirmPassword =
+                                        _confirmPasswordController.text;
 
-                                  if (newPassword == confirmPassword) {
-                                    _updatePassword(context);
-                                  } else {
-                                    // Şifreler eşleşmiyor, hata mesajı göster
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return AlertDialog(
-                                          title: Text('Hata'),
-                                          content: Text(
-                                              'Girdiğiniz şifreler eşleşmiyor.'),
-                                          actions: [
-                                            ElevatedButton(
-                                              onPressed: () {
-                                                Navigator.of(context).pop();
-                                              },
-                                              child: Text('Tamam'),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                  }
-                                },
-                                child: Text('Şifreyi Değiştir'),
+                                    if (newPassword == confirmPassword) {
+                                      _updatePassword(context);
+                                    } else {
+                                      // Şifreler eşleşmiyor, hata mesajı göster
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            title: Text('Hata'),
+                                            content: Text(
+                                                'Girdiğiniz şifreler eşleşmiyor.'),
+                                            actions: [
+                                              ElevatedButton(
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                                child: Text('Tamam'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                    }
+                                  },
+                                  child: Text('Şifreyi Değiştir'),
+                                ),
                               ),
                             ],
                           ),
@@ -612,15 +636,6 @@ class _EditVetProfileState extends State<EditVetProfile> {
                       mainAxisAlignment: MainAxisAlignment
                           .spaceEvenly, // Butonları yatay eksende hizalama
                       children: [
-                        ElevatedButton(
-                          style: ButtonStyles.elevatedButtonStyle,
-                          onPressed: () {
-                            saveUserBio(vetBio);
-                            saveUserName(vetName);
-                            _uploadImage();
-                          },
-                          child: Text('Değişiklikleri Kaydet'),
-                        ),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor:
@@ -636,6 +651,15 @@ class _EditVetProfileState extends State<EditVetProfile> {
                             });
                           },
                           child: Text('Çıkış Yap'),
+                        ),
+                        ElevatedButton(
+                          style: ButtonStyles.elevatedButtonStyle,
+                          onPressed: () {
+                            saveUserBio(vetBio);
+                            saveUserName(vetName);
+                            _uploadImage();
+                          },
+                          child: Text('Değişiklikleri Kaydet'),
                         ),
                       ],
                     ),

@@ -1,5 +1,6 @@
 ﻿import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
 
 class DiseaseDiagnosisPage extends StatefulWidget {
   final String chipNumber;
@@ -11,8 +12,10 @@ class DiseaseDiagnosisPage extends StatefulWidget {
 }
 
 class _DiseaseDiagnosisPageState extends State<DiseaseDiagnosisPage> {
-  final TextEditingController _diseaseController = TextEditingController();
-  List<String> diseases = [];
+  final TextEditingController _diseaseNameController = TextEditingController();
+  final TextEditingController _diseaseDescriptionController =
+      TextEditingController();
+  List<Map<String, dynamic>> diseases = [];
 
   @override
   void initState() {
@@ -28,16 +31,26 @@ class _DiseaseDiagnosisPageState extends State<DiseaseDiagnosisPage> {
 
     if (documentSnapshot.exists) {
       setState(() {
-        final data = documentSnapshot.data()
-            as Map<String, dynamic>?; // Dönüşümü gerçekleştirin
-        diseases = List<String>.from(data?['diseases'] ?? []);
+        final data = documentSnapshot.data() as Map<String, dynamic>?;
+
+        diseases = List<Map<String, dynamic>>.from(data?['diseases'] ?? []);
       });
     }
   }
 
   void addDisease() {
-    String newDisease = _diseaseController.text.trim();
-    if (newDisease.isNotEmpty) {
+    String diseaseName = _diseaseNameController.text.trim();
+    String diseaseDescription = _diseaseDescriptionController.text.trim();
+
+    if (diseaseName.isNotEmpty && diseaseDescription.isNotEmpty) {
+      String currentDate = DateFormat('dd/MM/yyyy').format(DateTime.now());
+
+      Map<String, dynamic> newDisease = {
+        'name': diseaseName,
+        'date': currentDate,
+        'description': diseaseDescription,
+      };
+
       setState(() {
         diseases.add(newDisease);
       });
@@ -49,11 +62,12 @@ class _DiseaseDiagnosisPageState extends State<DiseaseDiagnosisPage> {
         'diseases': FieldValue.arrayUnion([newDisease])
       });
 
-      _diseaseController.clear();
+      _diseaseNameController.clear();
+      _diseaseDescriptionController.clear();
     }
   }
 
-  void removeDisease(String disease) {
+  void removeDisease(Map<String, dynamic> disease) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -63,7 +77,7 @@ class _DiseaseDiagnosisPageState extends State<DiseaseDiagnosisPage> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop(); // Pencereyi kapat
+                Navigator.of(context).pop();
               },
               child: Text('İptal'),
             ),
@@ -80,7 +94,7 @@ class _DiseaseDiagnosisPageState extends State<DiseaseDiagnosisPage> {
                   'diseases': FieldValue.arrayRemove([disease])
                 });
 
-                Navigator.of(context).pop(); // Pencereyi kapat
+                Navigator.of(context).pop();
               },
               child: Text('Sil'),
             ),
@@ -90,54 +104,96 @@ class _DiseaseDiagnosisPageState extends State<DiseaseDiagnosisPage> {
     );
   }
 
-  @override
-  void dispose() {
-    _diseaseController.dispose();
-    super.dispose();
+  void showDiseaseDetails(Map<String, dynamic> disease) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(disease['name']),
+          content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text('Tarih: ${disease['date']}'),
+              SizedBox(height: 10),
+              Text('Açıklama: ${disease['description']}'),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Kapat'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+    diseases.sort((a, b) {
+      DateTime dateA = DateFormat('dd/MM/yyyy').parse(a['date']);
+      DateTime dateB = DateFormat('dd/MM/yyyy').parse(b['date']);
+      return dateB.compareTo(dateA);
+    });
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Hastalık Teşhisi'),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(20),
-        child: Column(
-          children: [
-            Text(
-              'Seçilen Hayvanın Çip Numarası: ${widget.chipNumber}',
-              style: TextStyle(fontSize: 24),
-            ),
-            SizedBox(height: 20),
-            TextField(
-              controller: _diseaseController,
-              decoration: InputDecoration(
-                labelText: 'Hastalık',
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            children: [
+              Text(
+                'Seçilen Hayvanın Çip Numarası: ${widget.chipNumber}',
+                style: TextStyle(fontSize: 24),
               ),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: addDisease,
-              child: Text('Hastalık Ekle'),
-            ),
-            SizedBox(height: 20),
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: diseases.length,
-              itemBuilder: (context, index) {
-                final disease = diseases[index];
-                return ListTile(
-                  title: Text(disease),
-                  trailing: IconButton(
-                    icon: Icon(Icons.delete),
-                    onPressed: () => removeDisease(disease),
-                  ),
-                );
-              },
-            ),
-          ],
+              SizedBox(height: 20),
+              TextFormField(
+                controller: _diseaseNameController,
+                decoration: InputDecoration(
+                  labelText: 'Hastalık Adı',
+                ),
+              ),
+              SizedBox(height: 20),
+              TextFormField(
+                controller: _diseaseDescriptionController,
+                maxLines: 8,
+                decoration: InputDecoration(
+                  labelText: 'Hastalık Açıklaması',
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 60.0, horizontal: 5),
+                ),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: addDisease,
+                child: Text('Hastalık Ekle'),
+              ),
+              SizedBox(height: 20),
+              ListView.builder(
+                shrinkWrap: true,
+                itemCount: diseases.length,
+                itemBuilder: (context, index) {
+                  final disease = diseases[index];
+                  return ListTile(
+                    title: Text(disease['name']),
+                    subtitle: Text(disease['date']),
+                    onTap: () => showDiseaseDetails(disease),
+                    trailing: IconButton(
+                      icon: Icon(Icons.delete),
+                      onPressed: () => removeDisease(disease),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
