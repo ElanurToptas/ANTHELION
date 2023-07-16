@@ -73,37 +73,38 @@ class ChipUpdatePage extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Hayvan Bilgilerini Getir'),
-      ),body: Container(
-          decoration: BoxDecoration(
+        appBar: AppBar(
+          title: Text('Hayvan Bilgilerini Getir'),
+        ),
+        body: Container(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
               fit: BoxFit.cover,
             ),
           ),
-      child: Padding(
-        padding: EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(
-              onChanged: (value) => updateChipNumber(value),
-              decoration: InputDecoration(
-                labelText: 'Hayvan Çip No',
-              ),
+          child: Padding(
+            padding: EdgeInsets.all(20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextField(
+                  onChanged: (value) => updateChipNumber(value),
+                  decoration: InputDecoration(
+                    labelText: 'Hayvan Çip No',
+                  ),
+                ),
+                SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    getAnimalInformation();
+                  },
+                  child: Text('Hayvan Bilgilerini Getir'),
+                ),
+              ],
             ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                getAnimalInformation();
-              },
-              child: Text('Hayvan Bilgilerini Getir'),
-            ),
-          ],
-        ),
-      ),
-    ));
+          ),
+        ));
   }
 }
 
@@ -116,144 +117,126 @@ class EditAnimalPage extends StatelessWidget {
   Widget build(BuildContext context) {
     // Seçilen ID'ye göre düzenleme yapmak için burada gerekli arayüzü oluşturun ve işlemleri gerçekleştirin
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Hayvan Bilgileri'),
-      ),body: Container(
+        appBar: AppBar(
+          title: Text('Hayvan Bilgileri'),
+        ),
+        body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
               fit: BoxFit.cover,
             ),
           ),
-      child: Center(
-        child:Column(
-          //mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-             Image.asset(
-  'asset/Kullanıcı/vet bilgi.png',
-  
-),
-            
-            Text(
-              'Seçilen Hayvanın ID\'si: $chipNumber',
-              style: TextStyle(fontSize: 24),
-            ),
-            Expanded(
-              child: Container(),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-              child: Container(
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 255, 255, 255),
-                  borderRadius: BorderRadius.circular(8),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 1,
-                      blurRadius: 10,
-                      offset: Offset(1, 1),
-                    ),
-                  ],
+          child: Center(
+            child: Column(
+              //mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'asset/Kullanıcı/vet bilgi.png',
                 ),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: Container(
-                            height: 120,
-                            child: ElevatedButton(
-                              style: ButtonStyles.elevatedButtonStyle,
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => LabResults(
-                                      chipNumber: chipNumber,
-                                    ),
-                                  ),
-                                );
-                              },
-                              child: Text('Tahlil Sonuçları'),
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 16),
-                        Expanded(
-                          child: Container(
-                            height: 120,
-                            child: ElevatedButton(
-                              style: ButtonStyles.elevatedButtonStyle,
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Vaccines(
-                                      chipNumber: chipNumber,
-                                    ),
-                                  ),
-                                );
-                              },
-                              child: Text('Gelecek Aşıları'),
-                            ),
-                          ),
+                Text(
+                  'Seçilen Hayvanın ID\'si: $chipNumber',
+                  style: TextStyle(fontSize: 24),
+                ),
+                Expanded(
+                  child: Container(),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 255, 255, 255),
+                      borderRadius: BorderRadius.circular(8),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 10,
+                          offset: Offset(1, 1),
                         ),
                       ],
                     ),
-                    SizedBox(height: 16),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    child: Column(
                       children: [
-                        Expanded(
-                          child: Container(
-                            height: 120,
-                            child: ElevatedButton(
-                              style: ButtonStyles.elevatedButtonStyle,
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => DiseaseDiagnosisPage(
-                                      chipNumber: chipNumber,
-                                    ),
-                                  ),
-                                );
-                              },
-                              child: Text('Hastalık Detayı'),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Container(
+                                height: 120,
+                                child: ElevatedButton(
+                                  style: ButtonStyles.elevatedButtonStyle,
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => LabResults(
+                                          chipNumber: chipNumber,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: Text('Tahlil Sonuçları'),
+                                ),
+                              ),
                             ),
-                          ),
+                            SizedBox(width: 16),
+                            Expanded(
+                              child: Container(
+                                height: 120,
+                                child: ElevatedButton(
+                                  style: ButtonStyles.elevatedButtonStyle,
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Vaccines(
+                                          chipNumber: chipNumber,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: Text('Gelecek Aşıları'),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                        SizedBox(width: 16),
-                        Expanded(
-                          child: Container(
-                            height: 120,
-                            child: ElevatedButton(
-                              style: ButtonStyles.elevatedButtonStyle,
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          VeterinariansPage()),
-                                );
-                              },
-                              child: Text('Randevu Ekranı'),
+                        SizedBox(height: 16),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Container(
+                                height: 120,
+                                child: ElevatedButton(
+                                  style: ButtonStyles.elevatedButtonStyle,
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            DiseaseDiagnosisPage(
+                                          chipNumber: chipNumber,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: Text('Hastalık Detayı'),
+                                ),
+                              ),
                             ),
-                          ),
+                          ],
                         ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ),
-          ],
-        ),
-      ),
-    ));
+          ),
+        ));
   }
 }
 
@@ -263,16 +246,17 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Scaffold(
-        appBar: AppBar(
-          title: Text('Veteriner Profili'),
-        ),body: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
-              fit: BoxFit.cover,
-            ),
+        body: Scaffold(
+      appBar: AppBar(
+        title: Text('Veteriner Profili'),
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
+            fit: BoxFit.cover,
           ),
+        ),
         child: Center(
           child: Column(
             children: [
