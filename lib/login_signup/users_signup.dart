@@ -57,6 +57,12 @@ class _RegisterPageState extends State<RegisterPage> {
                         controller: _emailController,
                         decoration: InputDecoration(
                             labelText: 'E-mail', border: InputBorder.none),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'E-posta adresi boş olamaz';
+                          }
+                          return null;
+                        },
                       ),
                     ),
                     _sizedBoxHeight10,
@@ -66,6 +72,12 @@ class _RegisterPageState extends State<RegisterPage> {
                         controller: _namesurnameController,
                         decoration: InputDecoration(
                             labelText: 'Ad Soyad', border: InputBorder.none),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Ad Soyad boş olamaz';
+                          }
+                          return null;
+                        },
                       ),
                     ),
                     _sizedBoxHeight10,
@@ -76,6 +88,12 @@ class _RegisterPageState extends State<RegisterPage> {
                         decoration: InputDecoration(
                             labelText: 'Parola', border: InputBorder.none),
                         obscureText: true,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Parola boş olamaz';
+                          }
+                          return null;
+                        },
                       ),
                     ),
                     _sizedBoxHeight10,
@@ -87,6 +105,14 @@ class _RegisterPageState extends State<RegisterPage> {
                             labelText: 'Parola Tekrar',
                             border: InputBorder.none),
                         obscureText: true,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Parola tekrarı boş olamaz';
+                          } else if (value != _passwordController.text) {
+                            return 'Parolalar eşleşmiyor';
+                          }
+                          return null;
+                        },
                       ),
                     ),
                     _sizedBoxHeight10,
@@ -221,12 +247,6 @@ class _RegisterPageState extends State<RegisterPage> {
                               _passwordController.text ==
                                   _confirmPasswordController.text) {
                             _register();
-                            _navigateToAnotherPage();
-                          } else {
-                            var snackBar = SnackBar(
-                                content: Text('E-mail veya Parola Hatalı !'));
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(snackBar);
                           }
                         },
                         child: Text(
@@ -300,8 +320,28 @@ class _RegisterPageState extends State<RegisterPage> {
         'isUser': "true",
         'pets': pets,
       });
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Kayıt başarılı! Giriş yapabilirsiniz.'),
+        ),
+      );
+
+      await Future.delayed(Duration(seconds: 2));
+
+      _navigateToAnotherPage(); // Giriş yapma sayfasına yönlendir
     } catch (e) {
       print(e.toString());
+      String errorMessage = 'Bir hata oluştu. Kayıt işlemi başarısız oldu.';
+      if (e is FirebaseAuthException) {
+        if (e.code == 'email-already-in-use') {
+          errorMessage = 'E-posta adresi zaten kullanımda.';
+        } else if (e.code == 'weak-password') {
+          errorMessage = 'Şifre en az 6 karakterden oluşmalıdır.';
+        }
+      }
+      var snackBar = SnackBar(content: Text(errorMessage));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
 }

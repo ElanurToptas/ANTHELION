@@ -54,9 +54,27 @@ class _LoginScreenState extends State<LoginScreen> {
       } else {
         print('Giriş reddedildi, izin verilmedi.');
         // İzin verilmediyse uygun işlemi yapabilirsiniz (örneğin hata mesajı göstermek)
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Geçersiz e-posta veya şifre!'),
+            duration: Duration(seconds: 3),
+          ),
+        );
       }
-    } catch (e) {
+    } on FirebaseAuthException catch (e) {
       print('Hata: $e');
+      String errorMessage = 'Geçersiz e-posta veya şifre';
+      if (e.code == 'invalid-email') {
+        errorMessage = 'Geçersiz e-posta adresi!';
+      } else if (e.code == 'wrong-password') {
+        errorMessage = 'Geçersiz e-posta veya şifre!';
+      }
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(errorMessage),
+          duration: Duration(seconds: 3),
+        ),
+      );
     }
   }
 
@@ -67,108 +85,109 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: theme(),
-        home: Scaffold(
-          body: SingleChildScrollView(
-            child: Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
-                  fit: BoxFit.cover,
-                ),
+      theme: theme(),
+      home: Scaffold(
+        body: SingleChildScrollView(
+          child: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
+                fit: BoxFit.cover,
               ),
-              child: _isLoginSuccess
-                  ? _buildContent()
-                  : Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'asset/Kullanıcı/uye.png',
+            ),
+            child: _isLoginSuccess
+                ? _buildContent()
+                : Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'asset/Kullanıcı/uye.png',
+                        ),
+                        TextField(
+                          controller: _emailController,
+                          decoration: InputDecoration(
+                            labelText: 'E-posta',
                           ),
-                          TextField(
-                            controller: _emailController,
-                            decoration: InputDecoration(
-                              labelText: 'E-posta',
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        TextField(
+                          controller: _passwordController,
+                          decoration: InputDecoration(
+                            labelText: 'Şifre',
+                          ),
+                          obscureText: true,
+                        ),
+                        SizedBox(height: 16.0),
+                        ElevatedButton(
+                          onPressed: _signInWithEmailAndPassword,
+                          child: Text(
+                            'Giriş Yap',
+                            style: TextStyle(
+                              fontSize: 18,
                             ),
                           ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          TextField(
-                            controller: _passwordController,
-                            decoration: InputDecoration(
-                              labelText: 'Şifre',
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: ((context) {
+                                    return PasswordResetPage();
+                                  })),
+                                );
+                              },
+                              child: Text(
+                                "Şifremi Unuttum!",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.indigo,
+                                ),
+                              ),
                             ),
-                            obscureText: true,
-                          ),
-                          SizedBox(height: 16.0),
-                          ElevatedButton(
-                            onPressed: _signInWithEmailAndPassword,
-                            child: Text(
-                              'Giriş Yap',
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Hala üye değil misiniz ?",
                               style: TextStyle(
                                 fontSize: 18,
                               ),
                             ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: ((context) {
-                                      return PasswordResetPage();
-                                    })),
-                                  );
-                                },
-                                child: Text(
-                                  "Şifremi Unuttum!",
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.indigo,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Hala üye değil misiniz ?",
+                            TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: ((context) {
+                                    return SignUpScreen();
+                                  })),
+                                );
+                              },
+                              child: Text(
+                                "Hemen üye ol!",
                                 style: TextStyle(
                                   fontSize: 18,
+                                  color: Colors.indigo,
                                 ),
                               ),
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: ((context) {
-                                      return SignUpScreen();
-                                    })),
-                                  );
-                                },
-                                child: Text(
-                                  "Hemen üye ol!",
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.indigo,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-            ),
+                  ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   Widget _buildContent() {
