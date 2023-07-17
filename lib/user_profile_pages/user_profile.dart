@@ -56,7 +56,7 @@ class UserProfile extends StatelessWidget {
                             children: [
                               SizedBox(
                                 height: 130,
-                                width: 130,
+                                width: 135,
                                 child: ElevatedButton(
                                   style: ButtonStyle(
                                     shape: MaterialStateProperty.all<
@@ -85,7 +85,7 @@ class UserProfile extends StatelessWidget {
                               SizedBox(width: 16),
                               SizedBox(
                                 height: 130,
-                                width: 130,
+                                width: 135,
                                 child: ElevatedButton(
                                   style: ButtonStyle(
                                     shape: MaterialStateProperty.all<
@@ -119,7 +119,7 @@ class UserProfile extends StatelessWidget {
                             children: [
                               SizedBox(
                                 height: 130,
-                                width: 130,
+                                width: 135,
                                 child: ElevatedButton(
                                   style: ButtonStyle(
                                     shape: MaterialStateProperty.all<
@@ -148,7 +148,7 @@ class UserProfile extends StatelessWidget {
                               SizedBox(width: 16),
                               SizedBox(
                                 height: 130,
-                                width: 130,
+                                width: 135,
                                 child: ElevatedButton(
                                   style: ButtonStyle(
                                     shape: MaterialStateProperty.all<
