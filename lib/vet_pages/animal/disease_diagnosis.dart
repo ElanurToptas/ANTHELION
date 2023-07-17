@@ -150,7 +150,7 @@ class _DiseaseDiagnosisPageState extends State<DiseaseDiagnosisPage> {
           child: Column(
             children: [
               Text(
-                'Seçilen Hayvanın Çip Numarası: ${widget.chipNumber}',
+                'Hayvan Çip Numarası: ${widget.chipNumber}',
                 style: TextStyle(fontSize: 24),
               ),
               SizedBox(height: 20),

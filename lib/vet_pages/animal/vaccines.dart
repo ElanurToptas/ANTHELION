@@ -107,7 +107,7 @@ class _VaccinesState extends State<Vaccines> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Hasta Çip Numarası: ${widget.chipNumber}',
+                'Hayvan Çip Numarası: ${widget.chipNumber}',
                 style: TextStyle(fontSize: 22),
               ),
               SizedBox(height: 20),

@@ -138,7 +138,7 @@ class EditAnimalPage extends StatelessWidget {
                   'asset/Kullanıcı/vet bilgi.png',
                 ),
                 Text(
-                  'Seçilen Hayvanın ID\'si: $chipNumber',
+                  'Hayvan Çip Numarası: $chipNumber',
                   style: TextStyle(fontSize: 24),
                 ),
                 Expanded(

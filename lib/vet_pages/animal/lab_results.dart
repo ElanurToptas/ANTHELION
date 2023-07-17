@@ -200,7 +200,7 @@ class _LabResultsState extends State<LabResults> {
           child: Column(
             children: [
               Text(
-                'Hayvanın Çip Numarası: ${widget.chipNumber}',
+                'Hayvan Çip Numarası: ${widget.chipNumber}',
                 style: TextStyle(fontSize: 24),
               ),
               SizedBox(height: 20),
