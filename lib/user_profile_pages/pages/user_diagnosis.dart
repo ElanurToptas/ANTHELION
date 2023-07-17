@@ -31,23 +31,33 @@ class _DiseasesPageState extends State<DiseasesPage> {
   }
 
   Future<void> _fetchPetDiseases() async {
-    if (_selectedPet != null) {
-      final petId = _selectedPet!;
-      final petDoc =
-          await FirebaseFirestore.instance.collection('Pets').doc(petId).get();
-
-      if (petDoc.exists) {
-        final petData = petDoc.data();
-        if (petData != null) {
-          final diseases = petData['diseases'] as List<dynamic>;
-          setState(() {
-            _diseases = List<Map<String, dynamic>>.from(diseases);
-          });
-        }
-      } else {
-        print('Seçilen hayvana ait veri bulunamadı.');
-      }
+    if (_selectedPet == null) {
+      return;
     }
+
+    final petId = _selectedPet!;
+    final petDoc =
+        await FirebaseFirestore.instance.collection('Pets').doc(petId).get();
+
+    if (!petDoc.exists) {
+      print('Seçilen hayvana ait veri bulunamadı.');
+      return;
+    }
+
+    final petData = petDoc.data();
+    if (petData == null) {
+      return;
+    }
+
+    final diseases = petData['diseases'];
+    if (diseases == null || diseases.isEmpty) {
+      // diseases alanı boş veya mevcut değil
+      return;
+    }
+
+    setState(() {
+      _diseases = List<Map<String, dynamic>>.from(diseases);
+    });
   }
 
   void showDiseaseDetails(Map<String, dynamic> disease) {
