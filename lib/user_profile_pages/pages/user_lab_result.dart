@@ -27,7 +27,8 @@ class _PetDocumentsPageState extends State<PetDocumentsPage> {
   Future<void> _fetchUserPets() async {
     final userId = FirebaseAuth.instance.currentUser!.uid;
 
-    final userDoc = await FirebaseFirestore.instance.collection('Users').doc(userId).get();
+    final userDoc =
+        await FirebaseFirestore.instance.collection('Users').doc(userId).get();
     final petsList = userDoc.get('pets') as List<dynamic>;
 
     setState(() {
@@ -99,68 +100,59 @@ class _PetDocumentsPageState extends State<PetDocumentsPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: theme(),
-      home: Scaffold(
-        appBar: AppBar(
-  leading: IconButton(
-    icon: Icon(Icons.arrow_back),
-    onPressed: () {
-      Navigator.pop(context);
-    },
-  ),
-  title: Text('Tahlillerim'),
-),body: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
-              fit: BoxFit.cover,
-            ),
-          ),
-        child: Column(
-          children: [
-            DropdownButton<String>(
-              value: _selectedPet,
-              hint: Text("Evcil Hayvan ID Seç") ,
-              items: _pets.map((String pet) {
-                return DropdownMenuItem<String>(
-                  value: pet,
-                  child: Text(pet),
-                );
-              }).toList(),
-              onChanged: (String? selectedPet) {
-                setState(() {
-                  _selectedPet = selectedPet;
-                  if (selectedPet != null) {
-                    _fetchPetDocuments(selectedPet);
-                  } else {
-                    _documentPaths = [];
-                  }
-                });
+        theme: theme(),
+        home: Scaffold(
+          appBar: AppBar(
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.pop(context);
               },
             ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: _documentPaths.length,
-                itemBuilder: (context, index) {
-                  final path = _documentPaths[index];
-    
-                  return _buildDocumentCard(path);
-                },
+            title: Text('Tahlillerim'),
+          ),
+          body: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
+                fit: BoxFit.cover,
               ),
             ),
-          ],
-        ),
-      ),
-    ));
+            child: Column(
+              children: [
+                DropdownButton<String>(
+                  value: _selectedPet,
+                  hint: Text("Evcil Hayvan ID Seç"),
+                  items: _pets.map((String pet) {
+                    return DropdownMenuItem<String>(
+                      value: pet,
+                      child: Text(pet),
+                    );
+                  }).toList(),
+                  onChanged: (String? selectedPet) {
+                    setState(() {
+                      _selectedPet = selectedPet;
+                      if (selectedPet != null) {
+                        _fetchPetDocuments(selectedPet);
+                      } else {
+                        _documentPaths = [];
+                      }
+                    });
+                  },
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: _documentPaths.length,
+                    itemBuilder: (context, index) {
+                      final path = _documentPaths[index];
+
+                      return _buildDocumentCard(path);
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ));
   }
 }
-
-
-
-
-
-
-
-
-
-

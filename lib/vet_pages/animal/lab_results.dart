@@ -1,10 +1,12 @@
-﻿import 'package:flutter/material.dart';
+﻿import 'dart:io';
+
+import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'dart:io';
-import 'package:path/path.dart' as Path;
 import 'package:intl/intl.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:flutter_pdfview/flutter_pdfview.dart';
 
 class LabResults extends StatefulWidget {
   final String chipNumber;
@@ -100,9 +102,22 @@ class _LabResultsState extends State<LabResults> {
     }
   }
 
-  void viewLabResult(String fileName) {
-    // Görüntüleme işlemleri burada gerçekleştirilecek
-    print('Görüntüle: $fileName');
+  void viewLabResult(String fileName) async {
+    final dir = await getTemporaryDirectory();
+    final filePath = '${dir.path}/$fileName';
+
+    Reference ref = _storage.ref('Animals/${widget.chipNumber}/$fileName');
+    File file = File(filePath);
+    await ref.writeToFile(file);
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PdfViewerPage(
+          filePath: filePath,
+        ),
+      ),
+    );
   }
 
   Future<void> _uploadFileWithCustomName(File file, String fileName) async {
@@ -174,50 +189,73 @@ class _LabResultsState extends State<LabResults> {
         title: Text('Lab Sonuçları'),
       ),
       body: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
-              fit: BoxFit.cover,
-            ),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
+            fit: BoxFit.cover,
           ),
-      child: Padding(
-        padding: EdgeInsets.all(20),
-        child: Column(
-          children: [
-           
-              
-            Text(
-              'Seçilen Hayvanın Çip Numarası: ${widget.chipNumber}',
-              style: TextStyle(fontSize: 24),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: uploadFile,
-              child: Text('PDF Yükle'),
-            ),
-            SizedBox(height: 20),
-            Expanded(
-              child: ListView.builder(
-                itemCount: labResults.length,
-                itemBuilder: (context, index) {
-                  final fileName = labResults[index];
-                  return ListTile(
-                    leading: IconButton(
-                      icon: Icon(Icons.visibility),
-                      onPressed: () => viewLabResult(fileName),
-                    ),
-                    title: Text(fileName),
-                    trailing: IconButton(
-                      icon: Icon(Icons.delete),
-                      onPressed: () => removeLabResult(fileName),
-                    ),
-                  );
-                },
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            children: [
+              Text(
+                'Seçilen Hayvanın Çip Numarası: ${widget.chipNumber}',
+                style: TextStyle(fontSize: 24),
               ),
-            ),
-          ],
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: uploadFile,
+                child: Text('PDF Yükle'),
+              ),
+              SizedBox(height: 20),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: labResults.length,
+                  itemBuilder: (context, index) {
+                    final fileName = labResults[index];
+                    return _buildDocumentCard(fileName);
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       ),
-    ));
+    );
+  }
+
+  Widget _buildDocumentCard(String fileName) {
+    return Card(
+      child: ListTile(
+        onTap: () => viewLabResult(fileName),
+        leading: Icon(Icons.picture_as_pdf),
+        title: Text(fileName),
+        trailing: IconButton(
+          icon: Icon(Icons.delete),
+          onPressed: () => removeLabResult(fileName),
+        ),
+      ),
+    );
+  }
+}
+
+class PdfViewerPage extends StatelessWidget {
+  final String filePath;
+
+  PdfViewerPage({required this.filePath});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('PDF Görüntüleyici'),
+      ),
+      body: Container(
+        child: PDFView(
+          filePath: filePath,
+        ),
+      ),
+    );
   }
 }
