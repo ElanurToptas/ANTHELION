@@ -29,6 +29,13 @@
             {
               "client_id": "605655074301-cg9nfgdhonqi8o9mq551ot3fkk4fer3n.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "605655074301-2f3junrsf7tmcvr2bqur4survu2mmu6k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.petcare.RunnerTests"
+              }
             }
           ]
         }

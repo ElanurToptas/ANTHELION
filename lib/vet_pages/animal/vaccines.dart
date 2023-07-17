@@ -98,7 +98,7 @@ class _VaccinesState extends State<Vaccines> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Vaccines'),
+        title: Text('Aşılar'),
       ),
       body: SingleChildScrollView(
         child: Padding(
