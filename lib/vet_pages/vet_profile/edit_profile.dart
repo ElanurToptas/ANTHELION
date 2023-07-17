@@ -327,7 +327,11 @@ class _EditVetProfileState extends State<EditVetProfile> {
                               ),
                     SizedBox(height: 10),
                     ElevatedButton(
-                      style: ButtonStyles.elevatedButtonStyle,
+                      style: ElevatedButton.styleFrom(
+                        textStyle: TextStyle(
+                          fontSize: 15, // İstenen yazı tipi boyutu
+                        ),
+                      ),
                       onPressed: () {
                         showDialog(
                           context: context,
@@ -638,6 +642,9 @@ class _EditVetProfileState extends State<EditVetProfile> {
                       children: [
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            textStyle: TextStyle(
+                              fontSize: 16, // İstenen yazı tipi boyutu
+                            ),
                             backgroundColor:
                                 Colors.red, // Butonun arkaplan rengi
                           ),
@@ -653,7 +660,11 @@ class _EditVetProfileState extends State<EditVetProfile> {
                           child: Text('Çıkış Yap'),
                         ),
                         ElevatedButton(
-                          style: ButtonStyles.elevatedButtonStyle,
+                          style: ElevatedButton.styleFrom(
+                            textStyle: TextStyle(
+                              fontSize: 16, // İstenen yazı tipi boyutu
+                            ),
+                          ),
                           onPressed: () {
                             saveUserBio(vetBio);
                             saveUserName(vetName);
