@@ -27,8 +27,8 @@ body: Container(
             children: [
               Image.asset(
   'asset/Kullanıcı/Kullanıcı profil.png',
-  width: 350,
-  height: 350,
+  width: 250,
+  height: 250,
 ),
               Expanded(
                 child: Container(),
