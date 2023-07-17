@@ -200,22 +200,34 @@ class _LabResultsState extends State<LabResults> {
           child: Column(
             children: [
               Text(
-                'Seçilen Hayvanın Çip Numarası: ${widget.chipNumber}',
+                'Hayvanın Çip Numarası: ${widget.chipNumber}',
                 style: TextStyle(fontSize: 24),
               ),
               SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: uploadFile,
-                child: Text('PDF Yükle'),
-              ),
-              SizedBox(height: 20),
+              Text("Yüklenen Lab Sonuçları"),
+              SizedBox(height: 15),
               Expanded(
-                child: ListView.builder(
-                  itemCount: labResults.length,
-                  itemBuilder: (context, index) {
-                    final fileName = labResults[index];
-                    return _buildDocumentCard(fileName);
-                  },
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: labResults.length,
+                        itemBuilder: (context, index) {
+                          final fileName = labResults[index];
+                          return _buildDocumentCard(fileName);
+                        },
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      ElevatedButton(
+                        onPressed: uploadFile,
+                        child: Text('PDF Yükle'),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
