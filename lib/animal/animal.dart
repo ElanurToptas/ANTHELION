@@ -392,7 +392,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),body: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('asset/ArkaPlan/Arka Plan.png'),
               fit: BoxFit.cover,
@@ -882,8 +882,6 @@ class HomePage extends StatelessWidget {
                       ),
                 ],
               ),),),],),
-
-
 
 
           ],
